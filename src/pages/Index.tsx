@@ -179,7 +179,7 @@ const Index = () => {
                     </h3>
                     <div className="flex items-center gap-2 flex-shrink-0">
                       {article.internal && (
-                        <Lock className="h-4 w-4 text-muted-foreground" title="Internal article" />
+                        <Lock className="h-4 w-4 text-muted-foreground" />
                       )}
                       <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
