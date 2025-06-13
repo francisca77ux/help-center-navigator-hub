@@ -8,39 +8,48 @@
   "settings": [
     {
       "label": "Clave del Widget de Zendesk",
-      "key": "zendesk_widget_key",
-      "type": "text",
-      "description": "Ingresa tu clave del widget de Zendesk para habilitar el chat"
+      "variables": [{
+        "identifier": "zendesk_widget_key",
+        "type": "text",
+        "description": "Ingresa tu clave del widget de Zendesk para habilitar el chat"
+      }]
     },
     {
       "label": "Color Principal",
-      "key": "primary_color",
-      "type": "color",
-      "default": "#1e40af"
+      "variables": [{
+        "identifier": "primary_color",
+        "type": "color",
+        "default": "#1e40af"
+      }]
     },
     {
-      "label": "Mostrar Números de Contacto",
-      "key": "show_contact_numbers",
-      "type": "checkbox",
-      "default": true
-    },
-    {
-      "label": "Teléfono Principal",
-      "key": "main_phone",
-      "type": "text",
-      "default": "600 123 4567"
-    },
-    {
-      "label": "WhatsApp",
-      "key": "whatsapp_number",
-      "type": "text",
-      "default": "+56 9 8765 4321"
-    },
-    {
-      "label": "Email de Contacto",
-      "key": "contact_email",
-      "type": "text",
-      "default": "info@adtchile.cl"
+      "label": "Configuración de Contacto",
+      "variables": [
+        {
+          "identifier": "show_contact_numbers",
+          "type": "checkbox",
+          "default": true,
+          "label": "Mostrar Números de Contacto"
+        },
+        {
+          "identifier": "main_phone",
+          "type": "text",
+          "default": "600 123 4567",
+          "label": "Teléfono Principal"
+        },
+        {
+          "identifier": "whatsapp_number",
+          "type": "text",
+          "default": "+56 9 8765 4321",
+          "label": "WhatsApp"
+        },
+        {
+          "identifier": "contact_email",
+          "type": "text",
+          "default": "info@adtchile.cl",
+          "label": "Email de Contacto"
+        }
+      ]
     }
   ]
 }
