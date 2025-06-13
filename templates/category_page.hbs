@@ -25,14 +25,7 @@
       <section class="space-y-8">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
-            {{#contains name "Activación"}}🔑{{/contains}}
-            {{#contains name "Configuración"}}⚙️{{/contains}}
-            {{#contains name "Problemas"}}❓{{/contains}}
-            {{#contains name "Mantenimiento"}}🔧{{/contains}}
-            {{#contains name "Instalación"}}📱{{/contains}}
-            {{#contains name "Pago"}}💳{{/contains}}
-            {{#contains name "Cámara"}}📹{{/contains}}
-            {{#contains name "Soporte"}}📞{{/contains}}
+            📄
           </div>
           <div>
             <h2 class="text-2xl font-bold">{{name}}</h2>
@@ -44,22 +37,13 @@
           {{#each articles}}
           <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 group">
             <div class="flex items-start gap-3 mb-2">
-              <div class="w-5 h-5 text-blue-600 mt-1">
-                {{#contains title "activar"}}🔑{{/contains}}
-                {{#contains title "desactivar"}}🔓{{/contains}}
-                {{#contains title "código"}}🔢{{/contains}}
-                {{#contains title "problema"}}⚠️{{/contains}}
-                {{#contains title "instalación"}}📱{{/contains}}
-                {{#contains title "pago"}}💳{{/contains}}
-                {{#contains title "cámara"}}📹{{/contains}}
-                {{#unless title}}📄{{/unless}}
-              </div>
+              <div class="w-5 h-5 text-blue-600 mt-1">📄</div>
               <h3 class="font-semibold text-lg group-hover:text-blue-600 transition-colors flex-1">
                 <a href="{{url}}">{{title}}</a>
               </h3>
             </div>
             {{#if body}}
-            <p class="text-gray-600 text-sm">{{truncate body 100}}</p>
+            <p class="text-gray-600 text-sm">{{body}}</p>
             {{/if}}
           </article>
           {{/each}}

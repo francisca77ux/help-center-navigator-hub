@@ -11,7 +11,7 @@
         <li>></li>
         <li><a href="/community" class="hover:text-blue-600">Comunidad</a></li>
         <li>></li>
-        <li class="text-gray-800 font-medium">{{#if topic}}{{topic.name}}{{else}}Publicaciones{{/if}}</li>
+        <li class="text-gray-800 font-medium">Publicaciones</li>
       </ol>
     </nav>
 
@@ -21,12 +21,8 @@
         <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
           💬
         </div>
-        <h1 class="text-4xl font-bold">{{#if topic}}{{topic.name}}{{else}}Publicaciones de la Comunidad{{/if}}</h1>
+        <h1 class="text-4xl font-bold">Publicaciones de la Comunidad</h1>
       </div>
-      
-      {{#if topic.description}}
-      <p class="text-lg text-gray-600 mb-6">{{topic.description}}</p>
-      {{/if}}
       
       <div class="flex items-center justify-between">
         <div class="text-sm text-gray-500">
@@ -50,7 +46,7 @@
             <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
             {{else}}
             <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold">{{substring author.name 0 1}}</span>
+              <span class="text-gray-600 font-semibold">{{author.name}}</span>
             </div>
             {{/if}}
             <div>
@@ -70,15 +66,15 @@
         
         {{#if details}}
         <div class="text-gray-600 mb-4 line-clamp-3">
-          {{truncate details 200}}
+          {{details}}
         </div>
         {{/if}}
         
         <div class="flex items-center justify-between text-sm text-gray-500">
           <div class="flex items-center gap-4">
-            <span>💬 {{#if comments_count}}{{comments_count}}{{else}}0{{/if}} respuestas</span>
+            <span>💬 0 respuestas</span>
             <span>👍 {{vote_sum}} votos</span>
-            <span>👁️ {{#if views}}{{views}}{{else}}0{{/if}} vistas</span>
+            <span>👁️ 0 vistas</span>
           </div>
           
           {{#if updated_at}}

@@ -11,21 +11,15 @@
         <li>></li>
         <li><a href="/community" class="hover:text-blue-600">Comunidad</a></li>
         <li>></li>
-        {{#if topic}}
-        <li><a href="{{topic.url}}" class="hover:text-blue-600">{{topic.name}}</a></li>
-        <li>></li>
-        {{/if}}
         <li class="text-gray-800 font-medium">{{post.title}}</li>
       </ol>
     </nav>
 
     <!-- Back Link -->
     <div class="mb-8">
-      {{#if topic}}
-      <a href="{{topic.url}}" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
-        ← Volver a {{topic.name}}
+      <a href="/community" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
+        ← Volver a la Comunidad
       </a>
-      {{/if}}
     </div>
 
     <!-- Post Content -->
@@ -38,7 +32,7 @@
             <img src="{{post.author.avatar_url}}" alt="{{post.author.name}}" class="w-12 h-12 rounded-full">
             {{else}}
             <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold text-lg">{{substring post.author.name 0 1}}</span>
+              <span class="text-gray-600 font-semibold text-lg">{{post.author.name}}</span>
             </div>
             {{/if}}
             <div>
@@ -55,9 +49,9 @@
         <h1 class="text-3xl font-bold mb-4">{{post.title}}</h1>
         
         <div class="flex items-center gap-4 text-sm text-gray-500">
-          <span>💬 {{#if post.comments_count}}{{post.comments_count}}{{else}}0{{/if}} respuestas</span>
-          <span>👍 {{post.vote_sum}} votos</span>
-          <span>👁️ {{#if post.views}}{{post.views}}{{else}}0{{/if}} vistas</span>
+          <span>💬 0 respuestas</span>
+          <span>👍 {{post.vote_sum}}</span>
+          <span>👁️ 0 vistas</span>
           {{#if post.updated_at}}
           <span>Actualizado {{post.updated_at}}</span>
           {{/if}}
@@ -66,7 +60,7 @@
       
       <!-- Post Body -->
       <div class="p-6 prose prose-lg max-w-none">
-        {{{post.details}}}
+        {{post.details}}
       </div>
     </article>
 
@@ -82,44 +76,6 @@
         </button>
       </div>
     </div>
-
-    <!-- Comments Section -->
-    {{#if post.comments}}
-    <section class="mt-12">
-      <h3 class="text-2xl font-bold mb-6">Respuestas ({{#if post.comments_count}}{{post.comments_count}}{{else}}0{{/if}})</h3>
-      
-      <div class="space-y-6">
-        {{#each post.comments}}
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <div class="flex items-start gap-3 mb-4">
-            {{#if author.avatar_url}}
-            <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
-            {{else}}
-            <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold">{{substring author.name 0 1}}</span>
-            </div>
-            {{/if}}
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-2">
-                <h4 class="font-semibold">{{author.name}}</h4>
-                <span class="text-sm text-gray-500">{{created_at}}</span>
-              </div>
-              <div class="prose max-w-none">
-                {{{body}}}
-              </div>
-              <div class="flex items-center gap-4 mt-4 text-sm text-gray-500">
-                <span>👍 {{vote_sum}} votos</span>
-                {{#if updated_at}}
-                <span>Editado {{updated_at}}</span>
-                {{/if}}
-              </div>
-            </div>
-          </div>
-        </div>
-        {{/each}}
-      </div>
-    </section>
-    {{/if}}
 
     <!-- Comment Form -->
     <section class="mt-8">
@@ -146,26 +102,6 @@
         </div>
       </form>
     </section>
-
-    <!-- Related Posts -->
-    {{#if topic.posts}}
-    <section class="mt-12">
-      <h3 class="text-2xl font-bold mb-6">Otras publicaciones en {{topic.name}}</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {{#each topic.posts}}
-        {{#unless (compare url '==' ../post.url)}}
-        <a href="{{url}}" class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 group">
-          <h4 class="font-semibold group-hover:text-blue-600 transition-colors mb-2">{{title}}</h4>
-          <div class="flex items-center gap-4 text-sm text-gray-500">
-            <span>💬 {{#if comments_count}}{{comments_count}}{{else}}0{{/if}}</span>
-            <span>👍 {{vote_sum}}</span>
-          </div>
-        </a>
-        {{/unless}}
-        {{/each}}
-      </div>
-    </section>
-    {{/if}}
 
   </div>
 </main>

@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -40,19 +40,9 @@
         {{/if}}
         
         <div class="flex items-center justify-between text-sm text-gray-500">
-          <span>{{posts_count}} publicaciones</span>
-          {{#if followers_count}}
-          <span>{{followers_count}} seguidores</span>
-          {{/if}}
+          <span>0 publicaciones</span>
+          <span>0 seguidores</span>
         </div>
-        
-        {{#if recent_activity}}
-        <div class="mt-4 pt-4 border-t border-gray-200">
-          <p class="text-xs text-gray-500">
-            Última actividad: {{recent_activity}}
-          </p>
-        </div>
-        {{/if}}
       </div>
       {{/each}}
     </div>
@@ -84,4 +74,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}
