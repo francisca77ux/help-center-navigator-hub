@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import { Search, Lock, ArrowRight, MessageCircle, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -280,18 +278,18 @@ const Index = () => {
               <div className="md:col-span-3">
                 <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 p-6">
                   <div className="flex items-center gap-2 justify-center mb-2">
-                    <MessageCircle className="h-4 w-4 text-primary" />
-                    <h3 className="font-semibold text-base">¿Necesitas más ayuda?</h3>
+                    <MessageCircle className="h-5 w-5 text-primary" />
+                    <h3 className="font-semibold text-lg">¿Necesitas más ayuda?</h3>
                   </div>
-                  <p className="text-xs text-muted-foreground mb-4">
+                  <p className="text-sm text-muted-foreground mb-4">
                     Si no encuentras la respuesta que buscas, nuestro equipo está disponible
                   </p>
                   <div className="max-w-md mx-auto">
-                    <Button size="sm" className="w-full group text-xs py-1.5 mb-2">
+                    <Button size="sm" className="w-full group text-sm py-2 mb-2">
                       Contactar Soporte
-                      <ArrowRight className="h-3 w-3 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       Lun-Vie: 8:00-20:00 | Sáb: 9:00-14:00
                     </p>
                   </div>
