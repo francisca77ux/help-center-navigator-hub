@@ -24,6 +24,18 @@ import CambioClaveMaestra from "./pages/articles/CambioClaveMaestra";
 import ConfiguracionZonas from "./pages/articles/ConfiguracionZonas";
 import CodigosUsuario from "./pages/articles/CodigosUsuario";
 import DescargaAppAdt from "./pages/articles/DescargaAppAdt";
+import InstalacionAndroid from "./pages/articles/InstalacionAndroid";
+import InstalacionIos from "./pages/articles/InstalacionIos";
+import PrimerAccesoApp from "./pages/articles/PrimerAccesoApp";
+import ConfiguracionNotificacionesApp from "./pages/articles/ConfiguracionNotificacionesApp";
+import VinculacionSistema from "./pages/articles/VinculacionSistema";
+import ControlRemotoApp from "./pages/articles/ControlRemotoApp";
+import VisualizacionEventos from "./pages/articles/VisualizacionEventos";
+import GestionUsuariosApp from "./pages/articles/GestionUsuariosApp";
+import AlarmaNoActiva from "./pages/articles/AlarmaNoActiva";
+import ProblemasConectividad from "./pages/articles/ProblemasConectividad";
+import SensoresMalFuncionamiento from "./pages/articles/SensoresMalFuncionamiento";
+import MantenimientoPreventivo from "./pages/articles/MantenimientoPreventivo";
 import MediosPagoDisponibles from "./pages/articles/MediosPagoDisponibles";
 import TiposMonitoreo from "./pages/articles/TiposMonitoreo";
 import Monitoreo247 from "./pages/articles/Monitoreo247";
@@ -42,7 +54,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Index />}
+
+
           <Route path="/servicios-adt" element={<ServiciosAdt />} />
           <Route path="/panel-alarma" element={<PanelAlarma />} />
           <Route path="/app-adt" element={<AppAdt />} />
@@ -55,7 +69,24 @@ const App = () => (
           {/* Article routes */}
           <Route path="/articulo/servicios-adt-disponibles" element={<ServiciosAdtDisponibles />} />
           <Route path="/articulo/activar-sistema-alarma" element={<ActivarSistemaAlarma />} />
+          <Route path="/articulo/desactivar-sistema-alarma" element={<DesactivarSistemaAlarma />} />
+          <Route path="/articulo/modos-armado" element={<ModosArmado />} />
+          <Route path="/articulo/cambio-clave-maestra" element={<CambioClaveMaestra />} />
+          <Route path="/articulo/configuracion-zonas" element={<ConfiguracionZonas />} />
+          <Route path="/articulo/codigos-usuario" element={<CodigosUsuario />} />
           <Route path="/articulo/descarga-app-adt" element={<DescargaAppAdt />} />
+          <Route path="/articulo/instalacion-android" element={<InstalacionAndroid />} />
+          <Route path="/articulo/instalacion-ios" element={<InstalacionIos />} />
+          <Route path="/articulo/primer-acceso-app" element={<PrimerAccesoApp />} />
+          <Route path="/articulo/configuracion-notificaciones-app" element={<ConfiguracionNotificacionesApp />} />
+          <Route path="/articulo/vinculacion-sistema" element={<VinculacionSistema />} />
+          <Route path="/articulo/control-remoto-app" element={<ControlRemotoApp />} />
+          <Route path="/articulo/visualizacion-eventos" element={<VisualizacionEventos />} />
+          <Route path="/articulo/gestion-usuarios-app" element={<GestionUsuariosApp />} />
+          <Route path="/articulo/alarma-no-activa" element={<AlarmaNoActiva />} />
+          <Route path="/articulo/problemas-conectividad" element={<ProblemasConectividad />} />
+          <Route path="/articulo/sensores-mal-funcionamiento" element={<SensoresMalFuncionamiento />} />
+          <Route path="/articulo/mantenimiento-preventivo" element={<MantenimientoPreventivo />} />
           <Route path="/articulo/medios-pago-disponibles" element={<MediosPagoDisponibles />} />
           <Route path="/articulo/tipos-monitoreo" element={<TiposMonitoreo />} />
           <Route path="/articulo/monitoreo-24-7" element={<Monitoreo247 />} />
