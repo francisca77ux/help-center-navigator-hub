@@ -11,7 +11,12 @@
       "label": "Zendesk Widget Key",
       "type": "text",
       "required": false,
-      "variables": []
+      "variables": [
+        {
+          "identifier": "zendesk_widget_key",
+          "type": "string"
+        }
+      ]
     },
     {
       "name": "primary_color",
@@ -19,7 +24,12 @@
       "type": "text",
       "default": "#1e40af",
       "required": false,
-      "variables": []
+      "variables": [
+        {
+          "identifier": "primary_color",
+          "type": "string"
+        }
+      ]
     },
     {
       "name": "show_contact_numbers",
@@ -27,7 +37,12 @@
       "type": "checkbox", 
       "default": true,
       "required": false,
-      "variables": []
+      "variables": [
+        {
+          "identifier": "show_contact_numbers",
+          "type": "boolean"
+        }
+      ]
     },
     {
       "name": "main_phone",
@@ -35,7 +50,12 @@
       "type": "text",
       "default": "600 123 4567", 
       "required": false,
-      "variables": []
+      "variables": [
+        {
+          "identifier": "main_phone",
+          "type": "string"
+        }
+      ]
     },
     {
       "name": "whatsapp_number",
@@ -43,7 +63,12 @@
       "type": "text",
       "default": "+56 9 8765 4321",
       "required": false,
-      "variables": []
+      "variables": [
+        {
+          "identifier": "whatsapp_number",
+          "type": "string"
+        }
+      ]
     },
     {
       "name": "contact_email", 
@@ -51,7 +76,12 @@
       "type": "text",
       "default": "info@adtchile.cl",
       "required": false,
-      "variables": []
+      "variables": [
+        {
+          "identifier": "contact_email",
+          "type": "string"
+        }
+      ]
     }
   ]
 }
