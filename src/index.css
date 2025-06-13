@@ -8,85 +8,85 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 13%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 13%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 13%;
+    --popover-foreground: 0 0% 0%;
 
-    /* ADT Chile primary colors - Blue */
-    --primary: 210 100% 31%;
+    /* ADT Chile primary colors - Official ADT Blue */
+    --primary: 217 100% 31%;
     --primary-foreground: 0 0% 100%;
 
     /* ADT Chile secondary colors - Light blue/gray */
     --secondary: 210 40% 95%;
-    --secondary-foreground: 210 100% 31%;
+    --secondary-foreground: 217 100% 31%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    /* ADT Chile accent - Orange/Yellow */
-    --accent: 45 100% 50%;
-    --accent-foreground: 0 0% 13%;
+    /* ADT Chile accent - Alternative Blue */
+    --accent: 213 100% 33%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 210 100% 31%;
+    --ring: 217 100% 31%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 210 100% 31%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 217 100% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 210 100% 31%;
+    --sidebar-accent-foreground: 217 100% 31%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 210 100% 31%;
+    --sidebar-ring: 217 100% 31%;
   }
 
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
     --card: 0 0% 4%;
-    --card-foreground: 0 0% 98%;
+    --card-foreground: 0 0% 100%;
 
     --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 98%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 210 100% 60%;
-    --primary-foreground: 0 0% 4%;
+    --primary: 217 100% 31%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 217 33% 18%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 45 100% 50%;
-    --accent-foreground: 0 0% 4%;
+    --accent: 213 100% 33%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 217 33% 18%;
     --input: 217 33% 18%;
-    --ring: 210 100% 60%;
+    --ring: 217 100% 31%;
 
-    --sidebar-background: 240 6% 10%;
-    --sidebar-foreground: 240 5% 96%;
-    --sidebar-primary: 210 100% 60%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 217 100% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 4% 16%;
     --sidebar-accent-foreground: 240 5% 96%;
     --sidebar-border: 240 4% 16%;
-    --sidebar-ring: 210 100% 60%;
+    --sidebar-ring: 217 100% 31%;
   }
 }
 
