@@ -277,7 +277,7 @@ const Index = () => {
         <section className="mb-8 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-start-2">
+              <div className="md:col-span-3">
                 <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 p-6">
                   <div className="flex items-center gap-2 justify-center mb-2">
                     <MessageCircle className="h-4 w-4 text-primary" />
@@ -286,13 +286,15 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground mb-4">
                     Si no encuentras la respuesta que buscas, nuestro equipo está disponible
                   </p>
-                  <Button size="sm" className="w-full group text-xs py-1.5 mb-2">
-                    Contactar Soporte
-                    <ArrowRight className="h-3 w-3 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <p className="text-xs text-muted-foreground">
-                    Lun-Vie: 8:00-20:00 | Sáb: 9:00-14:00
-                  </p>
+                  <div className="max-w-md mx-auto">
+                    <Button size="sm" className="w-full group text-xs py-1.5 mb-2">
+                      Contactar Soporte
+                      <ArrowRight className="h-3 w-3 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                    <p className="text-xs text-muted-foreground">
+                      Lun-Vie: 8:00-20:00 | Sáb: 9:00-14:00
+                    </p>
+                  </div>
                 </Card>
               </div>
             </div>
@@ -326,4 +328,3 @@ const Index = () => {
 };
 
 export default Index;
-
