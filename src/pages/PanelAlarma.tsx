@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowLeft, Shield, Power, Key, Settings, Users, Phone, Mail, MessageCircle, Lock, Zap } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -134,7 +133,14 @@ const PanelAlarma = () => {
               <div className="text-center">
                 <MessageCircle className="h-8 w-8 text-primary mx-auto mb-2" />
                 <h4 className="font-semibold">WhatsApp</h4>
-                <p className="text-sm text-muted-foreground">+56 9 8765 4321</p>
+                <a 
+                  href="https://wa.me/56987654321" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  +56 9 8765 4321
+                </a>
               </div>
               <div className="text-center">
                 <Mail className="h-8 w-8 text-primary mx-auto mb-2" />
