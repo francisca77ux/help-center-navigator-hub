@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +14,7 @@ import Instalacion from "./pages/Instalacion";
 import CamarasIp from "./pages/CamarasIp";
 import Monitoreo from "./pages/Monitoreo";
 import Soporte from "./pages/Soporte";
+import ArticlesByTag from "./pages/ArticlesByTag";
 
 // Article pages
 import ServiciosAdtDisponibles from "./pages/articles/ServiciosAdtDisponibles";
