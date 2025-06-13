@@ -1,0 +1,167 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    
+    <!-- Breadcrumb -->
+    <nav class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
+        <li>></li>
+        <li><a href="{{community.url}}" class="hover:text-blue-600">Comunidad</a></li>
+        <li>></li>
+        <li><a href="{{topic.url}}" class="hover:text-blue-600">{{topic.name}}</a></li>
+        <li>></li>
+        <li class="text-gray-800 font-medium">Nueva Publicación</li>
+      </ol>
+    </nav>
+
+    <!-- Back Link -->
+    <div class="mb-8">
+      <a href="{{topic.url}}" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
+        ← Volver a {{topic.name}}
+      </a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+          ✏️
+        </div>
+        <h1 class="text-4xl font-bold">Nueva Publicación</h1>
+      </div>
+      
+      <p class="text-lg text-gray-600">
+        Comparte tu pregunta o experiencia con la comunidad de {{topic.name}}.
+      </p>
+    </div>
+
+    <!-- New Post Form -->
+    <form action="{{topic.url}}/posts" method="post" class="bg-white rounded-lg shadow-md">
+      <div class="p-6 border-b border-gray-200">
+        <div class="mb-6">
+          <label for="post-title" class="block text-sm font-medium text-gray-700 mb-2">
+            Título de la publicación *
+          </label>
+          <input 
+            type="text" 
+            id="post-title" 
+            name="post[title]" 
+            required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Describe tu consulta o tema de manera clara y concisa"
+          >
+          <p class="text-sm text-gray-500 mt-2">
+            Un buen título ayuda a otros usuarios a entender rápidamente tu consulta.
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <label for="post-body" class="block text-sm font-medium text-gray-700 mb-2">
+            Detalles *
+          </label>
+          <textarea 
+            id="post-body" 
+            name="post[details]" 
+            rows="10" 
+            required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Proporciona todos los detalles relevantes sobre tu consulta, incluyendo:
+- ¿Qué problema estás experimentando?
+- ¿Qué pasos has intentado?
+- ¿Cuándo comenzó el problema?
+- Cualquier mensaje de error que hayas visto">
+          </textarea>
+          <p class="text-sm text-gray-500 mt-2">
+            Mientras más detalles proporciones, mejor podrán ayudarte otros usuarios.
+          </p>
+        </div>
+
+        <!-- Topic Selection (if multiple topics available) -->
+        {{#if available_topics}}
+        <div class="mb-6">
+          <label for="post-topic" class="block text-sm font-medium text-gray-700 mb-2">
+            Tema
+          </label>
+          <select 
+            id="post-topic" 
+            name="post[topic_id]" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="{{topic.id}}" selected>{{topic.name}}</option>
+            {{#each available_topics}}
+            {{#unless (is id ../topic.id)}}
+            <option value="{{id}}">{{name}}</option>
+            {{/unless}}
+            {{/each}}
+          </select>
+        </div>
+        {{else}}
+        <input type="hidden" name="post[topic_id]" value="{{topic.id}}">
+        {{/if}}
+
+        <!-- Tags -->
+        <div class="mb-6">
+          <label for="post-tags" class="block text-sm font-medium text-gray-700 mb-2">
+            Etiquetas (opcional)
+          </label>
+          <input 
+            type="text" 
+            id="post-tags" 
+            name="post[tag_names]" 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="instalación, app, monitoreo (separadas por comas)"
+          >
+          <p class="text-sm text-gray-500 mt-2">
+            Las etiquetas ayudan a categorizar tu publicación y hacerla más fácil de encontrar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="p-6 bg-gray-50 rounded-b-lg">
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+          <div class="text-sm text-gray-600">
+            <p>Al publicar, aceptas seguir las <a href="{{help_center.url}}/community/guidelines" class="text-blue-600 hover:text-blue-800">normas de la comunidad</a>.</p>
+          </div>
+          
+          <div class="flex gap-3">
+            <a href="{{topic.url}}" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+              Cancelar
+            </a>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+              Publicar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Writing Tips -->
+    <div class="bg-blue-50 rounded-lg p-6 mt-8">
+      <h3 class="font-semibold text-blue-900 mb-3">💡 Consejos para una buena publicación</h3>
+      <ul class="text-sm text-blue-800 space-y-2">
+        <li>• <strong>Sé específico:</strong> Describe claramente tu problema o consulta</li>
+        <li>• <strong>Incluye detalles:</strong> Modelo de equipo, mensajes de error, pasos realizados</li>
+        <li>• <strong>Busca primero:</strong> Revisa si tu pregunta ya fue respondida</li>
+        <li>• <strong>Usa un título claro:</strong> Ayuda a otros a entender rápidamente tu consulta</li>
+        <li>• <strong>Sé respetuoso:</strong> Mantén un tono cordial y profesional</li>
+      </ul>
+    </div>
+
+    <!-- Related Guidelines -->
+    <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <div class="flex items-start gap-2">
+        <div class="text-yellow-600 mt-1">⚠️</div>
+        <div class="text-sm text-yellow-800">
+          <strong>Antes de publicar:</strong> Asegúrate de que tu consulta esté relacionada con {{topic.name}} y no haya sido respondida anteriormente. Esto ayuda a mantener la comunidad organizada y útil para todos.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+{{> footer}}
