@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowLeft, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,14 +6,38 @@ import { Link } from 'react-router-dom';
 
 const ServiciosAdt = () => {
   const articles = [
-    "¿Qué servicios ofrece ADT?",
-    "Tipos de monitoreo disponibles",
-    "¿Cómo funciona el monitoreo 24/7?",
-    "Servicios de instalación",
-    "Mantenimiento preventivo",
-    "Servicios adicionales",
-    "Cobertura geográfica",
-    "Garantías de servicio"
+    {
+      title: "¿Qué servicios ofrece ADT?",
+      url: "/articulo/servicios-adt-disponibles"
+    },
+    {
+      title: "Tipos de monitoreo disponibles",
+      url: "/articulo/tipos-monitoreo"
+    },
+    {
+      title: "¿Cómo funciona el monitoreo 24/7?",
+      url: "/articulo/monitoreo-24-7"
+    },
+    {
+      title: "Servicios de instalación",
+      url: "/articulo/servicios-instalacion"
+    },
+    {
+      title: "Mantenimiento preventivo",
+      url: "/articulo/mantenimiento-preventivo"
+    },
+    {
+      title: "Servicios adicionales",
+      url: "/articulo/servicios-adicionales"
+    },
+    {
+      title: "Cobertura geográfica",
+      url: "/articulo/cobertura-geografica"
+    },
+    {
+      title: "Garantías de servicio",
+      url: "/articulo/garantias-servicio"
+    }
   ];
 
   return (
@@ -33,14 +56,16 @@ const ServiciosAdt = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {articles.map((article, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-2">{article}</h3>
-                <p className="text-muted-foreground text-sm">
-                  Información detallada sobre {article.toLowerCase()}
-                </p>
-              </CardContent>
-            </Card>
+            <Link key={index} to={article.url}>
+              <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">{article.title}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Información detallada sobre {article.title.toLowerCase()}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 
