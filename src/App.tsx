@@ -15,6 +15,7 @@ import CamarasIp from "./pages/CamarasIp";
 import Monitoreo from "./pages/Monitoreo";
 import Soporte from "./pages/Soporte";
 import ArticlesByTag from "./pages/ArticlesByTag";
+import SearchResults from "./pages/SearchResults";
 
 // Article pages
 import ServiciosAdtDisponibles from "./pages/articles/ServiciosAdtDisponibles";
@@ -67,7 +68,8 @@ const App = () => (
           <Route path="/monitoreo" element={<Monitoreo />} />
           <Route path="/soporte" element={<Soporte />} />
           
-          {/* Tags route */}
+          {/* Search and Tags routes */}
+          <Route path="/buscar/:query" element={<SearchResults />} />
           <Route path="/etiqueta/:tag" element={<ArticlesByTag />} />
           
           {/* Article routes */}

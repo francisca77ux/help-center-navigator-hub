@@ -16,9 +16,9 @@ const HeroSection = ({ searchQuery, setSearchQuery, onSearch }: HeroSectionProps
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // Redirect to search results - for now we'll use the tag system
+      // Redirect to search results page
       const encodedQuery = encodeURIComponent(searchQuery.trim());
-      navigate(`/etiqueta/${encodedQuery}`);
+      navigate(`/buscar/${encodedQuery}`);
     }
     onSearch(e);
   };
