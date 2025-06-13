@@ -108,9 +108,6 @@ const ArticlesByTag = () => {
     'Historial': [
       { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial completo de eventos de tu sistema' }
     ],
-    'Notificaciones': [
-      { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial completo de eventos de tu sistema' }
-    ],
     'Protocolo': [
       { title: 'Protocolo de emergencias', href: '/articulo/protocolo-emergencias', description: 'Conoce nuestros protocolos de respuesta ante emergencias' }
     ],
