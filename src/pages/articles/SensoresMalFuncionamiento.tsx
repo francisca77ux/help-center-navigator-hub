@@ -4,12 +4,15 @@ import { ArrowLeft, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const SensoresMalFuncionamiento = () => {
   const breadcrumbItems = [
     { label: 'Soporte', href: '/soporte' },
     { label: 'Sensores con mal funcionamiento' }
   ];
+
+  const tags = ['Soporte Técnico', 'Sensores', 'Diagnóstico', 'Panel de Alarma', 'Mantenimiento'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const SensoresMalFuncionamiento = () => {
             <AlertCircle className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Sensores con mal funcionamiento</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

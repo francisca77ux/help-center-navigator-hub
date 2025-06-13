@@ -4,12 +4,15 @@ import { ArrowLeft, Shield, CheckCircle, Phone, Monitor, Camera, Lock, Smartphon
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const ServiciosAdtDisponibles = () => {
   const breadcrumbItems = [
     { label: 'Servicios ADT', href: '/servicios-adt' },
     { label: '¿Qué servicios ofrece ADT?' }
   ];
+
+  const tags = ['Servicios ADT', 'Monitoreo 24/7', 'Seguridad', 'Videovigilancia', 'Smart Security'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const ServiciosAdtDisponibles = () => {
             <Shield className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">¿Qué servicios ofrece ADT?</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <div className="space-y-8">

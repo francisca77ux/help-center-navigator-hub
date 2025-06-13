@@ -4,12 +4,15 @@ import { ArrowLeft, Smartphone, Wifi, Home, Lock } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const QueEsAdtSmartSecurity = () => {
   const breadcrumbItems = [
     { label: 'Servicios ADT', href: '/servicios-adt' },
     { label: '¿Qué es ADT Smart Security?' }
   ];
+
+  const tags = ['Smart Security', 'Servicios ADT', 'IoT', 'Automatización', 'Tecnología'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const QueEsAdtSmartSecurity = () => {
             <Smartphone className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">¿Qué es ADT Smart Security?</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

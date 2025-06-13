@@ -4,12 +4,15 @@ import { ArrowLeft, AlertTriangle, Phone, Clock, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const ProtocoloEmergencias = () => {
   const breadcrumbItems = [
     { label: 'Servicios ADT', href: '/servicios-adt' },
     { label: 'Protocolo de emergencias' }
   ];
+
+  const tags = ['Emergencias', 'Protocolo', 'Seguridad', 'Monitoreo 24/7', 'Respuesta'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const ProtocoloEmergencias = () => {
             <AlertTriangle className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Protocolo de emergencias</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">
