@@ -1,0 +1,221 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-6xl">
+    
+    <!-- Breadcrumb -->
+    <nav class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
+        <li>></li>
+        <li class="text-gray-800 font-medium">Mis Solicitudes</li>
+      </ol>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+            📋
+          </div>
+          <h1 class="text-4xl font-bold">Mis Solicitudes de Soporte</h1>
+        </div>
+        <p class="text-lg text-gray-600">
+          Aquí puedes ver el estado de todas tus solicitudes de soporte y seguimiento.
+        </p>
+      </div>
+      
+      <div class="flex gap-3">
+        <a href="{{help_center.url}}/requests/new" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+          ➕ Nueva Solicitud
+        </a>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-1">
+          <input 
+            type="text" 
+            placeholder="Buscar en mis solicitudes..." 
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+        </div>
+        
+        <div class="flex gap-2">
+          <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Todos los estados</option>
+            <option value="new">Nueva</option>
+            <option value="open">Abierta</option>
+            <option value="pending">Pendiente</option>
+            <option value="solved">Resuelta</option>
+            <option value="closed">Cerrada</option>
+          </select>
+          
+          <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Todas las prioridades</option>
+            <option value="low">Baja</option>
+            <option value="normal">Normal</option>
+            <option value="high">Alta</option>
+            <option value="urgent">Urgente</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Requests List -->
+    {{#if requests}}
+    <div class="space-y-4">
+      {{#each requests}}
+      <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <div class="p-6">
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-sm bg-{{status}}-100 text-{{status}}-800 px-3 py-1 rounded-full font-medium">
+                  {{#is status "new"}}Nueva{{/is}}
+                  {{#is status "open"}}Abierta{{/is}}
+                  {{#is status "pending"}}Pendiente{{/is}}
+                  {{#is status "hold"}}En Espera{{/is}}
+                  {{#is status "solved"}}Resuelta{{/is}}
+                  {{#is status "closed"}}Cerrada{{/is}}
+                </span>
+                
+                <span class="text-sm bg-{{priority}}-100 text-{{priority}}-800 px-3 py-1 rounded-full">
+                  {{#is priority "low"}}Baja{{/is}}
+                  {{#is priority "normal"}}Normal{{/is}}
+                  {{#is priority "high"}}Alta{{/is}}
+                  {{#is priority "urgent"}}Urgente{{/is}}
+                </span>
+                
+                <span class="text-sm text-gray-500">#{{id}}</span>
+              </div>
+              
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{subject}}</a>
+              </h3>
+              
+              <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-3">
+                <span>📅 Creada: {{created_at}}</span>
+                <span>🔄 Actualizada: {{updated_at}}</span>
+                {{#if assignee.name}}
+                <span>👤 Asignado a: {{assignee.name}}</span>
+                {{/if}}
+                {{#if comment_count}}
+                <span>💬 {{comment_count}} respuestas</span>
+                {{/if}}
+              </div>
+              
+              {{#if description}}
+              <p class="text-gray-700 text-sm line-clamp-2">{{description}}</p>
+              {{/if}}
+            </div>
+            
+            <div class="flex flex-col gap-2 md:text-right">
+              <a href="{{url}}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm text-center">
+                Ver Detalles
+              </a>
+              
+              {{#unless solved}}
+              <a href="{{url}}#reply-form" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm text-center">
+                Responder
+              </a>
+              {{/unless}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <!-- Pagination -->
+    {{#if page_count}}
+    {{#if page_count > 1}}
+    <div class="flex justify-center mt-8">
+      <nav class="flex items-center gap-2">
+        {{#if previous_page}}
+        <a href="{{previous_page}}" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors">
+          ← Anterior
+        </a>
+        {{/if}}
+        
+        <span class="px-4 py-2 bg-blue-600 text-white rounded-lg">
+          Página {{current_page}} de {{page_count}}
+        </span>
+        
+        {{#if next_page}}
+        <a href="{{next_page}}" class="px-3 py-2 text-gray-600 hover:text-blue-600 transition-colors">
+          Siguiente →
+        </a>
+        {{/if}}
+      </nav>
+    </div>
+    {{/if}}
+    {{/if}}
+
+    {{else}}
+    <!-- Empty State -->
+    <div class="text-center py-16">
+      <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        📋
+      </div>
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">No tienes solicitudes aún</h2>
+      <p class="text-gray-600 mb-8 max-w-md mx-auto">
+        Cuando crees una solicitud de soporte, aparecerá aquí para que puedas hacer seguimiento de su progreso.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="{{help_center.url}}/requests/new" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+          Crear mi primera solicitud
+        </a>
+        <a href="{{help_center.url}}" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium">
+          Explorar Centro de Ayuda
+        </a>
+      </div>
+    </div>
+    {{/if}}
+
+    <!-- Quick Actions -->
+    <div class="bg-blue-50 rounded-lg p-6 mt-8">
+      <h3 class="font-semibold text-blue-900 mb-4">Acciones Rápidas</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <a href="{{help_center.url}}/requests/new" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
+          ➕ <span>Crear Nueva Solicitud</span>
+        </a>
+        <a href="{{help_center.url}}" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
+          🏠 <span>Ir al Centro de Ayuda</span>
+        </a>
+        <a href="{{help_center.url}}/search" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
+          🔍 <span>Buscar Artículos de Ayuda</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Support Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      <div class="bg-green-50 rounded-lg p-6">
+        <h4 class="font-semibold text-green-900 mb-3">📞 Contacto Directo</h4>
+        <ul class="text-sm text-green-800 space-y-2">
+          <li>• <strong>Teléfono:</strong> 600 123 4567</li>
+          <li>• <strong>WhatsApp:</strong> +56 9 8765 4321</li>
+          <li>• <strong>Email:</strong> soporte@adtchile.cl</li>
+        </ul>
+      </div>
+      
+      <div class="bg-yellow-50 rounded-lg p-6">
+        <h4 class="font-semibold text-yellow-900 mb-3">⏱️ Horarios de Atención</h4>
+        <ul class="text-sm text-yellow-800 space-y-2">
+          <li>• <strong>Lunes a Viernes:</strong> 8:00 - 20:00</li>
+          <li>• <strong>Sábados:</strong> 9:00 - 18:00</li>
+          <li>• <strong>Emergencias:</strong> 24/7</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+{{> footer}}
