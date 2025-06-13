@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin, Smartphone, Wifi, Camera, Lock } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -48,6 +47,46 @@ const ServiciosAdt = () => {
     },
     {
       id: 3,
+      title: "ADT Smart Security",
+      icon: <Smartphone className="h-6 w-6 text-primary" />,
+      description: "Tecnología inteligente para la seguridad de tu hogar",
+      articles: [
+        {
+          title: "¿Qué es ADT Smart Security?",
+          url: "/articulo/que-es-adt-smart-security"
+        },
+        {
+          title: "Dispositivos inteligentes disponibles",
+          url: "/articulo/dispositivos-inteligentes-disponibles"
+        },
+        {
+          title: "Cámaras de seguridad inteligentes",
+          url: "/articulo/camaras-seguridad-inteligentes"
+        },
+        {
+          title: "Control remoto de tu sistema",
+          url: "/articulo/control-remoto-sistema"
+        },
+        {
+          title: "Automatización del hogar",
+          url: "/articulo/automatizacion-hogar"
+        },
+        {
+          title: "Sensores inteligentes",
+          url: "/articulo/sensores-inteligentes"
+        },
+        {
+          title: "Cerraduras inteligentes",
+          url: "/articulo/cerraduras-inteligentes"
+        },
+        {
+          title: "Configuración de notificaciones",
+          url: "/articulo/configuracion-notificaciones"
+        }
+      ]
+    },
+    {
+      id: 4,
       title: "Instalación y Mantenimiento",
       icon: <Wrench className="h-6 w-6 text-primary" />,
       description: "Servicios técnicos y de soporte",
@@ -67,7 +106,7 @@ const ServiciosAdt = () => {
       ]
     },
     {
-      id: 4,
+      id: 5,
       title: "Cobertura",
       icon: <MapPin className="h-6 w-6 text-primary" />,
       description: "Información sobre nuestra cobertura geográfica",
