@@ -67,6 +67,9 @@ const App = () => (
           <Route path="/monitoreo" element={<Monitoreo />} />
           <Route path="/soporte" element={<Soporte />} />
           
+          {/* Tags route */}
+          <Route path="/etiqueta/:tag" element={<ArticlesByTag />} />
+          
           {/* Article routes */}
           <Route path="/articulo/servicios-adt-disponibles" element={<ServiciosAdtDisponibles />} />
           <Route path="/articulo/activar-sistema-alarma" element={<ActivarSistemaAlarma />} />
