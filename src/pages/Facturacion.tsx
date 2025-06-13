@@ -6,14 +6,38 @@ import { Link } from 'react-router-dom';
 
 const Facturacion = () => {
   const articles = [
-    "Medios de pago disponibles",
-    "¿Cómo pagar mi factura?",
-    "Consulta de estado de cuenta",
-    "Facturación electrónica",
-    "Cambio de datos de facturación",
-    "Problemas con pagos",
-    "Descuentos y promociones",
-    "Historial de pagos"
+    {
+      title: "Medios de pago disponibles",
+      url: "/articulo/medios-pago-disponibles"
+    },
+    {
+      title: "¿Cómo pagar mi factura?",
+      url: "/articulo/como-pagar-factura"
+    },
+    {
+      title: "Consulta de estado de cuenta",
+      url: "/articulo/consulta-estado-cuenta"
+    },
+    {
+      title: "Facturación electrónica",
+      url: "/articulo/facturacion-electronica"
+    },
+    {
+      title: "Cambio de datos de facturación",
+      url: "/articulo/cambio-datos-facturacion"
+    },
+    {
+      title: "Problemas con pagos",
+      url: "/articulo/problemas-pagos"
+    },
+    {
+      title: "Descuentos y promociones",
+      url: "/articulo/descuentos-promociones"
+    },
+    {
+      title: "Historial de pagos",
+      url: "/articulo/historial-pagos"
+    }
   ];
 
   return (
@@ -32,14 +56,16 @@ const Facturacion = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {articles.map((article, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-2">{article}</h3>
-                <p className="text-muted-foreground text-sm">
-                  Información detallada sobre {article.toLowerCase()}
-                </p>
-              </CardContent>
-            </Card>
+            <Link key={index} to={article.url}>
+              <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">{article.title}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Información detallada sobre {article.title.toLowerCase()}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 

@@ -6,14 +6,38 @@ import { Link } from 'react-router-dom';
 
 const AppAdt = () => {
   const articles = [
-    "Descarga de la aplicación ADT Chile",
-    "Configuración inicial de la app",
-    "¿Cómo iniciar sesión?",
-    "Visualización de cámaras",
-    "Control del sistema desde la app",
-    "Notificaciones push",
-    "Problemas de conexión",
-    "Actualizaciones de la app"
+    {
+      title: "Descarga de la aplicación ADT Chile",
+      url: "/articulo/descarga-app-adt"
+    },
+    {
+      title: "Configuración inicial de la app",
+      url: "/articulo/configuracion-inicial-app"
+    },
+    {
+      title: "¿Cómo iniciar sesión?",
+      url: "/articulo/iniciar-sesion-app"
+    },
+    {
+      title: "Visualización de cámaras",
+      url: "/articulo/visualizacion-camaras"
+    },
+    {
+      title: "Control del sistema desde la app",
+      url: "/articulo/control-sistema-app"
+    },
+    {
+      title: "Notificaciones push",
+      url: "/articulo/notificaciones-push"
+    },
+    {
+      title: "Problemas de conexión",
+      url: "/articulo/problemas-conexion-app"
+    },
+    {
+      title: "Actualizaciones de la app",
+      url: "/articulo/actualizaciones-app"
+    }
   ];
 
   return (
@@ -32,14 +56,16 @@ const AppAdt = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {articles.map((article, index) => (
-            <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-2">{article}</h3>
-                <p className="text-muted-foreground text-sm">
-                  Información detallada sobre {article.toLowerCase()}
-                </p>
-              </CardContent>
-            </Card>
+            <Link key={index} to={article.url}>
+              <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">{article.title}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Información detallada sobre {article.title.toLowerCase()}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 
