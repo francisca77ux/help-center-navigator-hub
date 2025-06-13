@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Headphones, ArrowRight, MessageCircle, Phone, Mail } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -51,7 +50,7 @@ const Soporte = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <BreadcrumbNavigation items={breadcrumItems} />
+        <BreadcrumbNavigation items={breadcrumbItems} />
         
         <div className="mb-8">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
