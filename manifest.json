@@ -12,7 +12,8 @@
         {
           "identifier": "zendesk_widget_key",
           "type": "text",
-          "description": "Ingresa tu clave del widget de Zendesk para habilitar el chat"
+          "description": "Ingresa tu clave del widget de Zendesk para habilitar el chat",
+          "required": false
         }
       ]
     },
@@ -22,7 +23,8 @@
         {
           "identifier": "primary_color",
           "type": "color",
-          "default": "#1e40af"
+          "default": "#1e40af",
+          "required": false
         }
       ]
     },
@@ -32,22 +34,26 @@
         {
           "identifier": "show_contact_numbers",
           "type": "checkbox",
-          "default": true
+          "default": true,
+          "required": false
         },
         {
           "identifier": "main_phone",
           "type": "text",
-          "default": "600 123 4567"
+          "default": "600 123 4567",
+          "required": false
         },
         {
           "identifier": "whatsapp_number",
           "type": "text",
-          "default": "+56 9 8765 4321"
+          "default": "+56 9 8765 4321",
+          "required": false
         },
         {
           "identifier": "contact_email",
           "type": "text",
-          "default": "info@adtchile.cl"
+          "default": "info@adtchile.cl",
+          "required": false
         }
       ]
     }
