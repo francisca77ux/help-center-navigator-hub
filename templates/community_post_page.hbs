@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -9,7 +9,7 @@
       <ol class="flex items-center space-x-2 text-sm text-gray-500">
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
-        <li><a href="{{community.url}}" class="hover:text-blue-600">Comunidad</a></li>
+        <li><a href="/community" class="hover:text-blue-600">Comunidad</a></li>
         <li>></li>
         <li><a href="{{topic.url}}" class="hover:text-blue-600">{{topic.name}}</a></li>
         <li>></li>
@@ -34,7 +34,7 @@
             <img src="{{post.author.avatar_url}}" alt="{{post.author.name}}" class="w-12 h-12 rounded-full">
             {{else}}
             <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold text-lg">{{post.author.name.[0]}}</span>
+              <span class="text-gray-600 font-semibold text-lg">{{substr post.author.name 0 1}}</span>
             </div>
             {{/if}}
             <div>
@@ -62,7 +62,7 @@
       
       <!-- Post Body -->
       <div class="p-6 prose prose-lg max-w-none">
-        {{{post.details}}}
+        {{post.details}}
       </div>
     </article>
 
@@ -92,7 +92,7 @@
             <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
             {{else}}
             <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold">{{author.name.[0]}}</span>
+              <span class="text-gray-600 font-semibold">{{substr author.name 0 1}}</span>
             </div>
             {{/if}}
             <div class="flex-1">
@@ -101,7 +101,7 @@
                 <span class="text-sm text-gray-500">{{created_at}}</span>
               </div>
               <div class="prose max-w-none">
-                {{{body}}}
+                {{body}}
               </div>
               <div class="flex items-center gap-4 mt-4 text-sm text-gray-500">
                 <span>👍 {{vote_sum}} votos</span>
@@ -155,7 +155,7 @@
       <h3 class="text-2xl font-bold mb-6">Otras publicaciones en {{topic.name}}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {{#each topic.posts}}
-        {{#unless (is url ../post.url)}}
+        {{#unless (compare url '==' ../post.url)}}
         <a href="{{url}}" class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 group">
           <h4 class="font-semibold group-hover:text-blue-600 transition-colors mb-2">{{title}}</h4>
           <div class="flex items-center gap-4 text-sm text-gray-500">
@@ -172,4 +172,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}

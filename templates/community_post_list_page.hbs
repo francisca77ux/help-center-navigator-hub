@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -9,7 +9,7 @@
       <ol class="flex items-center space-x-2 text-sm text-gray-500">
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
-        <li><a href="{{community.url}}" class="hover:text-blue-600">Comunidad</a></li>
+        <li><a href="/community" class="hover:text-blue-600">Comunidad</a></li>
         <li>></li>
         <li class="text-gray-800 font-medium">{{topic.name}}</li>
       </ol>
@@ -52,7 +52,7 @@
             <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
             {{else}}
             <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold">{{author.name.[0]}}</span>
+              <span class="text-gray-600 font-semibold">{{substr author.name 0 1}}</span>
             </div>
             {{/if}}
             <div>
@@ -123,4 +123,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}

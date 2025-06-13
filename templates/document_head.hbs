@@ -5,7 +5,7 @@
   <title>{{#if article}}{{article.title}} | {{/if}}{{#if section}}{{section.name}} | {{/if}}Centro de Ayuda ADT Chile</title>
   
   {{#if article}}
-  <meta name="description" content="{{article.summary}}">
+  <meta name="description" content="{{#if article.summary}}{{article.summary}}{{else}}Artículo de ayuda ADT Chile{{/if}}">
   {{else}}
   <meta name="description" content="Centro de Ayuda ADT Chile - Encuentra respuestas a tus preguntas sobre seguridad y monitoreo">
   {{/if}}
@@ -14,7 +14,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{asset 'style.css'}}">
+  <link rel="stylesheet" href="/style.css">
   
   <!-- Zendesk Widget -->
   <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.zendesk_widget_key}}"></script>
