@@ -13,7 +13,8 @@
       "required": false,
       "variables": [
         {
-          "identifier": "zendesk_widget_key"
+          "identifier": "zendesk_widget_key",
+          "type": "text"
         }
       ]
     },
@@ -25,7 +26,8 @@
       "required": false,
       "variables": [
         {
-          "identifier": "primary_color"
+          "identifier": "primary_color",
+          "type": "color"
         }
       ]
     },
@@ -37,7 +39,8 @@
       "required": false,
       "variables": [
         {
-          "identifier": "show_contact_numbers"
+          "identifier": "show_contact_numbers",
+          "type": "boolean"
         }
       ]
     },
@@ -49,7 +52,8 @@
       "required": false,
       "variables": [
         {
-          "identifier": "main_phone"
+          "identifier": "main_phone",
+          "type": "text"
         }
       ]
     },
@@ -61,7 +65,8 @@
       "required": false,
       "variables": [
         {
-          "identifier": "whatsapp_number"
+          "identifier": "whatsapp_number",
+          "type": "text"
         }
       ]
     },
@@ -73,7 +78,8 @@
       "required": false,
       "variables": [
         {
-          "identifier": "contact_email"
+          "identifier": "contact_email",
+          "type": "text"
         }
       ]
     }
