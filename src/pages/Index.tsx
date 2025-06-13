@@ -9,75 +9,101 @@ import { Badge } from '@/components/ui/badge';
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Mock data based on the template structure
+  // Contenido basado en ADT Chile
   const categories = [
     {
       id: 1,
-      name: 'Getting Started',
-      description: 'Learn the basics and set up your account',
-      url: '/category/getting-started',
-      articleCount: 12
-    },
-    {
-      id: 2,
-      name: 'Account Management',
-      description: 'Manage your profile, settings, and preferences',
-      url: '/category/account',
-      articleCount: 8
-    },
-    {
-      id: 3,
-      name: 'Billing & Payments',
-      description: 'Questions about pricing, invoices, and payments',
-      url: '/category/billing',
+      name: 'Instalación y Configuración',
+      description: 'Guías para instalar y configurar tu sistema de seguridad ADT',
+      url: '/category/instalacion',
       articleCount: 15
     },
     {
-      id: 4,
-      name: 'Troubleshooting',
-      description: 'Common issues and how to resolve them',
-      url: '/category/troubleshooting',
-      articleCount: 23
+      id: 2,
+      name: 'Panel de Control',
+      description: 'Cómo usar y programar tu panel de alarma ADT',
+      url: '/category/panel-control',
+      articleCount: 22
     },
     {
-      id: 5,
-      name: 'API Documentation',
-      description: 'Developer guides and API references',
-      url: '/category/api',
+      id: 3,
+      name: 'Aplicación Móvil ADT',
+      description: 'Guías para usar la app móvil de ADT Chile',
+      url: '/category/app-movil',
       articleCount: 18
     },
     {
+      id: 4,
+      name: 'Sensores y Detectores',
+      description: 'Información sobre sensores de movimiento, puertas y ventanas',
+      url: '/category/sensores',
+      articleCount: 12
+    },
+    {
+      id: 5,
+      name: 'Cámaras de Seguridad',
+      description: 'Configuración y uso de cámaras IP y análogas',
+      url: '/category/camaras',
+      articleCount: 20
+    },
+    {
       id: 6,
-      name: 'Security',
-      description: 'Privacy, security, and compliance information',
-      url: '/category/security',
-      articleCount: 7
+      name: 'Monitoreo 24/7',
+      description: 'Información sobre nuestro servicio de monitoreo',
+      url: '/category/monitoreo',
+      articleCount: 8
+    },
+    {
+      id: 7,
+      name: 'Plan de Contingencia',
+      description: 'Qué hacer en caso de emergencia o falla del sistema',
+      url: '/category/contingencia',
+      articleCount: 10
+    },
+    {
+      id: 8,
+      name: 'Facturación y Pagos',
+      description: 'Información sobre pagos, facturas y planes de servicio',
+      url: '/category/facturacion',
+      articleCount: 6
     }
   ];
 
   const promotedArticles = [
     {
       id: 1,
-      title: 'How to get started with your first project',
-      url: '/article/getting-started',
+      title: '¿Cómo activar y desactivar mi sistema de alarma?',
+      url: '/article/activar-desactivar-alarma',
       internal: false
     },
     {
       id: 2,
-      title: 'Understanding our new pricing model',
-      url: '/article/pricing',
+      title: 'Configuración inicial de la aplicación ADT Chile',
+      url: '/article/configuracion-app',
       internal: false
     },
     {
       id: 3,
-      title: 'Security best practices for teams',
-      url: '/article/security-practices',
-      internal: true
+      title: '¿Qué hacer cuando suena la alarma?',
+      url: '/article/alarma-suena',
+      internal: false
     },
     {
       id: 4,
-      title: 'API rate limits and optimization',
-      url: '/article/api-limits',
+      title: 'Solución de problemas comunes del panel',
+      url: '/article/problemas-panel',
+      internal: false
+    },
+    {
+      id: 5,
+      title: 'Cambio de contraseña del sistema',
+      url: '/article/cambio-contrasena',
+      internal: true
+    },
+    {
+      id: 6,
+      title: '¿Cómo ver mis cámaras desde el celular?',
+      url: '/article/camaras-celular',
       internal: false
     }
   ];
@@ -85,28 +111,33 @@ const Index = () => {
   const recentActivity = [
     {
       id: 1,
-      type: 'article',
-      title: 'New feature: Advanced filtering options',
-      time: '2 hours ago'
+      type: 'artículo',
+      title: 'Nueva guía: Configuración de notificaciones push',
+      time: 'hace 2 horas'
     },
     {
       id: 2,
-      type: 'update',
-      title: 'Updated: API documentation for v2.0',
-      time: '1 day ago'
+      type: 'actualización',
+      title: 'Actualizada: Guía de instalación de sensores',
+      time: 'hace 1 día'
     },
     {
       id: 3,
-      type: 'community',
-      title: 'Community discussion: Best practices',
-      time: '3 days ago'
+      type: 'comunidad',
+      title: 'Discusión: Mejores prácticas de seguridad',
+      time: 'hace 3 días'
+    },
+    {
+      id: 4,
+      type: 'artículo',
+      title: 'Nuevo: Manual de la aplicación ADT v3.2',
+      time: 'hace 1 semana'
     }
   ];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle search functionality
-    console.log('Searching for:', searchQuery);
+    console.log('Buscando:', searchQuery);
   };
 
   return (
@@ -116,10 +147,10 @@ const Index = () => {
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto px-4 text-center relative">
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Help Center
+            Centro de Ayuda ADT Chile
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Find answers, get help, and learn how to make the most of our platform
+            Encuentra respuestas, obtén ayuda y aprende a sacar el máximo provecho de tu sistema de seguridad ADT
           </p>
           
           {/* Search Bar */}
@@ -128,7 +159,7 @@ const Index = () => {
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
               <Input
                 type="search"
-                placeholder="Search for articles, guides, and more..."
+                placeholder="Busca artículos, guías y más..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-12 pr-4 py-6 text-lg bg-background/80 backdrop-blur-sm border-2 focus:border-primary/50 rounded-xl shadow-lg"
@@ -141,24 +172,24 @@ const Index = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Categories Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Browse by Category</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-3xl font-bold mb-8 text-center">Explorar por Categoría</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {categories.map((category) => (
               <Card key={category.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 hover:border-primary/20">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
                       {category.name}
                     </CardTitle>
-                    <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </div>
-                  <CardDescription className="text-base mt-2">
+                  <CardDescription className="text-sm mt-2">
                     {category.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <Badge variant="secondary" className="text-xs">
-                    {category.articleCount} articles
+                    {category.articleCount} artículos
                   </Badge>
                 </CardContent>
               </Card>
@@ -168,13 +199,13 @@ const Index = () => {
 
         {/* Promoted Articles */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured Articles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Artículos Destacados</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {promotedArticles.map((article) => (
               <Card key={article.id} className="group hover:shadow-md transition-all duration-200 cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
-                    <h3 className="font-semibold text-lg group-hover:text-primary transition-colors flex-1 pr-4">
+                    <h3 className="font-semibold text-base group-hover:text-primary transition-colors flex-1 pr-4 leading-tight">
                       {article.title}
                     </h3>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -197,15 +228,15 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <MessageCircle className="h-6 w-6 text-primary" />
-                Join Our Community
+                Únete a Nuestra Comunidad
               </CardTitle>
               <CardDescription className="text-base">
-                Connect with other users, share experiences, and get help from the community
+                Conéctate con otros usuarios de ADT, comparte experiencias y obtén ayuda de la comunidad
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button className="w-full group">
-                Join the Conversation
+                Únete a la Conversación
                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </CardContent>
@@ -216,7 +247,7 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <TrendingUp className="h-6 w-6 text-primary" />
-                Recent Activity
+                Actividad Reciente
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
