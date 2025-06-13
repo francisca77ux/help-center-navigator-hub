@@ -18,6 +18,11 @@ import Soporte from "./pages/Soporte";
 // Article pages
 import ServiciosAdtDisponibles from "./pages/articles/ServiciosAdtDisponibles";
 import ActivarSistemaAlarma from "./pages/articles/ActivarSistemaAlarma";
+import DesactivarSistemaAlarma from "./pages/articles/DesactivarSistemaAlarma";
+import ModosArmado from "./pages/articles/ModosArmado";
+import CambioClaveMaestra from "./pages/articles/CambioClaveMaestra";
+import ConfiguracionZonas from "./pages/articles/ConfiguracionZonas";
+import CodigosUsuario from "./pages/articles/CodigosUsuario";
 import DescargaAppAdt from "./pages/articles/DescargaAppAdt";
 import MediosPagoDisponibles from "./pages/articles/MediosPagoDisponibles";
 import TiposMonitoreo from "./pages/articles/TiposMonitoreo";
