@@ -124,7 +124,12 @@ const PanelAlarma = () => {
               <div className="text-center">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-2" />
                 <h4 className="font-semibold">Teléfono</h4>
-                <p className="text-sm text-muted-foreground">600 123 4567</p>
+                <a 
+                  href="tel:6001234567" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                >
+                  600 123 4567
+                </a>
               </div>
               <div className="text-center">
                 <MessageCircle className="h-8 w-8 text-primary mx-auto mb-2" />
