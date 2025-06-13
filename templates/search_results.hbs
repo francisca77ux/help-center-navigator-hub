@@ -1,0 +1,103 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    
+    <!-- Search Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-4">
+        {{#if results}}
+        Resultados para "{{query}}"
+        {{else}}
+        No se encontraron resultados para "{{query}}"
+        {{/if}}
+      </h1>
+      
+      {{#if results}}
+      <p class="text-gray-600">Se encontraron {{results.length}} resultados</p>
+      {{/if}}
+      
+      <!-- Search Form -->
+      <form action="/hc/es/search" method="get" class="mt-6">
+        <div class="relative max-w-2xl">
+          <input 
+            type="search" 
+            name="query" 
+            value="{{query}}"
+            placeholder="Buscar artículos de ayuda..." 
+            class="w-full px-4 py-3 pr-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+          >
+          <button 
+            type="submit" 
+            class="absolute right-2 top-2 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors"
+          >
+            🔍
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Search Results -->
+    {{#if results}}
+    <div class="space-y-6">
+      {{#each results}}
+      <article class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-start justify-between mb-3">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+            {{#if section}}{{section.name}}{{else}}General{{/if}}
+          </span>
+          {{#if vote_sum}}
+          <span class="text-sm text-gray-500">👍 {{vote_sum}}</span>
+          {{/if}}
+        </div>
+        
+        <h2 class="text-xl font-semibold mb-3">
+          <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
+        </h2>
+        
+        {{#if snippet}}
+        <div class="text-gray-600 mb-3">
+          {{{snippet}}}
+        </div>
+        {{else}}
+        <p class="text-gray-600 mb-3">{{summary}}</p>
+        {{/if}}
+        
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <span>Actualizado {{updated_at}}</span>
+          <a href="{{url}}" class="text-blue-600 hover:underline">Leer más →</a>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+    {{else}}
+    <!-- No Results -->
+    <div class="text-center py-12">
+      <div class="text-6xl mb-4">🔍</div>
+      <h2 class="text-2xl font-bold mb-4">No encontramos resultados</h2>
+      <p class="text-gray-600 mb-8">
+        Intenta con otros términos de búsqueda o explora nuestras categorías de ayuda.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <a href="/hc/es/categories/panel-alarma" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <div class="text-2xl mb-2">🛡️</div>
+          <h3 class="font-semibold">Panel de Alarma</h3>
+        </a>
+        <a href="/hc/es/categories/app-adt" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <div class="text-2xl mb-2">📱</div>
+          <h3 class="font-semibold">App ADT</h3>
+        </a>
+        <a href="/hc/es/categories/soporte" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <div class="text-2xl mb-2">🛠️</div>
+          <h3 class="font-semibold">Soporte Técnico</h3>
+        </a>
+      </div>
+    </div>
+    {{/if}}
+
+  </div>
+</main>
+
+{{> footer}}

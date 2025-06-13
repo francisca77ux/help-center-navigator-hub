@@ -1,0 +1,50 @@
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{#if article}}{{article.title}} | {{/if}}{{#if section}}{{section.name}} | {{/if}}Centro de Ayuda ADT Chile</title>
+  
+  {{#if article}}
+  <meta name="description" content="{{article.summary}}">
+  {{else}}
+  <meta name="description" content="Centro de Ayuda ADT Chile - Encuentra respuestas a tus preguntas sobre seguridad y monitoreo">
+  {{/if}}
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{asset 'style.css'}}">
+  
+  <!-- Zendesk Widget -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.zendesk_widget_key}}"></script>
+  
+  <script>
+    window.zESettings = {
+      webWidget: {
+        color: {
+          theme: '#1e40af',
+          launcher: '#1e40af',
+          launcherText: '#ffffff',
+          button: '#1e40af',
+          header: '#1e40af',
+          articleLinks: '#1e40af'
+        },
+        position: {
+          horizontal: 'right',
+          vertical: 'bottom'
+        },
+        offset: {
+          horizontal: '20px',
+          vertical: '20px'
+        },
+        launcher: {
+          chatLabel: {
+            'es': 'Chat con ADT',
+            '*': 'Chat with ADT'
+          }
+        }
+      }
+    };
+  </script>
+</head>

@@ -1,0 +1,100 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-6xl">
+    
+    <!-- Breadcrumb -->
+    <nav class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
+        <li>></li>
+        <li class="text-gray-800 font-medium">{{category.name}}</li>
+      </ol>
+    </nav>
+
+    <!-- Category Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">{{category.name}}</h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">{{category.description}}</p>
+    </div>
+
+    <!-- Sections -->
+    <div class="space-y-12">
+      {{#each sections}}
+      <section class="space-y-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+            {{#contains name "Activación"}}🔑{{/contains}}
+            {{#contains name "Configuración"}}⚙️{{/contains}}
+            {{#contains name "Problemas"}}❓{{/contains}}
+            {{#contains name "Mantenimiento"}}🔧{{/contains}}
+            {{#contains name "Instalación"}}📱{{/contains}}
+            {{#contains name "Pago"}}💳{{/contains}}
+            {{#contains name "Cámara"}}📹{{/contains}}
+            {{#contains name "Soporte"}}📞{{/contains}}
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold">{{name}}</h2>
+            <p class="text-gray-600">{{description}}</p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {{#each articles}}
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 group">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="w-5 h-5 text-blue-600 mt-1">
+                {{#contains title "activar"}}🔑{{/contains}}
+                {{#contains title "desactivar"}}🔓{{/contains}}
+                {{#contains title "código"}}🔢{{/contains}}
+                {{#contains title "problema"}}⚠️{{/contains}}
+                {{#contains title "instalación"}}📱{{/contains}}
+                {{#contains title "pago"}}💳{{/contains}}
+                {{#contains title "cámara"}}📹{{/contains}}
+                {{#unless title}}📄{{/unless}}
+              </div>
+              <h3 class="font-semibold text-lg group-hover:text-blue-600 transition-colors flex-1">
+                <a href="{{url}}">{{title}}</a>
+              </h3>
+            </div>
+            <p class="text-gray-600 text-sm">{{summary}}</p>
+          </article>
+          {{/each}}
+        </div>
+      </section>
+      {{/each}}
+    </div>
+
+    <!-- Contact Card -->
+    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 mt-12 max-w-4xl mx-auto">
+      <div class="text-center mb-6">
+        <h3 class="text-xl font-bold mb-2">¿Necesitas más información?</h3>
+        <p class="text-gray-600">Nuestro equipo de atención al cliente está disponible para ayudarte</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">📞</div>
+          <h4 class="font-semibold">Teléfono</h4>
+          <a href="tel:6001234567" class="text-sm text-gray-600 hover:text-blue-600">600 123 4567</a>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-green-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">💬</div>
+          <h4 class="font-semibold">WhatsApp</h4>
+          <a href="https://wa.me/56987654321" class="text-sm text-gray-600 hover:text-green-600" target="_blank">
+            +56 9 8765 4321
+          </a>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-purple-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">✉️</div>
+          <h4 class="font-semibold">Email</h4>
+          <span class="text-sm text-gray-600">info@adtchile.cl</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+{{> footer}}

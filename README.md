@@ -1,73 +1,138 @@
-# Welcome to your Lovable project
 
-## Project info
+# Centro de Ayuda ADT Chile - Tema Zendesk
 
-**URL**: https://lovable.dev/projects/f720d483-6d4c-4e99-b1ed-57c0f1608d9c
+Este es un tema personalizado para Zendesk Guide diseñado específicamente para ADT Chile.
 
-## How can I edit this code?
+## Características
 
-There are several ways of editing your application.
+- **Diseño Responsivo**: Optimizado para dispositivos móviles y escritorio
+- **Integración con Zendesk Widget**: Chat en vivo contextual según la página
+- **Búsqueda Avanzada**: Funcionalidad de búsqueda mejorada
+- **Categorización Inteligente**: Organización clara de contenido por servicios
+- **Estilos Personalizados**: Diseño coherente con la marca ADT Chile
 
-**Use Lovable**
+## Estructura del Tema
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f720d483-6d4c-4e99-b1ed-57c0f1608d9c) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+/
+├── templates/
+│   ├── document_head.hbs     # Meta tags y configuración
+│   ├── header.hbs            # Cabecera del sitio
+│   ├── footer.hbs            # Pie de página
+│   ├── home_page.hbs         # Página principal
+│   ├── category_page.hbs     # Página de categoría
+│   ├── article_page.hbs      # Página de artículo
+│   └── search_results.hbs    # Resultados de búsqueda
+├── assets/
+│   └── style.css            # Estilos personalizados
+├── script.js                # JavaScript personalizado
+├── manifest.json            # Configuración del tema
+└── README.md               # Documentación
 ```
 
-**Edit a file directly in GitHub**
+## Instalación
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Preparar archivos**: Comprimir todos los archivos en un ZIP
+2. **Subir a Zendesk**: Ir a Admin → Guide → Personalizar diseño → Importar tema
+3. **Configurar ajustes**: Establecer valores en la configuración del tema
+4. **Publicar**: Activar el nuevo tema
 
-**Use GitHub Codespaces**
+## Configuración
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Ajustes del Tema
 
-## What technologies are used for this project?
+- **zendesk_widget_key**: Clave del widget de Zendesk para chat
+- **primary_color**: Color principal del tema (#1e40af por defecto)
+- **show_contact_numbers**: Mostrar números de contacto
+- **main_phone**: Teléfono principal (600 123 4567)
+- **whatsapp_number**: Número de WhatsApp (+56 9 8765 4321)
+- **contact_email**: Email de contacto (info@adtchile.cl)
 
-This project is built with:
+### Categorías Soportadas
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+El tema está optimizado para estas categorías de ADT Chile:
 
-## How can I deploy this project?
+- 🛡️ **Panel de Alarma**: Configuración y uso del panel
+- 📱 **App ADT**: Aplicación móvil
+- ⚙️ **Servicios ADT**: Información sobre servicios
+- 💳 **Facturación**: Pagos y consultas
+- 🔧 **Instalación**: Proceso de instalación
+- 📹 **Cámaras IP**: Videovigilancia
+- 👁️ **Monitoreo**: Central de monitoreo 24/7
+- 🛠️ **Soporte**: Soporte técnico
 
-Simply open [Lovable](https://lovable.dev/projects/f720d483-6d4c-4e99-b1ed-57c0f1608d9c) and click on Share -> Publish.
+## Funcionalidades
 
-## Can I connect a custom domain to my Lovable project?
+### Widget de Zendesk Contextual
 
-Yes, you can!
+El tema configura automáticamente el widget de Zendesk con:
+- Categorización automática según la página visitada
+- Pre-llenado de formularios con contexto
+- Etiquetas para mejor organización de tickets
+- Colores personalizados de marca ADT
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Búsqueda Inteligente
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Validación de consultas mínimas
+- Resultados organizados por categoría
+- Snippets destacados de contenido relevante
+- Sugerencias cuando no hay resultados
+
+### Analytics y Tracking
+
+- Seguimiento de clics en categorías
+- Tracking de artículos visitados
+- Monitoreo de consultas de búsqueda
+- Eventos del widget de Zendesk
+
+## Personalización
+
+### Colores
+
+Los colores principales se pueden modificar en `style.css`:
+
+```css
+:root {
+  --primary-color: #1e40af;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #64748b;
+  /* ... más variables */
+}
+```
+
+### Iconos
+
+Los iconos se asignan automáticamente según el contenido usando emojis:
+- 🔑 Activación/códigos
+- 📱 Aplicación móvil
+- 💳 Pagos/facturación
+- 📹 Cámaras/video
+- ⚠️ Problemas/errores
+
+### Handlebars Helpers
+
+El tema incluye helpers personalizados:
+- `{{is a b}}`: Comparación de valores
+- `{{contains str substr}}`: Verificar si contiene texto
+- `{{current_year}}`: Año actual
+- `{{format_date date}}`: Formatear fechas
+
+## Soporte
+
+Para soporte técnico del tema:
+- Email: soporte@adtchile.cl
+- Documentación: Ver archivos de plantillas
+- Zendesk: Usar el widget de chat integrado
+
+## Changelog
+
+### v1.0.0
+- Versión inicial del tema
+- Diseño responsivo completo
+- Integración con widget de Zendesk
+- Funcionalidades de búsqueda y navegación
+- Optimización para categorías ADT Chile
+
+---
+
+© 2024 ADT Chile - Todos los derechos reservados

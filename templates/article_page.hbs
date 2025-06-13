@@ -1,0 +1,105 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    
+    <!-- Breadcrumb -->
+    <nav class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
+        <li>></li>
+        <li><a href="{{section.category.url}}" class="hover:text-blue-600">{{section.category.name}}</a></li>
+        <li>></li>
+        <li><a href="{{section.url}}" class="hover:text-blue-600">{{section.name}}</a></li>
+        <li>></li>
+        <li class="text-gray-800 font-medium">{{article.title}}</li>
+      </ol>
+    </nav>
+
+    <!-- Back Link -->
+    <div class="mb-8">
+      <a href="{{section.url}}" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
+        ← Volver a {{section.name}}
+      </a>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+          {{#contains article.title "activar"}}🔑{{/contains}}
+          {{#contains article.title "desactivar"}}🔓{{/contains}}
+          {{#contains article.title "código"}}🔢{{/contains}}
+          {{#contains article.title "problema"}}⚠️{{/contains}}
+          {{#contains article.title "instalación"}}📱{{/contains}}
+          {{#contains article.title "pago"}}💳{{/contains}}
+          {{#contains article.title "cámara"}}📹{{/contains}}
+          {{#unless article.title}}📄{{/unless}}
+        </div>
+        <h1 class="text-4xl font-bold">{{article.title}}</h1>
+      </div>
+      
+      <!-- Article Tags -->
+      {{#if article.label_names}}
+      <div class="flex flex-wrap gap-2 mb-6">
+        {{#each article.label_names}}
+        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">{{this}}</span>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+
+    <!-- Article Content -->
+    <article class="bg-white rounded-lg shadow-md">
+      <header class="p-6 border-b">
+        <h2 class="text-2xl font-semibold">{{article.title}}</h2>
+        <div class="flex items-center justify-between mt-4 text-sm text-gray-500">
+          <div>
+            Actualizado {{article.updated_at}}
+          </div>
+          <div class="flex items-center gap-4">
+            {{#if article.vote_sum}}
+            <span>👍 {{article.vote_sum}}</span>
+            {{/if}}
+            <span>👁️ {{article.views}}</span>
+          </div>
+        </div>
+      </header>
+      
+      <div class="p-6 prose prose-lg max-w-none">
+        {{{article.body}}}
+      </div>
+    </article>
+
+    <!-- Article Voting -->
+    <div class="mt-8 text-center">
+      <h3 class="text-lg font-semibold mb-4">¿Te resultó útil este artículo?</h3>
+      <div class="flex justify-center gap-4">
+        <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+          👍 Sí, me ayudó
+        </button>
+        <button class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+          👎 No me ayudó
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    {{#if section.articles}}
+    <section class="mt-12">
+      <h3 class="text-2xl font-bold mb-6">Artículos Relacionados</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{#each section.articles}}
+        {{#unless (is url ../article.url)}}
+        <a href="{{url}}" class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 group">
+          <h4 class="font-semibold group-hover:text-blue-600 transition-colors">{{title}}</h4>
+          <p class="text-gray-600 text-sm mt-2">{{summary}}</p>
+        </a>
+        {{/unless}}
+        {{/each}}
+      </div>
+    </section>
+    {{/if}}
+
+  </div>
+</main>
+
+{{> footer}}
