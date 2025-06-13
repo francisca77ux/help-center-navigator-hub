@@ -2,113 +2,75 @@
 {{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
-  <div class="container mx-auto px-4 py-8 max-w-4xl">
+  <div class="container mx-auto px-4 py-8 text-center">
     
-    <!-- Error Content -->
-    <div class="text-center py-16">
+    <div class="max-w-2xl mx-auto">
+      
+      <!-- Error Icon and Code -->
       <div class="mb-8">
-        {{#if error}}
-          {{#if error.status_code}}
-            {{#if (eq error.status_code 404)}}
-              <div class="text-8xl mb-4">🔍</div>
-              <h1 class="text-4xl font-bold text-gray-800 mb-4">Página no encontrada</h1>
-              <p class="text-lg text-gray-600 mb-8">
-                Lo sentimos, la página que buscas no existe o ha sido movida.
-              </p>
-            {{else if (eq error.status_code 403)}}
-              <div class="text-8xl mb-4">🔒</div>
-              <h1 class="text-4xl font-bold text-gray-800 mb-4">Acceso denegado</h1>
-              <p class="text-lg text-gray-600 mb-8">
-                No tienes permisos para acceder a esta página.
-              </p>
-            {{else if (eq error.status_code 500)}}
-              <div class="text-8xl mb-4">⚠️</div>
-              <h1 class="text-4xl font-bold text-gray-800 mb-4">Error del servidor</h1>
-              <p class="text-lg text-gray-600 mb-8">
-                Ha ocurrido un error interno. Por favor, inténtalo más tarde.
-              </p>
-            {{else}}
-              <div class="text-8xl mb-4">❌</div>
-              <h1 class="text-4xl font-bold text-gray-800 mb-4">Error {{error.status_code}}</h1>
-              <p class="text-lg text-gray-600 mb-8">
-                {{#if error.message}}{{error.message}}{{else}}Ha ocurrido un error inesperado.{{/if}}
-              </p>
-            {{/if}}
-          {{else}}
-            <div class="text-8xl mb-4">❌</div>
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Error</h1>
-            <p class="text-lg text-gray-600 mb-8">
-              Ha ocurrido un error inesperado.
-            </p>
-          {{/if}}
+        {{#if (eq error.status_code 404)}}
+        <div class="text-8xl mb-6">🔍</div>
+        <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
+        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Página no encontrada</h2>
+        <p class="text-gray-500 mb-8">
+          Lo sentimos, la página que buscas no existe o ha sido movida.
+        </p>
+        {{else if (eq error.status_code 403)}}
+        <div class="text-8xl mb-6">🚫</div>
+        <h1 class="text-6xl font-bold text-gray-800 mb-4">403</h1>
+        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Acceso denegado</h2>
+        <p class="text-gray-500 mb-8">
+          No tienes permisos para acceder a esta página.
+        </p>
+        {{else if (eq error.status_code 500)}}
+        <div class="text-8xl mb-6">⚠️</div>
+        <h1 class="text-6xl font-bold text-gray-800 mb-4">500</h1>
+        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Error del servidor</h2>
+        <p class="text-gray-500 mb-8">
+          Ha ocurrido un error interno. Por favor, inténtalo más tarde.
+        </p>
         {{else}}
-          <div class="text-8xl mb-4">❌</div>
-          <h1 class="text-4xl font-bold text-gray-800 mb-4">Error</h1>
-          <p class="text-lg text-gray-600 mb-8">
-            Ha ocurrido un error inesperado.
-          </p>
+        <div class="text-8xl mb-6">❌</div>
+        <h1 class="text-6xl font-bold text-gray-800 mb-4">{{error.status_code}}</h1>
+        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Error</h2>
+        <p class="text-gray-500 mb-8">
+          {{#if error.message}}{{error.message}}{{else}}Ha ocurrido un error inesperado.{{/if}}
+        </p>
         {{/if}}
       </div>
 
-      <!-- Action Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
         <a href="{{help_center.url}}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-          Ir al Inicio
+          Ir al inicio
         </a>
-        
-        <button onclick="history.back()" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
-          Volver Atrás
+        <button onclick="history.back()" class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+          Volver atrás
         </button>
-        
-        <a href="{{help_center.url}}/community" class="text-blue-600 hover:text-blue-800 transition-colors">
-          Ir a la Comunidad
-        </a>
       </div>
 
-      <!-- Search Box for 404 errors -->
-      {{#if error}}
-        {{#if error.status_code}}
-          {{#if (eq error.status_code 404)}}
-          <div class="mt-12 max-w-md mx-auto">
-            <p class="text-gray-600 mb-4">¿Buscas algo específico?</p>
-            <form action="{{help_center.url}}/search" method="get" class="flex gap-2">
-              <input 
-                type="text" 
-                name="query" 
-                placeholder="Buscar en el centro de ayuda..."
-                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-              <button 
-                type="submit"
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Buscar
-              </button>
-            </form>
-          </div>
-          {{/if}}
-        {{/if}}
-      {{/if}}
-
-      <!-- Contact Support -->
-      <div class="mt-12 pt-8 border-t border-gray-200">
-        <p class="text-gray-600 mb-4">¿Necesitas ayuda adicional?</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">
-          <a href="https://adtchile.cl/contacto" class="text-blue-600 hover:text-blue-800 transition-colors">
-            📞 Contactar Soporte
+      <!-- Help Section -->
+      <div class="bg-blue-50 rounded-lg p-6">
+        <h3 class="text-lg font-semibold mb-4">¿Necesitas ayuda?</h3>
+        <p class="text-gray-600 mb-4">
+          Si continúas teniendo problemas, no dudes en contactarnos.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:6001234567" class="text-blue-600 hover:text-blue-800">
+            📞 600 123 4567
           </a>
-          <span class="hidden sm:inline text-gray-400">|</span>
-          <a href="mailto:info@adtchile.cl" class="text-blue-600 hover:text-blue-800 transition-colors">
-            ✉️ Enviar Email
+          <a href="https://wa.me/56987654321" class="text-green-600 hover:text-green-800" target="_blank">
+            💬 WhatsApp
           </a>
-          <span class="hidden sm:inline text-gray-400">|</span>
-          <a href="{{help_center.url}}/community" class="text-blue-600 hover:text-blue-800 transition-colors">
-            💬 Preguntar en la Comunidad
-          </a>
+          <span class="text-gray-600">
+            ✉️ info@adtchile.cl
+          </span>
         </div>
       </div>
-    </div>
 
+    </div>
+    
   </div>
 </main>
 

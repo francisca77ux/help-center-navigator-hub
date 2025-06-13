@@ -11,45 +11,56 @@
         <li>></li>
         <li><a href="/community" class="hover:text-blue-600">Comunidad</a></li>
         <li>></li>
-        <li class="text-gray-800 font-medium">Perfil de Usuario</li>
+        <li class="text-gray-800 font-medium">{{user.name}}</li>
       </ol>
     </nav>
 
     <!-- User Profile Header -->
     <div class="bg-white rounded-lg shadow-md p-8 mb-8">
       <div class="flex items-start gap-6">
-        <!-- Avatar -->
         <div class="flex-shrink-0">
           {{#if user.avatar_url}}
           <img src="{{user.avatar_url}}" alt="{{user.name}}" class="w-24 h-24 rounded-full">
           {{else}}
-          <div class="w-24 h-24 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-            {{#if user.name}}{{substring user.name 0 1}}{{else}}U{{/if}}
+          <div class="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center">
+            <span class="text-gray-600 font-semibold text-2xl">{{user.name.[0]}}</span>
           </div>
           {{/if}}
         </div>
         
-        <!-- User Info -->
         <div class="flex-1">
-          <h1 class="text-3xl font-bold mb-2">{{user.name}}</h1>
-          
-          <div class="text-gray-600 space-y-1 mb-4">
-            <div>Miembro desde: Enero 2024</div>
-            <div>Última conexión: Hace 2 días</div>
+          <div class="flex items-center gap-3 mb-2">
+            <h1 class="text-3xl font-bold">{{user.name}}</h1>
+            {{#if user.title}}
+            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">{{user.title}}</span>
+            {{/if}}
           </div>
           
-          <p class="text-gray-700 mb-4">
-            Usuario activo de la comunidad ADT Chile.
-          </p>
-          
-          <div class="flex gap-4">
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-              Enviar Mensaje
-            </button>
-            <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
-              Seguir Usuario
-            </button>
+          <div class="flex items-center gap-6 text-sm text-gray-500 mb-4">
+            <span>Miembro desde {{user.created_at}}</span>
+            {{#if user.location}}
+            <span>📍 {{user.location}}</span>
+            {{/if}}
+            {{#if user.last_seen_at}}
+            <span>Última actividad {{user.last_seen_at}}</span>
+            {{/if}}
           </div>
+          
+          {{#if user.bio}}
+          <p class="text-gray-700">{{user.bio}}</p>
+          {{/if}}
+        </div>
+        
+        <div class="flex-shrink-0">
+          {{#if current_user.can_edit_profile}}
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Editar Perfil
+          </button>
+          {{else if current_user.is_self}}
+          <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+            Seguir
+          </button>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -81,21 +92,21 @@
     <div class="bg-white rounded-lg shadow-md">
       <div class="border-b border-gray-200">
         <nav class="flex space-x-8 px-6">
-          <a href="#recent-posts" class="py-4 px-1 border-b-2 border-blue-500 text-blue-600 whitespace-nowrap">
-            Publicaciones Recientes
+          <a href="?tab=posts" class="py-4 px-1 border-b-2 border-blue-500 text-blue-600 whitespace-nowrap">
+            📝 Publicaciones Recientes
           </a>
-          <a href="#recent-comments" class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
-            Respuestas Recientes
+          <a href="?tab=comments" class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
+            💬 Respuestas Recientes
           </a>
-          <a href="#activity" class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
-            Actividad
+          <a href="?tab=activity" class="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
+            🎯 Actividad
           </a>
         </nav>
       </div>
       
       <div class="p-6">
-        <!-- Recent Posts -->
-        <div id="recent-posts">
+        <!-- Recent Posts Tab -->
+        <div id="posts-tab">
           <div class="text-center py-8">
             <div class="text-4xl mb-4">📝</div>
             <h3 class="text-lg font-semibold mb-2">Sin publicaciones aún</h3>
@@ -103,8 +114,8 @@
           </div>
         </div>
         
-        <!-- Recent Comments -->
-        <div id="recent-comments" class="hidden">
+        <!-- Recent Comments Tab -->
+        <div id="comments-tab" class="hidden">
           <div class="text-center py-8">
             <div class="text-4xl mb-4">💬</div>
             <h3 class="text-lg font-semibold mb-2">Sin respuestas aún</h3>
@@ -112,10 +123,10 @@
           </div>
         </div>
         
-        <!-- Activity Feed -->
-        <div id="activity" class="hidden">
+        <!-- Activity Tab -->
+        <div id="activity-tab" class="hidden">
           <div class="text-center py-8">
-            <div class="text-4xl mb-4">📊</div>
+            <div class="text-4xl mb-4">🎯</div>
             <h3 class="text-lg font-semibold mb-2">Sin actividad reciente</h3>
             <p class="text-gray-600">No hay actividad reciente para mostrar.</p>
           </div>
@@ -124,29 +135,36 @@
     </div>
 
     <!-- Contact Information -->
+    {{#if user.contact_info}}
     <div class="bg-white rounded-lg shadow-md p-6 mt-8">
-      <h3 class="text-lg font-semibold mb-4">Información de Contacto</h3>
-      
-      <div class="space-y-3 text-sm text-gray-600">
+      <h3 class="text-lg font-semibold mb-4">Información de contacto</h3>
+      <div class="space-y-3">
+        {{#if user.email}}
         <div class="flex items-center gap-3">
-          <span class="w-5 h-5">✉️</span>
-          <span>Email no disponible públicamente</span>
+          <span class="text-gray-500">✉️</span>
+          <a href="mailto:{{user.email}}" class="text-blue-600 hover:text-blue-800">{{user.email}}</a>
         </div>
+        {{/if}}
         
+        {{#if user.phone}}
         <div class="flex items-center gap-3">
-          <span class="w-5 h-5">📞</span>
-          <span>Teléfono no disponible públicamente</span>
+          <span class="text-gray-500">📞</span>
+          <span>{{user.phone}}</span>
         </div>
+        {{/if}}
         
+        {{#if user.website}}
         <div class="flex items-center gap-3">
-          <span class="w-5 h-5">🌐</span>
-          <span>Sitio web no disponible</span>
+          <span class="text-gray-500">🌐</span>
+          <a href="{{user.website}}" class="text-blue-600 hover:text-blue-800" target="_blank">{{user.website}}</a>
         </div>
+        {{/if}}
       </div>
     </div>
+    {{/if}}
 
     <!-- Back to Community -->
-    <div class="text-center mt-8">
+    <div class="text-center mt-8 pt-8 border-t border-gray-200">
       <a href="/community" class="text-blue-600 hover:text-blue-800 transition-colors">
         ← Volver a la Comunidad
       </a>

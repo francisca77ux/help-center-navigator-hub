@@ -1,50 +1,31 @@
 
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{#if article}}{{article.title}} | {{/if}}{{#if section}}{{section.name}} | {{/if}}Centro de Ayuda ADT Chile</title>
+  <title>{{#if article}}{{article.title}} - {{section.name}} | {{/if}}{{#if section}}{{section.name}} | {{/if}}ADT Chile - Centro de Ayuda</title>
   
   {{#if article}}
-  <meta name="description" content="{{#if article.summary}}{{article.summary}}{{else}}Artículo de ayuda ADT Chile{{/if}}">
-  {{else}}
-  <meta name="description" content="Centro de Ayuda ADT Chile - Encuentra respuestas a tus preguntas sobre seguridad y monitoreo">
+  <meta name="description" content="{{#if article.body}}{{article.body}}{{else}}Centro de Ayuda de ADT Chile{{/if}}">
   {{/if}}
   
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
   
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{asset 'favicon.ico'}}">
   
-  <!-- Zendesk Widget -->
-  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.zendesk_widget_key}}"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{asset 'style.css'}}">
   
-  <script>
-    window.zESettings = {
-      webWidget: {
-        color: {
-          theme: '#1e40af',
-          launcher: '#1e40af',
-          launcherText: '#ffffff',
-          button: '#1e40af',
-          header: '#1e40af',
-          articleLinks: '#1e40af'
-        },
-        position: {
-          horizontal: 'right',
-          vertical: 'bottom'
-        },
-        offset: {
-          horizontal: '20px',
-          vertical: '20px'
-        },
-        launcher: {
-          chatLabel: {
-            'es': 'Chat con ADT',
-            '*': 'Chat with ADT'
-          }
-        }
-      }
-    };
-  </script>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="{{#if article}}{{article.title}} - {{/if}}ADT Chile">
+  <meta property="og:description" content="Centro de Ayuda de ADT Chile - Encuentra respuestas a tus preguntas sobre seguridad">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{current_url}}">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{#if article}}{{article.title}} - {{/if}}ADT Chile">
+  <meta name="twitter:description" content="Centro de Ayuda de ADT Chile">
 </head>
