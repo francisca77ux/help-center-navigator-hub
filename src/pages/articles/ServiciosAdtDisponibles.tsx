@@ -144,7 +144,7 @@ const ServiciosAdtDisponibles = () => {
               <section className="space-y-6">
                 <h2 className="text-2xl font-bold">Servicios Técnicos y Soporte</h2>
                 
-                <div class="grid gap-4">
+                <div className="grid gap-4">
                   <div className="border rounded-lg p-4">
                     <h3 className="font-semibold mb-2">Instalación Profesional</h3>
                     <p className="text-muted-foreground text-sm">Técnicos certificados realizan la instalación sin costo adicional, incluyendo configuración y capacitación.</p>
