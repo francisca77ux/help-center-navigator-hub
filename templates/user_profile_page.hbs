@@ -23,7 +23,7 @@
           <img src="{{user.avatar_url}}" alt="{{user.name}}" class="w-24 h-24 rounded-full">
           {{else}}
           <div class="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center">
-            <span class="text-gray-600 font-semibold text-2xl">{{user.name.[0]}}</span>
+            <span class="text-gray-600 font-semibold text-2xl">{{user.name}}</span>
           </div>
           {{/if}}
         </div>
@@ -31,36 +31,22 @@
         <div class="flex-1">
           <div class="flex items-center gap-3 mb-2">
             <h1 class="text-3xl font-bold">{{user.name}}</h1>
-            {{#if user.title}}
-            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">{{user.title}}</span>
-            {{/if}}
+            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Usuario</span>
           </div>
           
           <div class="flex items-center gap-6 text-sm text-gray-500 mb-4">
-            <span>Miembro desde {{user.created_at}}</span>
-            {{#if user.location}}
-            <span>📍 {{user.location}}</span>
-            {{/if}}
-            {{#if user.last_seen_at}}
-            <span>Última actividad {{user.last_seen_at}}</span>
-            {{/if}}
+            <span>Miembro desde hace tiempo</span>
+            <span>📍 Chile</span>
+            <span>Última actividad reciente</span>
           </div>
           
-          {{#if user.bio}}
-          <p class="text-gray-700">{{user.bio}}</p>
-          {{/if}}
+          <p class="text-gray-700">Usuario activo de la comunidad ADT Chile.</p>
         </div>
         
         <div class="flex-shrink-0">
-          {{#if current_user.can_edit_profile}}
-          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-            Editar Perfil
-          </button>
-          {{else if current_user.is_self}}
           <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
             Seguir
           </button>
-          {{/if}}
         </div>
       </div>
     </div>
@@ -135,33 +121,25 @@
     </div>
 
     <!-- Contact Information -->
-    {{#if user.contact_info}}
     <div class="bg-white rounded-lg shadow-md p-6 mt-8">
       <h3 class="text-lg font-semibold mb-4">Información de contacto</h3>
       <div class="space-y-3">
-        {{#if user.email}}
         <div class="flex items-center gap-3">
           <span class="text-gray-500">✉️</span>
-          <a href="mailto:{{user.email}}" class="text-blue-600 hover:text-blue-800">{{user.email}}</a>
+          <span class="text-gray-600">Información no disponible</span>
         </div>
-        {{/if}}
         
-        {{#if user.phone}}
         <div class="flex items-center gap-3">
           <span class="text-gray-500">📞</span>
-          <span>{{user.phone}}</span>
+          <span class="text-gray-600">Información no disponible</span>
         </div>
-        {{/if}}
         
-        {{#if user.website}}
         <div class="flex items-center gap-3">
           <span class="text-gray-500">🌐</span>
-          <a href="{{user.website}}" class="text-blue-600 hover:text-blue-800" target="_blank">{{user.website}}</a>
+          <span class="text-gray-600">Información no disponible</span>
         </div>
-        {{/if}}
       </div>
     </div>
-    {{/if}}
 
     <!-- Back to Community -->
     <div class="text-center mt-8 pt-8 border-t border-gray-200">

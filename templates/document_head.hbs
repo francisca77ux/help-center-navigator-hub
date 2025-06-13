@@ -3,11 +3,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>{{#if article}}{{article.title}} - {{section.name}} | {{/if}}{{#if section}}{{section.name}} | {{/if}}ADT Chile - Centro de Ayuda</title>
+  <title>{{#if article}}{{article.title}} - {{#if section}}{{section.name}} | {{/if}}{{/if}}{{#if section}}{{section.name}} | {{/if}}ADT Chile - Centro de Ayuda</title>
   
-  {{#if article}}
-  <meta name="description" content="{{#if article.body}}{{article.body}}{{else}}Centro de Ayuda de ADT Chile{{/if}}">
-  {{/if}}
+  <meta name="description" content="{{#if article}}{{#if article.body}}{{article.body}}{{else}}Centro de Ayuda de ADT Chile{{/if}}{{else}}Centro de Ayuda de ADT Chile{{/if}}">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
@@ -22,7 +20,7 @@
   <meta property="og:title" content="{{#if article}}{{article.title}} - {{/if}}ADT Chile">
   <meta property="og:description" content="Centro de Ayuda de ADT Chile - Encuentra respuestas a tus preguntas sobre seguridad">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{current_url}}">
+  <meta property="og:url" content="{{request.url}}">
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary">

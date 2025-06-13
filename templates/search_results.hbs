@@ -47,13 +47,11 @@
         <div class="flex items-start justify-between mb-3">
           <div class="flex items-center gap-2">
             <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-              {{section.name}}
+              {{#if section}}{{section.name}}{{else}}General{{/if}}
             </span>
-            {{#if promoted}}
             <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
               Destacado
             </span>
-            {{/if}}
           </div>
           
           {{#if vote_sum}}
@@ -65,17 +63,13 @@
           <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
         </h3>
         
-        {{#if snippet}}
         <div class="text-gray-600 mb-4">
-          <div>{{snippet}}</div>
+          <div>{{body}}</div>
         </div>
-        {{/if}}
         
         <div class="flex items-center justify-between text-sm text-gray-500">
           <div class="flex items-center gap-4">
-            {{#if updated_at}}
-            <span>Actualizado {{updated_at}}</span>
-            {{/if}}
+            <span>Actualizado recientemente</span>
             {{#if author}}
             <span>Por {{author.name}}</span>
             {{/if}}
@@ -90,31 +84,19 @@
     </div>
 
     <!-- Pagination -->
-    {{#if (gt page_count 1)}}
     <div class="flex justify-center mt-8">
       <nav class="flex items-center gap-2">
-        {{#unless (eq current_page 1)}}
-        <a href="?query={{query}}&page={{prev_page}}" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+        <a href="?query={{query}}&page=1" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
           ← Anterior
         </a>
-        {{/unless}}
         
-        {{#each pages}}
-        {{#if current}}
-        <span class="px-3 py-2 bg-blue-600 text-white rounded-md">{{number}}</span>
-        {{else}}
-        <a href="?query={{query}}&page={{number}}" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">{{number}}</a>
-        {{/if}}
-        {{/each}}
+        <span class="px-3 py-2 bg-blue-600 text-white rounded-md">1</span>
         
-        {{#unless (eq current_page page_count)}}
-        <a href="?query={{query}}&page={{next_page}}" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+        <a href="?query={{query}}&page=2" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
           Siguiente →
         </a>
-        {{/unless}}
       </nav>
     </div>
-    {{/if}}
     {{else}}
     <!-- No Results -->
     <div class="text-center py-12">

@@ -70,7 +70,7 @@
         <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
           <div class="flex items-start justify-between mb-3">
             <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-              {{section.name}}
+              {{#if section}}{{section.name}}{{else}}General{{/if}}
             </span>
             <span class="text-sm text-gray-500">{{vote_sum}} 👍</span>
           </div>

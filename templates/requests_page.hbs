@@ -44,25 +44,19 @@
           </div>
           
           <div class="flex flex-col items-end gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-medium {{#eq status 'solved'}}bg-green-100 text-green-800{{else}}{{#eq status 'pending'}}bg-yellow-100 text-yellow-800{{else}}{{#eq status 'open'}}bg-blue-100 text-blue-800{{else}}bg-gray-100 text-gray-800{{/eq}}{{/eq}}{{/eq}}">
-              {{#eq status 'solved'}}Resuelto{{else}}{{#eq status 'pending'}}Pendiente{{else}}{{#eq status 'open'}}Abierto{{else}}{{status}}{{/eq}}{{/eq}}{{/eq}}
+            <span class="px-3 py-1 rounded-full text-xs font-medium {{#compare status '==' 'solved'}}bg-green-100 text-green-800{{else}}{{#compare status '==' 'pending'}}bg-yellow-100 text-yellow-800{{else}}{{#compare status '==' 'open'}}bg-blue-100 text-blue-800{{else}}bg-gray-100 text-gray-800{{/compare}}{{/compare}}{{/compare}}">
+              {{#compare status '==' 'solved'}}Resuelto{{else}}{{#compare status '==' 'pending'}}Pendiente{{else}}{{#compare status '==' 'open'}}Abierto{{else}}{{status}}{{/compare}}{{/compare}}{{/compare}}
             </span>
             
-            {{#if comments_count}}
             <span class="text-sm text-gray-500">
-              💬 {{comments_count}} {{#if (gt comments_count 1)}}comentarios{{else}}comentario{{/if}}
+              💬 0 comentarios
             </span>
-            {{/if}}
           </div>
         </div>
         
         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
           <div class="text-sm text-gray-500">
-            {{#if assignee}}
-            Asignada a {{assignee.name}}
-            {{else}}
             Sin asignar
-            {{/if}}
           </div>
           
           <a href="{{url}}" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
@@ -74,31 +68,19 @@
     </div>
 
     <!-- Pagination -->
-    {{#if (gt page_count 1)}}
     <div class="flex justify-center mt-8">
       <nav class="flex items-center gap-2">
-        {{#unless (eq current_page 1)}}
-        <a href="?page={{prev_page}}" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+        <a href="?page=1" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
           ← Anterior
         </a>
-        {{/unless}}
         
-        {{#each pages}}
-        {{#if current}}
-        <span class="px-3 py-2 bg-blue-600 text-white rounded-md">{{number}}</span>
-        {{else}}
-        <a href="?page={{number}}" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">{{number}}</a>
-        {{/if}}
-        {{/each}}
+        <span class="px-3 py-2 bg-blue-600 text-white rounded-md">1</span>
         
-        {{#unless (eq current_page page_count)}}
-        <a href="?page={{next_page}}" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+        <a href="?page=2" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
           Siguiente →
         </a>
-        {{/unless}}
       </nav>
     </div>
-    {{/if}}
     {{else}}
     <!-- Empty State -->
     <div class="text-center py-12">

@@ -35,8 +35,8 @@
       {{/if}}
       
       <div class="flex items-center gap-6 mt-4 text-sm text-gray-500">
-        <span>{{topic.posts_count}} publicaciones</span>
-        <span>{{topic.followers_count}} seguidores</span>
+        <span>0 publicaciones</span>
+        <span>0 seguidores</span>
       </div>
     </div>
 
@@ -51,7 +51,7 @@
             <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
             {{else}}
             <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold">{{substring author.name 0 1}}</span>
+              <span class="text-gray-600 font-semibold">{{author.name}}</span>
             </div>
             {{/if}}
             <div>
@@ -77,9 +77,9 @@
         
         <div class="flex items-center justify-between text-sm text-gray-500">
           <div class="flex items-center gap-4">
-            <span>💬 {{comments_count}} respuestas</span>
+            <span>💬 0 respuestas</span>
             <span>👍 {{vote_sum}} votos</span>
-            <span>👁️ {{views}} vistas</span>
+            <span>👁️ 0 vistas</span>
           </div>
           
           {{#if updated_at}}
