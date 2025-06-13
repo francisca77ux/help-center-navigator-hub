@@ -2,6 +2,7 @@
 import React from 'react';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -10,6 +11,18 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ searchQuery, setSearchQuery, onSearch }: HeroSectionProps) => {
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Redirect to search results - for now we'll use the tag system
+      const encodedQuery = encodeURIComponent(searchQuery.trim());
+      navigate(`/etiqueta/${encodedQuery}`);
+    }
+    onSearch(e);
+  };
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-primary/5 via-primary/10 to-accent/5 py-16">
       <div className="absolute inset-0 bg-grid-pattern opacity-3"></div>
@@ -21,7 +34,7 @@ const HeroSection = ({ searchQuery, setSearchQuery, onSearch }: HeroSectionProps
           ¡Hola! ¿En qué podemos ayudarte hoy? Encuentra respuestas rápidas a tus consultas sobre tu sistema de seguridad ADT
         </p>
         
-        <form onSubmit={onSearch} className="max-w-xl mx-auto">
+        <form onSubmit={handleSearch} className="max-w-xl mx-auto">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
             <Input

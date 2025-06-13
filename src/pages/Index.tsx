@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import CategoriesSection from '@/components/CategoriesSection';
-import PromotedArticlesSection from '@/components/PromotedArticlesSection';
+import PopularTagsSection from '@/components/PopularTagsSection';
 import RecentActivitySection from '@/components/RecentActivitySection';
 import HelpSection from '@/components/HelpSection';
 import ContactChannelsSection from '@/components/ContactChannelsSection';
@@ -69,57 +69,6 @@ const Index = () => {
     }
   ];
 
-  const promotedArticles = [
-    {
-      id: 1,
-      title: '¿Cómo activar y desactivar mi sistema de alarma ADT?',
-      url: '/article/activar-desactivar-sistema',
-      internal: false
-    },
-    {
-      id: 2,
-      title: 'Descarga y configuración de la App ADT Chile',
-      url: '/article/app-adt-configuracion',
-      internal: false
-    },
-    {
-      id: 3,
-      title: '¿Qué hacer cuando se activa mi alarma?',
-      url: '/article/alarma-activada',
-      internal: false
-    },
-    {
-      id: 4,
-      title: 'Medios de pago disponibles para tu servicio ADT',
-      url: '/article/medios-pago',
-      internal: false
-    },
-    {
-      id: 5,
-      title: 'Cambio de clave de usuario en el panel',
-      url: '/article/cambio-clave-panel',
-      internal: true
-    },
-    {
-      id: 6,
-      title: 'Visualización remota de cámaras desde tu celular',
-      url: '/article/camaras-remotas',
-      internal: false
-    },
-    {
-      id: 7,
-      title: 'Procedimiento en caso de falsa alarma',
-      url: '/article/falsa-alarma',
-      internal: false
-    },
-    {
-      id: 8,
-      title: 'Configuración de zonas en tu sistema de alarma',
-      url: '/article/configuracion-zonas',
-      internal: true
-    }
-  ];
-
   const popularTopics = [
     {
       id: 1,
@@ -173,7 +122,7 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-12">
         <CategoriesSection categories={categories} />
-        <PromotedArticlesSection promotedArticles={promotedArticles} />
+        <PopularTagsSection />
         <RecentActivitySection popularTopics={popularTopics} />
         <HelpSection />
         <ContactChannelsSection />
