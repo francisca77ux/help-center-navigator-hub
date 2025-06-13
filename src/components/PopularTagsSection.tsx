@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Tag, TrendingUp } from 'lucide-react';
+import { Tag, Search } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -26,27 +26,27 @@ const PopularTagsSection = () => {
   return (
     <section className="mb-16">
       <div className="flex items-center justify-center gap-3 mb-2">
-        <TrendingUp className="h-8 w-8 text-primary" />
-        <h2 className="text-3xl font-bold text-center">Etiquetas Más Populares</h2>
+        <Search className="h-8 w-8 text-primary" />
+        <h2 className="text-3xl font-bold text-center">Temas Más Buscados</h2>
       </div>
-      <p className="text-muted-foreground text-center mb-8">Las categorías más buscadas por nuestros usuarios</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <p className="text-muted-foreground text-center mb-8">Las categorías más consultadas por nuestros usuarios</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {popularTags.map((tag) => (
           <Link key={tag.name} to={`/etiqueta/${encodeURIComponent(tag.name)}`}>
             <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer h-full">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <Tag className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <Tag className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-base group-hover:text-primary transition-colors">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-semibold text-sm group-hover:text-primary transition-colors">
                         {tag.name}
                       </h3>
-                      <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded-full">
+                      <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
                         {tag.count}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       {tag.description}
                     </p>
                   </div>
