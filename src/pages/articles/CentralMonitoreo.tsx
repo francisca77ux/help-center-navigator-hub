@@ -4,11 +4,21 @@ import { ArrowLeft, Building, Users, Shield, MapPin, Clock } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const CentralMonitoreo = () => {
   const breadcrumbItems = [
     { label: 'Servicios ADT', href: '/servicios-adt' },
     { label: 'Central de monitoreo ADT' }
+  ];
+
+  const articleTags = [
+    'Monitoreo 24/7',
+    'Central de Operaciones',
+    'Seguridad',
+    'Certificaciones',
+    'Tecnología',
+    'Respuesta de Emergencia'
   ];
 
   return (
@@ -26,6 +36,8 @@ const CentralMonitoreo = () => {
             <Building className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Central de monitoreo ADT</h1>
           </div>
+          
+          <ArticleTags tags={articleTags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

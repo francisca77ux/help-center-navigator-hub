@@ -4,11 +4,21 @@ import { ArrowLeft, Smartphone } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const InstalacionAndroid = () => {
   const breadcrumbItems = [
     { label: 'App ADT', href: '/app-adt' },
     { label: 'Instalación en Android' }
+  ];
+
+  const articleTags = [
+    'Android',
+    'Instalación',
+    'Google Play Store',
+    'Aplicación Móvil',
+    'Configuración',
+    'Permisos'
   ];
 
   return (
@@ -26,6 +36,8 @@ const InstalacionAndroid = () => {
             <Smartphone className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Instalación en Android</h1>
           </div>
+          
+          <ArticleTags tags={articleTags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

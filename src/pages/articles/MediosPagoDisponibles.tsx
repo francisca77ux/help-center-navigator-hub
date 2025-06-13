@@ -1,13 +1,24 @@
+
 import React from 'react';
 import { ArrowLeft, CreditCard } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const MediosPagoDisponibles = () => {
   const breadcrumbItems = [
     { label: 'Facturación y Pagos', href: '/facturacion' },
     { label: 'Medios de pago disponibles' }
+  ];
+
+  const articleTags = [
+    'Pagos',
+    'Facturación',
+    'Tarjetas de Crédito',
+    'PAC',
+    'Transferencia Bancaria',
+    'ServiPag'
   ];
 
   return (
@@ -25,6 +36,8 @@ const MediosPagoDisponibles = () => {
             <CreditCard className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Medios de pago disponibles</h1>
           </div>
+          
+          <ArticleTags tags={articleTags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

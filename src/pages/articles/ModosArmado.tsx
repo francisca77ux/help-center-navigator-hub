@@ -4,11 +4,21 @@ import { ArrowLeft, Shield } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const ModosArmado = () => {
   const breadcrumbItems = [
     { label: 'Panel de Alarma', href: '/panel-alarma' },
     { label: 'Modos de armado parcial y total' }
+  ];
+
+  const articleTags = [
+    'Panel de Alarma',
+    'Armado Total',
+    'Armado Parcial',
+    'Sensores',
+    'Configuración',
+    'Zonas'
   ];
 
   return (
@@ -26,6 +36,8 @@ const ModosArmado = () => {
             <Shield className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Modos de armado parcial y total</h1>
           </div>
+          
+          <ArticleTags tags={articleTags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">
