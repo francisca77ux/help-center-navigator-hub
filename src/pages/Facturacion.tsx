@@ -1,42 +1,90 @@
 
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MessageCircle, CreditCard, FileText, Calculator, HelpCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
 const Facturacion = () => {
-  const articles = [
+  const sections = [
     {
-      title: "Medios de pago disponibles",
-      url: "/articulo/medios-pago-disponibles"
+      id: 1,
+      title: "Medios de Pago",
+      icon: <CreditCard className="h-6 w-6 text-primary" />,
+      description: "Opciones disponibles para realizar tus pagos",
+      articles: [
+        {
+          title: "Medios de pago disponibles",
+          url: "/articulo/medios-pago-disponibles"
+        },
+        {
+          title: "¿Cómo pagar mi factura?",
+          url: "/articulo/como-pagar-factura"
+        },
+        {
+          title: "Pago automático",
+          url: "/articulo/pago-automatico"
+        }
+      ]
     },
     {
-      title: "¿Cómo pagar mi factura?",
-      url: "/articulo/como-pagar-factura"
+      id: 2,
+      title: "Facturación",
+      icon: <FileText className="h-6 w-6 text-primary" />,
+      description: "Gestión de documentos tributarios",
+      articles: [
+        {
+          title: "Facturación electrónica",
+          url: "/articulo/facturacion-electronica"
+        },
+        {
+          title: "Cambio de datos de facturación",
+          url: "/articulo/cambio-datos-facturacion"
+        },
+        {
+          title: "Duplicado de facturas",
+          url: "/articulo/duplicado-facturas"
+        }
+      ]
     },
     {
-      title: "Consulta de estado de cuenta",
-      url: "/articulo/consulta-estado-cuenta"
+      id: 3,
+      title: "Estados de Cuenta",
+      icon: <Calculator className="h-6 w-6 text-primary" />,
+      description: "Consulta y seguimiento de pagos",
+      articles: [
+        {
+          title: "Consulta de estado de cuenta",
+          url: "/articulo/consulta-estado-cuenta"
+        },
+        {
+          title: "Historial de pagos",
+          url: "/articulo/historial-pagos"
+        },
+        {
+          title: "Saldo pendiente",
+          url: "/articulo/saldo-pendiente"
+        }
+      ]
     },
     {
-      title: "Facturación electrónica",
-      url: "/articulo/facturacion-electronica"
-    },
-    {
-      title: "Cambio de datos de facturación",
-      url: "/articulo/cambio-datos-facturacion"
-    },
-    {
-      title: "Problemas con pagos",
-      url: "/articulo/problemas-pagos"
-    },
-    {
-      title: "Descuentos y promociones",
-      url: "/articulo/descuentos-promociones"
-    },
-    {
-      title: "Historial de pagos",
-      url: "/articulo/historial-pagos"
+      id: 4,
+      title: "Consultas y Problemas",
+      icon: <HelpCircle className="h-6 w-6 text-primary" />,
+      description: "Solución de inconvenientes de pago",
+      articles: [
+        {
+          title: "Problemas con pagos",
+          url: "/articulo/problemas-pagos"
+        },
+        {
+          title: "Descuentos y promociones",
+          url: "/articulo/descuentos-promociones"
+        },
+        {
+          title: "Reclamos de facturación",
+          url: "/articulo/reclamos-facturacion"
+        }
+      ]
     }
   ];
 
@@ -54,22 +102,38 @@ const Facturacion = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {articles.map((article, index) => (
-            <Link key={index} to={article.url}>
-              <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">{article.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Información detallada sobre {article.title.toLowerCase()}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
+        <div className="space-y-12">
+          {sections.map((section) => (
+            <section key={section.id} className="space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                {section.icon}
+                <div>
+                  <h2 className="text-2xl font-bold">{section.title}</h2>
+                  <p className="text-muted-foreground">{section.description}</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {section.articles.map((article, index) => (
+                  <Link key={index} to={article.url}>
+                    <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          Información detallada sobre {article.title.toLowerCase()}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
+        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
               <Phone className="h-6 w-6 text-primary" />

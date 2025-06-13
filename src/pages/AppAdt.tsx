@@ -1,42 +1,90 @@
 
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MessageCircle, Download, Settings, Video, Bell } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
 const AppAdt = () => {
-  const articles = [
+  const sections = [
     {
-      title: "Descarga de la aplicación ADT Chile",
-      url: "/articulo/descarga-app-adt"
+      id: 1,
+      title: "Instalación y Configuración",
+      icon: <Download className="h-6 w-6 text-primary" />,
+      description: "Descarga e instalación inicial de la app",
+      articles: [
+        {
+          title: "Descarga de la aplicación ADT Chile",
+          url: "/articulo/descarga-app-adt"
+        },
+        {
+          title: "Configuración inicial de la app",
+          url: "/articulo/configuracion-inicial-app"
+        },
+        {
+          title: "¿Cómo iniciar sesión?",
+          url: "/articulo/iniciar-sesion-app"
+        }
+      ]
     },
     {
-      title: "Configuración inicial de la app",
-      url: "/articulo/configuracion-inicial-app"
+      id: 2,
+      title: "Funciones Principales",
+      icon: <Settings className="h-6 w-6 text-primary" />,
+      description: "Control y gestión de tu sistema desde la app",
+      articles: [
+        {
+          title: "Control del sistema desde la app",
+          url: "/articulo/control-sistema-app"
+        },
+        {
+          title: "Estados del sistema en tiempo real",
+          url: "/articulo/estados-tiempo-real"
+        },
+        {
+          title: "Historial de eventos",
+          url: "/articulo/historial-eventos"
+        }
+      ]
     },
     {
-      title: "¿Cómo iniciar sesión?",
-      url: "/articulo/iniciar-sesion-app"
+      id: 3,
+      title: "Videovigilancia",
+      icon: <Video className="h-6 w-6 text-primary" />,
+      description: "Visualización y control de cámaras",
+      articles: [
+        {
+          title: "Visualización de cámaras",
+          url: "/articulo/visualizacion-camaras"
+        },
+        {
+          title: "Grabación y reproducción",
+          url: "/articulo/grabacion-reproduccion"
+        },
+        {
+          title: "Configuración de cámaras",
+          url: "/articulo/configuracion-camaras-app"
+        }
+      ]
     },
     {
-      title: "Visualización de cámaras",
-      url: "/articulo/visualizacion-camaras"
-    },
-    {
-      title: "Control del sistema desde la app",
-      url: "/articulo/control-sistema-app"
-    },
-    {
-      title: "Notificaciones push",
-      url: "/articulo/notificaciones-push"
-    },
-    {
-      title: "Problemas de conexión",
-      url: "/articulo/problemas-conexion-app"
-    },
-    {
-      title: "Actualizaciones de la app",
-      url: "/articulo/actualizaciones-app"
+      id: 4,
+      title: "Notificaciones y Soporte",
+      icon: <Bell className="h-6 w-6 text-primary" />,
+      description: "Alertas, actualizaciones y solución de problemas",
+      articles: [
+        {
+          title: "Notificaciones push",
+          url: "/articulo/notificaciones-push"
+        },
+        {
+          title: "Problemas de conexión",
+          url: "/articulo/problemas-conexion-app"
+        },
+        {
+          title: "Actualizaciones de la app",
+          url: "/articulo/actualizaciones-app"
+        }
+      ]
     }
   ];
 
@@ -54,22 +102,38 @@ const AppAdt = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {articles.map((article, index) => (
-            <Link key={index} to={article.url}>
-              <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">{article.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Información detallada sobre {article.title.toLowerCase()}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
+        <div className="space-y-12">
+          {sections.map((section) => (
+            <section key={section.id} className="space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                {section.icon}
+                <div>
+                  <h2 className="text-2xl font-bold">{section.title}</h2>
+                  <p className="text-muted-foreground">{section.description}</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {section.articles.map((article, index) => (
+                  <Link key={index} to={article.url}>
+                    <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          Información detallada sobre {article.title.toLowerCase()}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
+        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
               <Phone className="h-6 w-6 text-primary" />

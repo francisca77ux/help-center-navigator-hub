@@ -1,42 +1,86 @@
+
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const ServiciosAdt = () => {
-  const articles = [
+  const sections = [
     {
-      title: "¿Qué servicios ofrece ADT?",
-      url: "/articulo/servicios-adt-disponibles"
+      id: 1,
+      title: "Tipos de Servicios",
+      icon: <Shield className="h-6 w-6 text-primary" />,
+      description: "Conoce todos los servicios de seguridad disponibles",
+      articles: [
+        {
+          title: "¿Qué servicios ofrece ADT?",
+          url: "/articulo/servicios-adt-disponibles"
+        },
+        {
+          title: "Tipos de monitoreo disponibles",
+          url: "/articulo/tipos-monitoreo"
+        },
+        {
+          title: "Servicios adicionales",
+          url: "/articulo/servicios-adicionales"
+        }
+      ]
     },
     {
-      title: "Tipos de monitoreo disponibles",
-      url: "/articulo/tipos-monitoreo"
+      id: 2,
+      title: "Monitoreo y Vigilancia",
+      icon: <Monitor className="h-6 w-6 text-primary" />,
+      description: "Todo sobre nuestro servicio de monitoreo 24/7",
+      articles: [
+        {
+          title: "¿Cómo funciona el monitoreo 24/7?",
+          url: "/articulo/monitoreo-24-7"
+        },
+        {
+          title: "Central de monitoreo ADT",
+          url: "/articulo/central-monitoreo"
+        },
+        {
+          title: "Protocolo de emergencias",
+          url: "/articulo/protocolo-emergencias"
+        }
+      ]
     },
     {
-      title: "¿Cómo funciona el monitoreo 24/7?",
-      url: "/articulo/monitoreo-24-7"
+      id: 3,
+      title: "Instalación y Mantenimiento",
+      icon: <Wrench className="h-6 w-6 text-primary" />,
+      description: "Servicios técnicos y de soporte",
+      articles: [
+        {
+          title: "Servicios de instalación",
+          url: "/articulo/servicios-instalacion"
+        },
+        {
+          title: "Mantenimiento preventivo",
+          url: "/articulo/mantenimiento-preventivo"
+        },
+        {
+          title: "Garantías de servicio",
+          url: "/articulo/garantias-servicio"
+        }
+      ]
     },
     {
-      title: "Servicios de instalación",
-      url: "/articulo/servicios-instalacion"
-    },
-    {
-      title: "Mantenimiento preventivo",
-      url: "/articulo/mantenimiento-preventivo"
-    },
-    {
-      title: "Servicios adicionales",
-      url: "/articulo/servicios-adicionales"
-    },
-    {
-      title: "Cobertura geográfica",
-      url: "/articulo/cobertura-geografica"
-    },
-    {
-      title: "Garantías de servicio",
-      url: "/articulo/garantias-servicio"
+      id: 4,
+      title: "Cobertura",
+      icon: <MapPin className="h-6 w-6 text-primary" />,
+      description: "Información sobre nuestra cobertura geográfica",
+      articles: [
+        {
+          title: "Cobertura geográfica",
+          url: "/articulo/cobertura-geografica"
+        },
+        {
+          title: "Zonas de servicio",
+          url: "/articulo/zonas-servicio"
+        }
+      ]
     }
   ];
 
@@ -54,22 +98,38 @@ const ServiciosAdt = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {articles.map((article, index) => (
-            <Link key={index} to={article.url}>
-              <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">{article.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Información detallada sobre {article.title.toLowerCase()}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
+        <div className="space-y-12">
+          {sections.map((section) => (
+            <section key={section.id} className="space-y-6">
+              <div className="flex items-center gap-3 mb-6">
+                {section.icon}
+                <div>
+                  <h2 className="text-2xl font-bold">{section.title}</h2>
+                  <p className="text-muted-foreground">{section.description}</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {section.articles.map((article, index) => (
+                  <Link key={index} to={article.url}>
+                    <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          Información detallada sobre {article.title.toLowerCase()}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
+        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
               <Phone className="h-6 w-6 text-primary" />
