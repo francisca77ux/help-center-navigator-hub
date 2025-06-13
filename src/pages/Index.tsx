@@ -161,13 +161,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Hero Section with Search */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-primary/5 via-primary/10 to-accent/5 py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-primary/5 via-primary/10 to-accent/5 py-24">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto px-4 text-center relative">
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-8 mt-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent leading-tight tracking-wide">
             Centro de Ayuda ADT Chile
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             ¡Hola! ¿En qué podemos ayudarte hoy? Encuentra respuestas rápidas a tus consultas sobre tu sistema de seguridad ADT
           </p>
           
