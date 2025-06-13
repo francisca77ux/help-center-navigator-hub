@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowLeft, HelpCircle, Phone, Wrench, Book, Mail, MessageCircle } from 'lucide-react';
+import { ArrowLeft, HelpCircle, Phone, Wrench, Book, Mail, MessageCircle, AlertTriangle, Settings, Battery, Sparkles, FileText, Activity } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -14,15 +14,18 @@ const Soporte = () => {
       articles: [
         {
           title: "Mi alarma no se activa",
-          url: "/articulo/alarma-no-activa"
+          url: "/articulo/alarma-no-activa",
+          icon: <AlertTriangle className="h-4 w-4 text-primary" />
         },
         {
           title: "Problemas de conectividad",
-          url: "/articulo/problemas-conectividad"
+          url: "/articulo/problemas-conectividad",
+          icon: <Activity className="h-4 w-4 text-primary" />
         },
         {
           title: "Sensores con mal funcionamiento",
-          url: "/articulo/sensores-mal-funcionamiento"
+          url: "/articulo/sensores-mal-funcionamiento",
+          icon: <Settings className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -34,15 +37,18 @@ const Soporte = () => {
       articles: [
         {
           title: "Mantenimiento preventivo",
-          url: "/articulo/mantenimiento-preventivo"
+          url: "/articulo/mantenimiento-preventivo",
+          icon: <Wrench className="h-4 w-4 text-primary" />
         },
         {
           title: "Cambio de baterías",
-          url: "/articulo/cambio-baterias"
+          url: "/articulo/cambio-baterias",
+          icon: <Battery className="h-4 w-4 text-primary" />
         },
         {
           title: "Limpieza de sensores",
-          url: "/articulo/limpieza-sensores"
+          url: "/articulo/limpieza-sensores",
+          icon: <Sparkles className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -54,15 +60,18 @@ const Soporte = () => {
       articles: [
         {
           title: "Solicitar visita técnica",
-          url: "/articulo/solicitar-visita-tecnica"
+          url: "/articulo/solicitar-visita-tecnica",
+          icon: <Phone className="h-4 w-4 text-primary" />
         },
         {
           title: "Diagnóstico remoto",
-          url: "/articulo/diagnostico-remoto"
+          url: "/articulo/diagnostico-remoto",
+          icon: <Activity className="h-4 w-4 text-primary" />
         },
         {
           title: "Garantías y servicios",
-          url: "/articulo/garantias-servicios"
+          url: "/articulo/garantias-servicios",
+          icon: <FileText className="h-4 w-4 text-primary" />
         }
       ]
     }
@@ -98,9 +107,12 @@ const Soporte = () => {
                   <Link key={index} to={article.url}>
                     <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
                       <CardContent className="p-6">
-                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                          {article.title}
-                        </h3>
+                        <div className="flex items-start gap-3 mb-2">
+                          {article.icon}
+                          <h3 className="font-semibold text-lg group-hover:text-primary transition-colors flex-1">
+                            {article.title}
+                          </h3>
+                        </div>
                         <p className="text-muted-foreground text-sm">
                           Información detallada sobre {article.title.toLowerCase()}
                         </p>

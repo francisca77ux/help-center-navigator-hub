@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowLeft, Shield, Power, Key, Settings, Users, Phone, Mail, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Shield, Power, Key, Settings, Users, Phone, Mail, MessageCircle, Lock, Zap } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -14,15 +14,18 @@ const PanelAlarma = () => {
       articles: [
         {
           title: "¿Cómo activar mi sistema de alarma?",
-          url: "/articulo/activar-sistema-alarma"
+          url: "/articulo/activar-sistema-alarma",
+          icon: <Power className="h-4 w-4 text-primary" />
         },
         {
           title: "¿Cómo desactivar mi sistema de alarma?",
-          url: "/articulo/desactivar-sistema-alarma"
+          url: "/articulo/desactivar-sistema-alarma",
+          icon: <Power className="h-4 w-4 text-primary" />
         },
         {
           title: "Modos de armado disponibles",
-          url: "/articulo/modos-armado"
+          url: "/articulo/modos-armado",
+          icon: <Shield className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -34,11 +37,13 @@ const PanelAlarma = () => {
       articles: [
         {
           title: "Cambio de clave maestra",
-          url: "/articulo/cambio-clave-maestra"
+          url: "/articulo/cambio-clave-maestra",
+          icon: <Key className="h-4 w-4 text-primary" />
         },
         {
           title: "Códigos de usuario",
-          url: "/articulo/codigos-usuario"
+          url: "/articulo/codigos-usuario",
+          icon: <Users className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -50,7 +55,8 @@ const PanelAlarma = () => {
       articles: [
         {
           title: "Configuración de zonas",
-          url: "/articulo/configuracion-zonas"
+          url: "/articulo/configuracion-zonas",
+          icon: <Settings className="h-4 w-4 text-primary" />
         }
       ]
     }
@@ -86,9 +92,12 @@ const PanelAlarma = () => {
                   <Link key={index} to={article.url}>
                     <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
                       <CardContent className="p-6">
-                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                          {article.title}
-                        </h3>
+                        <div className="flex items-start gap-3 mb-2">
+                          {article.icon}
+                          <h3 className="font-semibold text-lg group-hover:text-primary transition-colors flex-1">
+                            {article.title}
+                          </h3>
+                        </div>
                         <p className="text-muted-foreground text-sm">
                           Información detallada sobre {article.title.toLowerCase()}
                         </p>

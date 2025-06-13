@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin, Smartphone, Wifi, Camera, Lock } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin, Smartphone, Wifi, Camera, Lock, Settings, Key, Home, Zap, AlertTriangle, FileText, Clock, Users, Calendar } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -14,15 +14,18 @@ const ServiciosAdt = () => {
       articles: [
         {
           title: "¿Qué servicios ofrece ADT?",
-          url: "/articulo/servicios-adt-disponibles"
+          url: "/articulo/servicios-adt-disponibles",
+          icon: <Shield className="h-4 w-4 text-primary" />
         },
         {
           title: "Tipos de monitoreo disponibles",
-          url: "/articulo/tipos-monitoreo"
+          url: "/articulo/tipos-monitoreo",
+          icon: <Monitor className="h-4 w-4 text-primary" />
         },
         {
           title: "Servicios adicionales",
-          url: "/articulo/servicios-adicionales"
+          url: "/articulo/servicios-adicionales",
+          icon: <Settings className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -34,15 +37,18 @@ const ServiciosAdt = () => {
       articles: [
         {
           title: "¿Cómo funciona el monitoreo 24/7?",
-          url: "/articulo/monitoreo-24-7"
+          url: "/articulo/monitoreo-24-7",
+          icon: <Clock className="h-4 w-4 text-primary" />
         },
         {
           title: "Central de monitoreo ADT",
-          url: "/articulo/central-monitoreo"
+          url: "/articulo/central-monitoreo",
+          icon: <Monitor className="h-4 w-4 text-primary" />
         },
         {
           title: "Protocolo de emergencias",
-          url: "/articulo/protocolo-emergencias"
+          url: "/articulo/protocolo-emergencias",
+          icon: <AlertTriangle className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -54,35 +60,43 @@ const ServiciosAdt = () => {
       articles: [
         {
           title: "¿Qué es ADT Smart Security?",
-          url: "/articulo/que-es-adt-smart-security"
+          url: "/articulo/que-es-adt-smart-security",
+          icon: <Smartphone className="h-4 w-4 text-primary" />
         },
         {
           title: "Dispositivos inteligentes disponibles",
-          url: "/articulo/dispositivos-inteligentes-disponibles"
+          url: "/articulo/dispositivos-inteligentes-disponibles",
+          icon: <Settings className="h-4 w-4 text-primary" />
         },
         {
           title: "Cámaras de seguridad inteligentes",
-          url: "/articulo/camaras-seguridad-inteligentes"
+          url: "/articulo/camaras-seguridad-inteligentes",
+          icon: <Camera className="h-4 w-4 text-primary" />
         },
         {
           title: "Control remoto de tu sistema",
-          url: "/articulo/control-remoto-sistema"
+          url: "/articulo/control-remoto-sistema",
+          icon: <Smartphone className="h-4 w-4 text-primary" />
         },
         {
           title: "Automatización del hogar",
-          url: "/articulo/automatizacion-hogar"
+          url: "/articulo/automatizacion-hogar",
+          icon: <Home className="h-4 w-4 text-primary" />
         },
         {
           title: "Sensores inteligentes",
-          url: "/articulo/sensores-inteligentes"
+          url: "/articulo/sensores-inteligentes",
+          icon: <Zap className="h-4 w-4 text-primary" />
         },
         {
           title: "Cerraduras inteligentes",
-          url: "/articulo/cerraduras-inteligentes"
+          url: "/articulo/cerraduras-inteligentes",
+          icon: <Lock className="h-4 w-4 text-primary" />
         },
         {
           title: "Configuración de notificaciones",
-          url: "/articulo/configuracion-notificaciones"
+          url: "/articulo/configuracion-notificaciones",
+          icon: <MessageCircle className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -94,15 +108,18 @@ const ServiciosAdt = () => {
       articles: [
         {
           title: "Servicios de instalación",
-          url: "/articulo/servicios-instalacion"
+          url: "/articulo/servicios-instalacion",
+          icon: <Wrench className="h-4 w-4 text-primary" />
         },
         {
           title: "Mantenimiento preventivo",
-          url: "/articulo/mantenimiento-preventivo"
+          url: "/articulo/mantenimiento-preventivo",
+          icon: <Settings className="h-4 w-4 text-primary" />
         },
         {
           title: "Garantías de servicio",
-          url: "/articulo/garantias-servicio"
+          url: "/articulo/garantias-servicio",
+          icon: <FileText className="h-4 w-4 text-primary" />
         }
       ]
     },
@@ -114,11 +131,13 @@ const ServiciosAdt = () => {
       articles: [
         {
           title: "Cobertura geográfica",
-          url: "/articulo/cobertura-geografica"
+          url: "/articulo/cobertura-geografica",
+          icon: <MapPin className="h-4 w-4 text-primary" />
         },
         {
           title: "Zonas de servicio",
-          url: "/articulo/zonas-servicio"
+          url: "/articulo/zonas-servicio",
+          icon: <MapPin className="h-4 w-4 text-primary" />
         }
       ]
     }
@@ -154,9 +173,12 @@ const ServiciosAdt = () => {
                   <Link key={index} to={article.url}>
                     <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
                       <CardContent className="p-6">
-                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                          {article.title}
-                        </h3>
+                        <div className="flex items-start gap-3 mb-2">
+                          {article.icon}
+                          <h3 className="font-semibold text-lg group-hover:text-primary transition-colors flex-1">
+                            {article.title}
+                          </h3>
+                        </div>
                         <p className="text-muted-foreground text-sm">
                           Información detallada sobre {article.title.toLowerCase()}
                         </p>
