@@ -1,0 +1,126 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-6xl">
+    
+    <!-- Breadcrumb -->
+    <nav class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
+        <li>></li>
+        <li><a href="{{community.url}}" class="hover:text-blue-600">Comunidad</a></li>
+        <li>></li>
+        <li class="text-gray-800 font-medium">{{topic.name}}</li>
+      </ol>
+    </nav>
+
+    <!-- Topic Header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+          💬
+        </div>
+        <h1 class="text-4xl font-bold">{{topic.name}}</h1>
+      </div>
+      
+      {{#if topic.description}}
+      <p class="text-lg text-gray-600 mb-6">{{topic.description}}</p>
+      {{/if}}
+      
+      <div class="flex items-center justify-between">
+        <div class="text-sm text-gray-500">
+          {{posts.length}} publicaciones
+        </div>
+        
+        {{#if current_user}}
+        <a href="{{topic.url}}/posts/new" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Nueva Publicación
+        </a>
+        {{/if}}
+      </div>
+    </div>
+
+    <!-- Posts List -->
+    {{#if posts}}
+    <div class="space-y-6">
+      {{#each posts}}
+      <article class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-center gap-3">
+            {{#if author.avatar_url}}
+            <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
+            {{else}}
+            <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+              <span class="text-gray-600 font-semibold">{{author.name.[0]}}</span>
+            </div>
+            {{/if}}
+            <div>
+              <h3 class="font-semibold">{{author.name}}</h3>
+              <p class="text-sm text-gray-500">{{created_at}}</p>
+            </div>
+          </div>
+          
+          {{#if featured}}
+          <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Destacado</span>
+          {{/if}}
+        </div>
+        
+        <h2 class="text-xl font-semibold mb-3">
+          <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
+        </h2>
+        
+        {{#if details}}
+        <div class="text-gray-600 mb-4 line-clamp-3">
+          {{details}}
+        </div>
+        {{/if}}
+        
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <div class="flex items-center gap-4">
+            <span>💬 {{comments_count}} respuestas</span>
+            <span>👍 {{vote_sum}} votos</span>
+            <span>👁️ {{views}} vistas</span>
+          </div>
+          
+          {{#if updated_at}}
+          <span>Actualizado {{updated_at}}</span>
+          {{/if}}
+        </div>
+      </article>
+      {{/each}}
+    </div>
+    {{else}}
+    <!-- Empty State -->
+    <div class="text-center py-12">
+      <div class="text-6xl mb-4">💬</div>
+      <h2 class="text-2xl font-bold mb-4">No hay publicaciones aún</h2>
+      <p class="text-gray-600 mb-8">
+        Sé el primero en iniciar una conversación en esta comunidad.
+      </p>
+      
+      {{#if current_user}}
+      <a href="{{topic.url}}/posts/new" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block">
+        Crear Primera Publicación
+      </a>
+      {{else}}
+      <p class="text-gray-500">Inicia sesión para participar en la comunidad</p>
+      {{/if}}
+    </div>
+    {{/if}}
+
+    <!-- Community Guidelines -->
+    <div class="bg-blue-50 rounded-lg p-6 mt-8">
+      <h3 class="font-semibold text-blue-900 mb-3">Normas de la Comunidad</h3>
+      <ul class="text-sm text-blue-800 space-y-1">
+        <li>• Mantén un tono respetuoso y profesional</li>
+        <li>• Busca antes de publicar para evitar duplicados</li>
+        <li>• Proporciona detalles claros sobre tu consulta</li>
+        <li>• Agradece las respuestas útiles con votos positivos</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+{{> footer}}
