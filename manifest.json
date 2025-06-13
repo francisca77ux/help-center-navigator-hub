@@ -11,7 +11,9 @@
       "label": "Zendesk Widget Key",
       "variables": [
         {
-          "identifier": "zendesk_widget_key"
+          "identifier": "zendesk_widget_key",
+          "name": "zendesk_widget_key",
+          "type": "text"
         }
       ],
       "type": "text",
@@ -22,7 +24,9 @@
       "label": "Color Primario",
       "variables": [
         {
-          "identifier": "primary_color"
+          "identifier": "primary_color",
+          "name": "primary_color",
+          "type": "text"
         }
       ],
       "type": "text",
@@ -34,7 +38,9 @@
       "label": "Mostrar Números de Contacto",
       "variables": [
         {
-          "identifier": "show_contact_numbers"
+          "identifier": "show_contact_numbers",
+          "name": "show_contact_numbers",
+          "type": "checkbox"
         }
       ],
       "type": "checkbox",
@@ -46,7 +52,9 @@
       "label": "Teléfono Principal",
       "variables": [
         {
-          "identifier": "main_phone"
+          "identifier": "main_phone",
+          "name": "main_phone",
+          "type": "text"
         }
       ],
       "type": "text",
@@ -58,7 +66,9 @@
       "label": "Número WhatsApp",
       "variables": [
         {
-          "identifier": "whatsapp_number"
+          "identifier": "whatsapp_number",
+          "name": "whatsapp_number",
+          "type": "text"
         }
       ],
       "type": "text",
@@ -70,7 +80,9 @@
       "label": "Email de Contacto",
       "variables": [
         {
-          "identifier": "contact_email"
+          "identifier": "contact_email",
+          "name": "contact_email",
+          "type": "text"
         }
       ],
       "type": "text",
