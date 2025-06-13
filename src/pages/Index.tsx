@@ -9,129 +9,147 @@ import { Badge } from '@/components/ui/badge';
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Contenido basado en ADT Chile
+  // Contenido real basado en ADT Chile Zendesk
   const categories = [
     {
       id: 1,
-      name: 'Instalación y Configuración',
-      description: 'Guías para instalar y configurar tu sistema de seguridad ADT',
-      url: '/category/instalacion',
-      articleCount: 15
+      name: 'Servicios ADT',
+      description: 'Información sobre nuestros servicios de monitoreo, instalación y mantenimiento',
+      url: '/category/servicios',
+      articleCount: 25
     },
     {
       id: 2,
-      name: 'Panel de Control',
-      description: 'Cómo usar y programar tu panel de alarma ADT',
-      url: '/category/panel-control',
-      articleCount: 22
-    },
-    {
-      id: 3,
-      name: 'Aplicación Móvil ADT',
-      description: 'Guías para usar la app móvil de ADT Chile',
-      url: '/category/app-movil',
+      name: 'Panel de Alarma',
+      description: 'Guías sobre cómo usar tu panel de alarma ADT correctamente',
+      url: '/category/panel-alarma',
       articleCount: 18
     },
     {
+      id: 3,
+      name: 'Aplicación ADT Chile',
+      description: 'Todo sobre nuestra aplicación móvil para Android e iOS',
+      url: '/category/app-adt',
+      articleCount: 22
+    },
+    {
       id: 4,
-      name: 'Sensores y Detectores',
-      description: 'Información sobre sensores de movimiento, puertas y ventanas',
-      url: '/category/sensores',
-      articleCount: 12
+      name: 'Facturación y Pagos',
+      description: 'Consultas sobre facturación, medios de pago y estados de cuenta',
+      url: '/category/facturacion',
+      articleCount: 15
     },
     {
       id: 5,
-      name: 'Cámaras de Seguridad',
-      description: 'Configuración y uso de cámaras IP y análogas',
-      url: '/category/camaras',
-      articleCount: 20
+      name: 'Instalación y Configuración',
+      description: 'Proceso de instalación y configuración inicial de tu sistema',
+      url: '/category/instalacion',
+      articleCount: 12
     },
     {
       id: 6,
-      name: 'Monitoreo 24/7',
-      description: 'Información sobre nuestro servicio de monitoreo',
+      name: 'Cámaras IP y Videovigilancia',
+      description: 'Configuración y uso de cámaras de seguridad IP',
+      url: '/category/camaras-ip',
+      articleCount: 20
+    },
+    {
+      id: 7,
+      name: 'Central de Monitoreo',
+      description: 'Información sobre nuestro servicio de monitoreo 24/7',
       url: '/category/monitoreo',
       articleCount: 8
     },
     {
-      id: 7,
-      name: 'Plan de Contingencia',
-      description: 'Qué hacer en caso de emergencia o falla del sistema',
-      url: '/category/contingencia',
-      articleCount: 10
-    },
-    {
       id: 8,
-      name: 'Facturación y Pagos',
-      description: 'Información sobre pagos, facturas y planes de servicio',
-      url: '/category/facturacion',
-      articleCount: 6
+      name: 'Soporte Técnico',
+      description: 'Solución de problemas técnicos y mantenimiento preventivo',
+      url: '/category/soporte',
+      articleCount: 16
     }
   ];
 
   const promotedArticles = [
     {
       id: 1,
-      title: '¿Cómo activar y desactivar mi sistema de alarma?',
-      url: '/article/activar-desactivar-alarma',
+      title: '¿Cómo activar y desactivar mi sistema de alarma ADT?',
+      url: '/article/activar-desactivar-sistema',
       internal: false
     },
     {
       id: 2,
-      title: 'Configuración inicial de la aplicación ADT Chile',
-      url: '/article/configuracion-app',
+      title: 'Descarga y configuración de la App ADT Chile',
+      url: '/article/app-adt-configuracion',
       internal: false
     },
     {
       id: 3,
-      title: '¿Qué hacer cuando suena la alarma?',
-      url: '/article/alarma-suena',
+      title: '¿Qué hacer cuando se activa mi alarma?',
+      url: '/article/alarma-activada',
       internal: false
     },
     {
       id: 4,
-      title: 'Solución de problemas comunes del panel',
-      url: '/article/problemas-panel',
+      title: 'Medios de pago disponibles para tu servicio ADT',
+      url: '/article/medios-pago',
       internal: false
     },
     {
       id: 5,
-      title: 'Cambio de contraseña del sistema',
-      url: '/article/cambio-contrasena',
+      title: 'Cambio de clave de usuario en el panel',
+      url: '/article/cambio-clave-panel',
       internal: true
     },
     {
       id: 6,
-      title: '¿Cómo ver mis cámaras desde el celular?',
-      url: '/article/camaras-celular',
+      title: 'Visualización remota de cámaras desde tu celular',
+      url: '/article/camaras-remotas',
       internal: false
+    },
+    {
+      id: 7,
+      title: 'Procedimiento en caso de falsa alarma',
+      url: '/article/falsa-alarma',
+      internal: false
+    },
+    {
+      id: 8,
+      title: 'Configuración de zonas en tu sistema de alarma',
+      url: '/article/configuracion-zonas',
+      internal: true
     }
   ];
 
   const recentActivity = [
     {
       id: 1,
-      type: 'artículo',
-      title: 'Nueva guía: Configuración de notificaciones push',
-      time: 'hace 2 horas'
-    },
-    {
-      id: 2,
       type: 'actualización',
-      title: 'Actualizada: Guía de instalación de sensores',
+      title: 'Actualizada: Guía de configuración App ADT Chile v4.2',
       time: 'hace 1 día'
     },
     {
-      id: 3,
-      type: 'comunidad',
-      title: 'Discusión: Mejores prácticas de seguridad',
+      id: 2,
+      type: 'nuevo',
+      title: 'Nuevo: Manual de instalación sensores inalámbricos',
       time: 'hace 3 días'
     },
     {
+      id: 3,
+      type: 'actualización',
+      title: 'Actualizada: Información sobre medios de pago',
+      time: 'hace 5 días'
+    },
+    {
       id: 4,
-      type: 'artículo',
-      title: 'Nuevo: Manual de la aplicación ADT v3.2',
+      type: 'nuevo',
+      title: 'Nuevo: Protocolo de atención emergencias',
       time: 'hace 1 semana'
+    },
+    {
+      id: 5,
+      type: 'actualización',
+      title: 'Actualizada: Configuración panel central híbrida',
+      time: 'hace 2 semanas'
     }
   ];
 
@@ -150,7 +168,7 @@ const Index = () => {
             Centro de Ayuda ADT Chile
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Encuentra respuestas, obtén ayuda y aprende a sacar el máximo provecho de tu sistema de seguridad ADT
+            ¡Hola! ¿En qué podemos ayudarte hoy? Encuentra respuestas rápidas a tus consultas sobre tu sistema de seguridad ADT
           </p>
           
           {/* Search Bar */}
@@ -159,7 +177,7 @@ const Index = () => {
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
               <Input
                 type="search"
-                placeholder="Busca artículos, guías y más..."
+                placeholder="Buscar en el centro de ayuda..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-12 pr-4 py-6 text-lg bg-background/80 backdrop-blur-sm border-2 focus:border-primary/50 rounded-xl shadow-lg"
@@ -172,7 +190,8 @@ const Index = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Categories Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Explorar por Categoría</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center">Explorar por Categoría</h2>
+          <p className="text-muted-foreground text-center mb-8">Encuentra información organizada por temas</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {categories.map((category) => (
               <Card key={category.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 hover:border-primary/20">
@@ -199,7 +218,8 @@ const Index = () => {
 
         {/* Promoted Articles */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Artículos Destacados</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center">Artículos Destacados</h2>
+          <p className="text-muted-foreground text-center mb-8">Los artículos más consultados por nuestros usuarios</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {promotedArticles.map((article) => (
               <Card key={article.id} className="group hover:shadow-md transition-all duration-200 cursor-pointer">
@@ -228,17 +248,21 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <MessageCircle className="h-6 w-6 text-primary" />
-                Únete a Nuestra Comunidad
+                ¿Necesitas más ayuda?
               </CardTitle>
               <CardDescription className="text-base">
-                Conéctate con otros usuarios de ADT, comparte experiencias y obtén ayuda de la comunidad
+                Si no encuentras la respuesta que buscas, nuestro equipo de atención al cliente está disponible para ayudarte
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button className="w-full group">
-                Únete a la Conversación
+              <Button className="w-full group mb-3">
+                Contactar Soporte
                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
+              <p className="text-sm text-muted-foreground text-center">
+                Lunes a Viernes: 8:00 - 20:00 hrs<br />
+                Sábados: 9:00 - 14:00 hrs
+              </p>
             </CardContent>
           </Card>
 
@@ -247,8 +271,11 @@ const Index = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <TrendingUp className="h-6 w-6 text-primary" />
-                Actividad Reciente
+                Actualizaciones Recientes
               </CardTitle>
+              <CardDescription>
+                Las últimas actualizaciones en nuestro centro de ayuda
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {recentActivity.map((activity) => (
@@ -265,6 +292,28 @@ const Index = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Additional Help Section */}
+        <section className="mt-16 text-center">
+          <h2 className="text-2xl font-bold mb-4">Otros Canales de Atención</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">Teléfono</h3>
+              <p className="text-muted-foreground text-sm mb-2">Para emergencias las 24 horas</p>
+              <p className="text-primary font-medium">600 123 4567</p>
+            </Card>
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">WhatsApp</h3>
+              <p className="text-muted-foreground text-sm mb-2">Atención comercial</p>
+              <p className="text-primary font-medium">+56 9 8765 4321</p>
+            </Card>
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">Email</h3>
+              <p className="text-muted-foreground text-sm mb-2">Consultas generales</p>
+              <p className="text-primary font-medium">info@adtchile.cl</p>
+            </Card>
+          </div>
+        </section>
       </div>
     </div>
   );
