@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -13,237 +13,181 @@
       </ol>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Header -->
     <div class="mb-8">
       <div class="flex items-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center">
-          📝
+        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+          🎫
         </div>
-        <h1 class="text-4xl font-bold">Nueva Solicitud de Soporte</h1>
+        <h1 class="text-4xl font-bold">Crear Nueva Solicitud</h1>
       </div>
       
       <p class="text-lg text-gray-600">
-        Envíanos tu consulta y nuestro equipo de soporte te ayudará a resolverla lo antes posible.
+        Describe tu consulta y nuestro equipo de soporte te ayudará lo antes posible.
       </p>
     </div>
 
-    <!-- New Request Form -->
-    <form action="/hc/requests" method="post" class="bg-white rounded-lg shadow-md">
-      <div class="p-6 border-b border-gray-200">
-        
-        <!-- Request Type -->
-        <div class="mb-6">
-          <label for="request-type" class="block text-sm font-medium text-gray-700 mb-2">
-            Tipo de Solicitud *
-          </label>
-          <select 
-            id="request-type" 
-            name="request[type]" 
-            required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Seleccionar tipo de solicitud</option>
-            <option value="technical">Soporte Técnico</option>
-            <option value="billing">Facturación</option>
-            <option value="installation">Instalación</option>
-            <option value="maintenance">Mantenimiento</option>
-            <option value="general">Consulta General</option>
-            <option value="complaint">Reclamo</option>
-          </select>
-        </div>
+    <!-- Request Form -->
+    <form class="bg-white rounded-lg shadow-md p-8 space-y-6">
+      <!-- Subject -->
+      <div>
+        <label for="request-subject" class="block text-sm font-medium text-gray-700 mb-2">
+          Asunto *
+        </label>
+        <input 
+          type="text" 
+          id="request-subject" 
+          name="request[subject]" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Resumen breve de tu consulta..."
+          required
+        >
+      </div>
 
-        <!-- Subject -->
-        <div class="mb-6">
-          <label for="request-subject" class="block text-sm font-medium text-gray-700 mb-2">
-            Asunto *
+      <!-- Category -->
+      <div>
+        <label for="request-category" class="block text-sm font-medium text-gray-700 mb-2">
+          Categoría
+        </label>
+        <select 
+          id="request-category" 
+          name="request[category]" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        >
+          <option value="">Selecciona una categoría</option>
+          <option value="soporte-tecnico">Soporte Técnico</option>
+          <option value="facturacion">Facturación</option>
+          <option value="instalacion">Instalación</option>
+          <option value="app-adt">App ADT</option>
+          <option value="panel-alarma">Panel de Alarma</option>
+          <option value="camaras">Cámaras</option>
+          <option value="monitoreo">Monitoreo</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <!-- Priority -->
+      <div>
+        <label for="request-priority" class="block text-sm font-medium text-gray-700 mb-2">
+          Prioridad
+        </label>
+        <select 
+          id="request-priority" 
+          name="request[priority]" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        >
+          <option value="low">Baja</option>
+          <option value="normal" selected>Normal</option>
+          <option value="high">Alta</option>
+          <option value="urgent">Urgente</option>
+        </select>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label for="request-description" class="block text-sm font-medium text-gray-700 mb-2">
+          Descripción *
+        </label>
+        <textarea 
+          id="request-description" 
+          name="request[description]" 
+          rows="8" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Describe tu consulta con el mayor detalle posible..."
+          required>
+        </textarea>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="request-email" class="block text-sm font-medium text-gray-700 mb-2">
+            Email *
           </label>
           <input 
-            type="text" 
-            id="request-subject" 
-            name="request[subject]" 
+            type="email" 
+            id="request-email" 
+            name="request[email]" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="tu@email.com"
             required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Describe brevemente tu consulta o problema"
           >
         </div>
-
-        <!-- Description -->
-        <div class="mb-6">
-          <label for="request-description" class="block text-sm font-medium text-gray-700 mb-2">
-            Descripción Detallada *
+        
+        <div>
+          <label for="request-phone" class="block text-sm font-medium text-gray-700 mb-2">
+            Teléfono
           </label>
-          <textarea 
-            id="request-description" 
-            name="request[description]" 
-            rows="8" 
-            required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Por favor, proporciona todos los detalles relevantes:
-- ¿Cuál es el problema específico?
-- ¿Cuándo comenzó?
-- ¿Qué pasos has intentado?
-- ¿Tienes algún mensaje de error?
-- Modelo de tu sistema ADT (si aplica)">
-          </textarea>
-        </div>
-
-        <!-- Priority -->
-        <div class="mb-6">
-          <label for="request-priority" class="block text-sm font-medium text-gray-700 mb-2">
-            Prioridad
-          </label>
-          <select 
-            id="request-priority" 
-            name="request[priority]" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          <input 
+            type="tel" 
+            id="request-phone" 
+            name="request[phone]" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="+56 9 1234 5678"
           >
-            <option value="low">Baja - Consulta general</option>
-            <option value="normal" selected>Normal - Requiere atención</option>
-            <option value="high">Alta - Problema urgente</option>
-            <option value="urgent">Urgente - Sistema no funciona</option>
-          </select>
         </div>
+      </div>
 
-        <!-- Contact Information -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label for="request-name" class="block text-sm font-medium text-gray-700 mb-2">
-              Nombre Completo *
-            </label>
-            <input 
-              type="text" 
-              id="request-name" 
-              name="request[requester_name]" 
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Tu nombre completo"
-            >
-          </div>
-          
-          <div>
-            <label for="request-email" class="block text-sm font-medium text-gray-700 mb-2">
-              Email *
-            </label>
-            <input 
-              type="email" 
-              id="request-email" 
-              name="request[requester_email]" 
-              required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="tu@email.com"
-            >
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label for="request-phone" class="block text-sm font-medium text-gray-700 mb-2">
-              Teléfono
-            </label>
-            <input 
-              type="tel" 
-              id="request-phone" 
-              name="request[phone]" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="+56 9 xxxx xxxx"
-            >
-          </div>
-          
-          <div>
-            <label for="request-account" class="block text-sm font-medium text-gray-700 mb-2">
-              Número de Cuenta ADT
-            </label>
-            <input 
-              type="text" 
-              id="request-account" 
-              name="request[account_number]" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Ej: 123456789 (opcional)"
-            >
-          </div>
-        </div>
-
-        <!-- File Attachments -->
-        <div class="mb-6">
-          <label for="request-attachments" class="block text-sm font-medium text-gray-700 mb-2">
-            Archivos Adjuntos (opcional)
+      <!-- File Upload -->
+      <div>
+        <label for="request-attachments" class="block text-sm font-medium text-gray-700 mb-2">
+          Archivos adjuntos
+        </label>
+        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+          <input 
+            type="file" 
+            id="request-attachments" 
+            name="request[attachments][]" 
+            multiple 
+            class="hidden"
+            accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
+          >
+          <label for="request-attachments" class="cursor-pointer">
+            <div class="text-gray-400 mb-2">📎</div>
+            <div class="text-sm text-gray-600">
+              Haz clic para seleccionar archivos o arrastra aquí
+            </div>
+            <div class="text-xs text-gray-400 mt-1">
+              Máximo 10MB por archivo (JPG, PNG, PDF, DOC)
+            </div>
           </label>
-          <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-            <input 
-              type="file" 
-              id="request-attachments" 
-              name="request[attachments][]" 
-              multiple
-              accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
-              class="hidden"
-            >
-            <label for="request-attachments" class="cursor-pointer">
-              <div class="text-gray-500 mb-2">📎</div>
-              <p class="text-sm text-gray-600">
-                Haz clic para adjuntar archivos o arrastra y suelta aquí
-              </p>
-              <p class="text-xs text-gray-500 mt-1">
-                Formatos permitidos: JPG, PNG, PDF, DOC (máx. 10MB por archivo)
-              </p>
-            </label>
-          </div>
         </div>
       </div>
 
       <!-- Form Actions -->
-      <div class="p-6 bg-gray-50 rounded-b-lg">
-        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
-          <div class="text-sm text-gray-600">
-            <p>* Campos obligatorios</p>
-          </div>
-          
-          <div class="flex gap-3">
-            <a href="{{help_center.url}}" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors">
-              Cancelar
-            </a>
-            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-              Enviar Solicitud
-            </button>
-          </div>
+      <div class="flex items-center justify-between pt-6 border-t">
+        <div class="text-sm text-gray-500">
+          * Campos obligatorios
+        </div>
+        
+        <div class="flex gap-4">
+          <a href="{{help_center.url}}" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+            Cancelar
+          </a>
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Enviar Solicitud
+          </button>
         </div>
       </div>
     </form>
 
-    <!-- Help Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-      <!-- Response Time Info -->
-      <div class="bg-blue-50 rounded-lg p-6">
-        <h3 class="font-semibold text-blue-900 mb-3">⏱️ Tiempos de Respuesta</h3>
-        <ul class="text-sm text-blue-800 space-y-2">
-          <li>• <strong>Urgente:</strong> Dentro de 2 horas</li>
-          <li>• <strong>Alta:</strong> Dentro de 8 horas</li>
-          <li>• <strong>Normal:</strong> Dentro de 24 horas</li>
-          <li>• <strong>Baja:</strong> Dentro de 72 horas</li>
-        </ul>
-      </div>
-
-      <!-- Quick Help -->
-      <div class="bg-green-50 rounded-lg p-6">
-        <h3 class="font-semibold text-green-900 mb-3">🔍 ¿Necesitas ayuda inmediata?</h3>
-        <ul class="text-sm text-green-800 space-y-2">
-          <li>• <a href="{{help_center.url}}/search" class="underline hover:no-underline">Buscar en artículos de ayuda</a></li>
-          <li>• <a href="{{help_center.url}}/community" class="underline hover:no-underline">Preguntar en la comunidad</a></li>
-          <li>• <strong>Emergencias:</strong> 600 123 4567</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Contact Alternatives -->
-    <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-      <div class="flex items-start gap-2">
-        <div class="text-yellow-600 mt-1">💡</div>
-        <div class="text-sm text-yellow-800">
-          <strong>Otros canales de contacto:</strong> También puedes contactarnos por WhatsApp al +56 9 8765 4321 o llamar directamente al 600 123 4567 para consultas urgentes.
-        </div>
+    <!-- Help Text -->
+    <div class="bg-blue-50 rounded-lg p-6 mt-8">
+      <h3 class="font-semibold text-blue-900 mb-3">¿Necesitas ayuda inmediata?</h3>
+      <p class="text-sm text-blue-800 mb-4">
+        Si tienes una emergencia de seguridad, contacta directamente:
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 text-sm">
+        <a href="tel:6001234567" class="text-blue-600 hover:text-blue-800">
+          📞 600 123 4567 (24/7)
+        </a>
+        <a href="https://wa.me/56987654321" class="text-green-600 hover:text-green-800">
+          💬 WhatsApp: +56 9 8765 4321
+        </a>
       </div>
     </div>
 
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}

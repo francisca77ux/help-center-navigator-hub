@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -7,41 +7,45 @@
     <!-- Error Content -->
     <div class="text-center py-16">
       <div class="mb-8">
-        {{#if error.status_code}}
-          {{#is error.status_code 404}}
-            <div class="text-8xl mb-4">🔍</div>
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Página no encontrada</h1>
-            <p class="text-lg text-gray-600 mb-8">
-              Lo sentimos, la página que buscas no existe o ha sido movida.
-            </p>
-          {{else}}
-            {{#is error.status_code 403}}
+        {{#if error}}
+          {{#if error.status_code}}
+            {{#if (eq error.status_code 404)}}
+              <div class="text-8xl mb-4">🔍</div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">Página no encontrada</h1>
+              <p class="text-lg text-gray-600 mb-8">
+                Lo sentimos, la página que buscas no existe o ha sido movida.
+              </p>
+            {{else if (eq error.status_code 403)}}
               <div class="text-8xl mb-4">🔒</div>
               <h1 class="text-4xl font-bold text-gray-800 mb-4">Acceso denegado</h1>
               <p class="text-lg text-gray-600 mb-8">
                 No tienes permisos para acceder a esta página.
               </p>
+            {{else if (eq error.status_code 500)}}
+              <div class="text-8xl mb-4">⚠️</div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">Error del servidor</h1>
+              <p class="text-lg text-gray-600 mb-8">
+                Ha ocurrido un error interno. Por favor, inténtalo más tarde.
+              </p>
             {{else}}
-              {{#is error.status_code 500}}
-                <div class="text-8xl mb-4">⚠️</div>
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">Error del servidor</h1>
-                <p class="text-lg text-gray-600 mb-8">
-                  Ha ocurrido un error interno. Por favor, inténtalo más tarde.
-                </p>
-              {{else}}
-                <div class="text-8xl mb-4">❌</div>
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">Error {{error.status_code}}</h1>
-                <p class="text-lg text-gray-600 mb-8">
-                  {{#if error.message}}{{error.message}}{{else}}Ha ocurrido un error inesperado.{{/if}}
-                </p>
-              {{/is}}
-            {{/is}}
-          {{/is}}
+              <div class="text-8xl mb-4">❌</div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">Error {{error.status_code}}</h1>
+              <p class="text-lg text-gray-600 mb-8">
+                {{#if error.message}}{{error.message}}{{else}}Ha ocurrido un error inesperado.{{/if}}
+              </p>
+            {{/if}}
+          {{else}}
+            <div class="text-8xl mb-4">❌</div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Error</h1>
+            <p class="text-lg text-gray-600 mb-8">
+              Ha ocurrido un error inesperado.
+            </p>
+          {{/if}}
         {{else}}
           <div class="text-8xl mb-4">❌</div>
           <h1 class="text-4xl font-bold text-gray-800 mb-4">Error</h1>
           <p class="text-lg text-gray-600 mb-8">
-            {{#if error.message}}{{error.message}}{{else}}Ha ocurrido un error inesperado.{{/if}}
+            Ha ocurrido un error inesperado.
           </p>
         {{/if}}
       </div>
@@ -62,26 +66,28 @@
       </div>
 
       <!-- Search Box for 404 errors -->
-      {{#if error.status_code}}
-        {{#is error.status_code 404}}
-        <div class="mt-12 max-w-md mx-auto">
-          <p class="text-gray-600 mb-4">¿Buscas algo específico?</p>
-          <form action="{{help_center.url}}/search" method="get" class="flex gap-2">
-            <input 
-              type="text" 
-              name="query" 
-              placeholder="Buscar en el centro de ayuda..."
-              class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-            <button 
-              type="submit"
-              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Buscar
-            </button>
-          </form>
-        </div>
-        {{/is}}
+      {{#if error}}
+        {{#if error.status_code}}
+          {{#if (eq error.status_code 404)}}
+          <div class="mt-12 max-w-md mx-auto">
+            <p class="text-gray-600 mb-4">¿Buscas algo específico?</p>
+            <form action="{{help_center.url}}/search" method="get" class="flex gap-2">
+              <input 
+                type="text" 
+                name="query" 
+                placeholder="Buscar en el centro de ayuda..."
+                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+              <button 
+                type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Buscar
+              </button>
+            </form>
+          </div>
+          {{/if}}
+        {{/if}}
       {{/if}}
 
       <!-- Contact Support -->
@@ -106,4 +112,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}

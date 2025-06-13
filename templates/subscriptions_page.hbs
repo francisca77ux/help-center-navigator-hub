@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -9,324 +9,240 @@
       <ol class="flex items-center space-x-2 text-sm text-gray-500">
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
-        <li class="text-gray-800 font-medium">Mi Suscripción</li>
+        <li class="text-gray-800 font-medium">Suscripciones</li>
       </ol>
     </nav>
 
     <!-- Page Header -->
-    <div class="text-center mb-12">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center">
-          💎
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+          💳
         </div>
-        <h1 class="text-4xl font-bold">Mi Suscripción ADT</h1>
+        <h1 class="text-4xl font-bold">Mis Suscripciones</h1>
       </div>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Gestiona tu plan de monitoreo y servicios de seguridad
+      
+      <p class="text-lg text-gray-600">
+        Gestiona tus suscripciones y métodos de pago de ADT Chile.
       </p>
     </div>
 
-    <!-- Current Subscription Status -->
-    <div class="bg-white rounded-lg shadow-md mb-8">
-      <div class="p-6 border-b border-gray-200">
-        <h2 class="text-xl font-semibold mb-4">Estado Actual de tu Suscripción</h2>
-        
-        {{#if subscription.active}}
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span class="text-lg font-medium text-green-800">Suscripción Activa</span>
-          </div>
-          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-            {{subscription.plan_name}}
-          </span>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div>
-            <h3 class="font-medium text-gray-700 mb-2">Plan Actual</h3>
-            <p class="text-2xl font-bold text-blue-600">${{subscription.monthly_price}}/mes</p>
-            <p class="text-sm text-gray-600">{{subscription.plan_name}}</p>
-          </div>
-          
-          <div>
-            <h3 class="font-medium text-gray-700 mb-2">Próximo Pago</h3>
-            <p class="text-lg font-semibold">{{subscription.next_billing_date}}</p>
-            <p class="text-sm text-gray-600">Renovación automática</p>
-          </div>
-          
-          <div>
-            <h3 class="font-medium text-gray-700 mb-2">Método de Pago</h3>
-            <div class="flex items-center gap-2">
-              <span class="text-lg">💳</span>
-              <span class="font-medium">****{{subscription.card_last4}}</span>
+    <!-- Current Subscription -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+      <h2 class="text-xl font-semibold mb-4">Suscripción Actual</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="bg-blue-50 rounded-lg p-4 mb-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold text-blue-900">Plan Básico ADT</span>
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Activo</span>
             </div>
-            <p class="text-sm text-gray-600">{{subscription.card_brand}} • {{subscription.card_exp}}</p>
+            <div class="text-2xl font-bold text-blue-600 mb-1">$29.990</div>
+            <div class="text-sm text-blue-800">por mes</div>
           </div>
-        </div>
-
-        {{else}}
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <span class="text-lg font-medium text-yellow-800">Sin Suscripción Activa</span>
+          
+          <div class="text-sm text-gray-600 space-y-1">
+            <div>Próximo cobro: 15 de Enero, 2025</div>
+            <div>Método de pago: Tarjeta terminada en 1234</div>
           </div>
-          <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
-            Servicios Básicos
-          </span>
         </div>
         
-        <p class="text-gray-600 mb-6">
-          Actualmente tienes acceso limitado a los servicios de ADT. Considera actualizar tu plan para obtener monitoreo 24/7 y funciones avanzadas.
-        </p>
-        {{/if}}
+        <div class="space-y-4">
+          <h3 class="font-semibold">Servicios incluidos:</h3>
+          <ul class="text-sm text-gray-600 space-y-2">
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              Monitoreo 24/7
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              Panel de alarma básico
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              App ADT móvil
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              Soporte técnico
+            </li>
+          </ul>
+        </div>
       </div>
       
-      <!-- Action Buttons -->
-      <div class="p-6 bg-gray-50">
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          {{#if subscription.active}}
-          <a href="/billing/manage" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center">
-            Gestionar Suscripción
-          </a>
-          <a href="/billing/change-payment" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium text-center">
-            Cambiar Método de Pago
-          </a>
-          {{else}}
-          <a href="/plans" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center">
-            Ver Planes Disponibles
-          </a>
-          <a href="/contact" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium text-center">
-            Hablar con un Asesor
-          </a>
-          {{/if}}
-        </div>
+      <div class="flex gap-4 mt-6 pt-6 border-t">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Cambiar Plan
+        </button>
+        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+          Pausar Suscripción
+        </button>
       </div>
     </div>
 
     <!-- Available Plans -->
-    <section class="mb-12">
-      <h3 class="text-2xl font-bold text-center mb-8">Planes Disponibles</h3>
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-6">Planes Disponibles</h2>
+      
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
         <!-- Basic Plan -->
-        <div class="bg-white rounded-lg shadow-md {{#is subscription.plan_name 'Básico'}}ring-2 ring-blue-500{{/is}}">
-          <div class="p-6">
-            {{#is subscription.plan_name 'Básico'}}
-            <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-4 text-center">
-              Tu Plan Actual
-            </div>
-            {{/is}}
-            
-            <div class="text-center mb-6">
-              <h4 class="text-xl font-bold mb-2">Plan Básico</h4>
-              <div class="text-3xl font-bold text-gray-900 mb-2">$29.990</div>
-              <div class="text-sm text-gray-600">por mes</div>
-            </div>
-            
-            <ul class="space-y-3 mb-6">
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Monitoreo básico 24/7</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Panel de control básico</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Notificaciones por SMS</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Soporte técnico estándar</span>
-              </li>
-            </ul>
-            
-            {{#unless (is subscription.plan_name 'Básico')}}
-            <button class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium">
-              {{#if subscription.active}}Cambiar a Básico{{else}}Seleccionar Plan{{/if}}
-            </button>
-            {{/unless}}
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold mb-2">Plan Básico</h3>
+            <div class="text-3xl font-bold text-blue-600 mb-1">$29.990</div>
+            <div class="text-sm text-gray-500">por mes</div>
           </div>
+          
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Monitoreo 24/7
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Panel básico
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              App móvil
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Soporte técnico
+            </li>
+          </ul>
+          
+          <button class="w-full bg-gray-100 text-gray-500 py-2 rounded-lg cursor-not-allowed">
+            Plan Actual
+          </button>
         </div>
 
         <!-- Premium Plan -->
-        <div class="bg-white rounded-lg shadow-md {{#is subscription.plan_name 'Premium'}}ring-2 ring-blue-500{{/is}} relative">
-          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-            <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-              Más Popular
-            </span>
+        <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-500 relative">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-3">
+            <span class="bg-blue-500 text-white text-xs px-3 py-1 rounded-full">Recomendado</span>
           </div>
           
-          <div class="p-6">
-            {{#is subscription.plan_name 'Premium'}}
-            <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-4 text-center">
-              Tu Plan Actual
-            </div>
-            {{/is}}
-            
-            <div class="text-center mb-6">
-              <h4 class="text-xl font-bold mb-2">Plan Premium</h4>
-              <div class="text-3xl font-bold text-gray-900 mb-2">$49.990</div>
-              <div class="text-sm text-gray-600">por mes</div>
-            </div>
-            
-            <ul class="space-y-3 mb-6">
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Todo lo del plan Básico</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Cámaras IP incluidas</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">App móvil avanzada</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Grabación en la nube</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Soporte prioritario</span>
-              </li>
-            </ul>
-            
-            {{#unless (is subscription.plan_name 'Premium')}}
-            <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              {{#if subscription.active}}Actualizar a Premium{{else}}Seleccionar Plan{{/if}}
-            </button>
-            {{/unless}}
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold mb-2">Plan Premium</h3>
+            <div class="text-3xl font-bold text-blue-600 mb-1">$49.990</div>
+            <div class="text-sm text-gray-500">por mes</div>
           </div>
+          
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Todo del plan básico
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              2 cámaras IP incluidas
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Sensores adicionales
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Almacenamiento en la nube
+            </li>
+          </ul>
+          
+          <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Actualizar Plan
+          </button>
         </div>
 
-        <!-- Enterprise Plan -->
-        <div class="bg-white rounded-lg shadow-md {{#is subscription.plan_name 'Enterprise'}}ring-2 ring-blue-500{{/is}}">
-          <div class="p-6">
-            {{#is subscription.plan_name 'Enterprise'}}
-            <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-4 text-center">
-              Tu Plan Actual
-            </div>
-            {{/is}}
-            
-            <div class="text-center mb-6">
-              <h4 class="text-xl font-bold mb-2">Plan Enterprise</h4>
-              <div class="text-3xl font-bold text-gray-900 mb-2">$79.990</div>
-              <div class="text-sm text-gray-600">por mes</div>
-            </div>
-            
-            <ul class="space-y-3 mb-6">
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Todo lo del plan Premium</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Múltiples ubicaciones</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Integración con sistemas</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Reportes avanzados</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-green-500">✓</span>
-                <span class="text-sm">Gerente de cuenta dedicado</span>
-              </li>
-            </ul>
-            
-            {{#unless (is subscription.plan_name 'Enterprise')}}
-            <button class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
-              {{#if subscription.active}}Actualizar a Enterprise{{else}}Contactar Ventas{{/if}}
-            </button>
-            {{/unless}}
+        <!-- Advanced Plan -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold mb-2">Plan Avanzado</h3>
+            <div class="text-3xl font-bold text-blue-600 mb-1">$79.990</div>
+            <div class="text-sm text-gray-500">por mes</div>
           </div>
+          
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Todo del plan premium
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              4 cámaras IP incluidas
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Domótica básica
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="text-green-500">✓</span>
+              Soporte prioritario
+            </li>
+          </ul>
+          
+          <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Actualizar Plan
+          </button>
         </div>
-        
       </div>
-    </section>
+    </div>
 
     <!-- Billing History -->
-    {{#if billing_history}}
-    <section class="mb-12">
-      <h3 class="text-2xl font-bold mb-6">Historial de Facturación</h3>
-      <div class="bg-white rounded-lg shadow-md">
-        <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead class="bg-gray-50">
-              <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Monto</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
-              </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-              {{#each billing_history}}
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{date}}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{description}}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${{amount}}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                    {{#is status 'paid'}}bg-green-100 text-green-800{{/is}}
-                    {{#is status 'pending'}}bg-yellow-100 text-yellow-800{{/is}}
-                    {{#is status 'failed'}}bg-red-100 text-red-800{{/is}}">
-                    {{#is status 'paid'}}Pagado{{/is}}
-                    {{#is status 'pending'}}Pendiente{{/is}}
-                    {{#is status 'failed'}}Fallido{{/is}}
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
-                  <a href="{{invoice_url}}" target="_blank" class="hover:text-blue-800">Descargar PDF</a>
-                </td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-    {{/if}}
-
-    <!-- Support Section -->
-    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 max-w-4xl mx-auto">
-      <div class="text-center mb-6">
-        <h3 class="text-xl font-bold mb-2">¿Necesitas ayuda con tu suscripción?</h3>
-        <p class="text-gray-600">Nuestro equipo está aquí para ayudarte con cualquier consulta</p>
-      </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4">Historial de Facturación</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="text-center">
-          <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">📞</div>
-          <h4 class="font-semibold">Atención al Cliente</h4>
-          <a href="tel:6001234567" class="text-sm text-gray-600 hover:text-blue-600">600 123 4567</a>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-green-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">💬</div>
-          <h4 class="font-semibold">WhatsApp</h4>
-          <a href="https://wa.me/56987654321" class="text-sm text-gray-600 hover:text-green-600" target="_blank">
-            +56 9 8765 4321
-          </a>
-        </div>
-        <div class="text-center">
-          <div class="w-12 h-12 bg-purple-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">📧</div>
-          <h4 class="font-semibold">Email</h4>
-          <a href="mailto:facturacion@adtchile.cl" class="text-sm text-gray-600 hover:text-purple-600">
-            facturacion@adtchile.cl
-          </a>
-        </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left py-2">Fecha</th>
+              <th class="text-left py-2">Descripción</th>
+              <th class="text-left py-2">Monto</th>
+              <th class="text-left py-2">Estado</th>
+              <th class="text-left py-2">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-3">15 Dic 2024</td>
+              <td class="py-3">Plan Básico ADT - Diciembre</td>
+              <td class="py-3">$29.990</td>
+              <td class="py-3">
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Pagado</span>
+              </td>
+              <td class="py-3">
+                <button class="text-blue-600 hover:text-blue-800 text-sm">Descargar</button>
+              </td>
+            </tr>
+            <tr class="border-b">
+              <td class="py-3">15 Nov 2024</td>
+              <td class="py-3">Plan Básico ADT - Noviembre</td>
+              <td class="py-3">$29.990</td>
+              <td class="py-3">
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Pagado</span>
+              </td>
+              <td class="py-3">
+                <button class="text-blue-600 hover:text-blue-800 text-sm">Descargar</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3">15 Oct 2024</td>
+              <td class="py-3">Plan Básico ADT - Octubre</td>
+              <td class="py-3">$29.990</td>
+              <td class="py-3">
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Pagado</span>
+              </td>
+              <td class="py-3">
+                <button class="text-blue-600 hover:text-blue-800 text-sm">Descargar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}

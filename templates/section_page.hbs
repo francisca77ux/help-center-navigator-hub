@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -9,170 +9,78 @@
       <ol class="flex items-center space-x-2 text-sm text-gray-500">
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
+        {{#if section.category}}
         <li><a href="{{section.category.url}}" class="hover:text-blue-600">{{section.category.name}}</a></li>
         <li>></li>
+        {{/if}}
         <li class="text-gray-800 font-medium">{{section.name}}</li>
       </ol>
     </nav>
 
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center">
-          {{#contains section.name "Activación"}}🔑{{/contains}}
-          {{#contains section.name "Configuración"}}⚙️{{/contains}}
-          {{#contains section.name "Problemas"}}❓{{/contains}}
-          {{#contains section.name "Mantenimiento"}}🔧{{/contains}}
-          {{#contains section.name "Instalación"}}📱{{/contains}}
-          {{#contains section.name "Pago"}}💳{{/contains}}
-          {{#contains section.name "Cámara"}}📹{{/contains}}
-          {{#contains section.name "Soporte"}}📞{{/contains}}
-          {{#contains section.name "Panel"}}🎛️{{/contains}}
-          {{#contains section.name "App"}}📲{{/contains}}
-          {{#contains section.name "Monitoreo"}}🛡️{{/contains}}
-          {{#unless section.name}}📄{{/unless}}
-        </div>
-        <h1 class="text-4xl font-bold">{{section.name}}</h1>
-      </div>
-      
-      {{#if section.description}}
+      <h1 class="text-4xl font-bold mb-4">{{section.name}}</h1>
       <p class="text-gray-600 text-lg max-w-2xl mx-auto">{{section.description}}</p>
-      {{/if}}
-      
-      <div class="mt-4 text-sm text-gray-500">
-        {{section.article_count}} artículos en esta sección
-      </div>
     </div>
 
-    <!-- Search within Section -->
-    <div class="max-w-2xl mx-auto mb-12">
-      <form action="{{help_center.url}}/search" method="get" class="relative">
-        <input 
-          type="hidden" 
-          name="section" 
-          value="{{section.id}}"
-        >
-        <input 
-          type="text" 
-          name="query" 
-          placeholder="Buscar en {{section.name}}..." 
-          class="w-full px-6 py-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        >
-        <button 
-          type="submit" 
-          class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          🔍
-        </button>
-      </form>
-    </div>
-
-    <!-- Articles List -->
-    {{#if section.articles}}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-      {{#each section.articles}}
-      <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow group">
-        <a href="{{url}}" class="block p-6">
-          <div class="flex items-start gap-3 mb-3">
-            <div class="w-6 h-6 text-blue-600 mt-1 flex-shrink-0">
-              {{#contains title "activar"}}🔑{{/contains}}
-              {{#contains title "desactivar"}}🔓{{/contains}}
-              {{#contains title "código"}}🔢{{/contains}}
-              {{#contains title "problema"}}⚠️{{/contains}}
-              {{#contains title "instalación"}}📱{{/contains}}
-              {{#contains title "pago"}}💳{{/contains}}
-              {{#contains title "cámara"}}📹{{/contains}}
-              {{#contains title "configurar"}}⚙️{{/contains}}
-              {{#contains title "manual"}}📖{{/contains}}
-              {{#contains title "guía"}}📋{{/contains}}
-              {{#unless title}}📄{{/unless}}
+    <!-- Articles -->
+    <div class="space-y-8">
+      {{#if articles}}
+      <section class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {{#each articles}}
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 group">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="w-5 h-5 text-blue-600 mt-1">📄</div>
+              <h3 class="font-semibold text-lg group-hover:text-blue-600 transition-colors flex-1">
+                <a href="{{url}}">{{title}}</a>
+              </h3>
             </div>
-            <h3 class="font-semibold text-lg group-hover:text-blue-600 transition-colors flex-1">
-              {{title}}
-            </h3>
-          </div>
-          
-          {{#if summary}}
-          <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{summary}}</p>
-          {{/if}}
-          
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Actualizado {{updated_at}}</span>
-            {{#if vote_sum}}
-            <span class="flex items-center gap-1">
-              👍 {{vote_sum}}
-            </span>
+            {{#if body}}
+            <p class="text-gray-600 text-sm line-clamp-3">{{body}}</p>
             {{/if}}
-          </div>
-        </a>
-      </article>
-      {{/each}}
-    </div>
-
-    {{else}}
-    <!-- Empty State -->
-    <div class="text-center py-16">
-      <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-        📄
+          </article>
+          {{/each}}
+        </div>
+      </section>
+      {{else}}
+      <!-- Empty State -->
+      <div class="text-center py-12">
+        <div class="text-6xl mb-4">📄</div>
+        <h2 class="text-2xl font-bold mb-4">No hay artículos disponibles</h2>
+        <p class="text-gray-600">
+          Los artículos aparecerán aquí una vez que se publiquen.
+        </p>
       </div>
-      <h2 class="text-2xl font-semibold text-gray-900 mb-4">Sin artículos disponibles</h2>
-      <p class="text-gray-600 mb-8 max-w-md mx-auto">
-        Esta sección aún no tiene artículos publicados. Vuelve pronto para ver nuevo contenido.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="{{section.category.url}}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-          Ver {{section.category.name}}
-        </a>
-        <a href="{{help_center.url}}" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium">
-          Ir al Inicio
-        </a>
-      </div>
+      {{/if}}
     </div>
-    {{/if}}
 
     <!-- Related Sections -->
+    {{#if section.category}}
     {{#if section.category.sections}}
-    <section class="mt-16">
-      <h3 class="text-2xl font-bold mb-8 text-center">Otras Secciones en {{section.category.name}}</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section class="mt-12">
+      <h3 class="text-2xl font-bold mb-6">Otras secciones en {{section.category.name}}</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {{#each section.category.sections}}
-        {{#unless (is url ../section.url)}}
-        <a href="{{url}}" class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 group">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
-              {{#contains name "Activación"}}🔑{{/contains}}
-              {{#contains name "Configuración"}}⚙️{{/contains}}
-              {{#contains name "Problemas"}}❓{{/contains}}
-              {{#contains name "Mantenimiento"}}🔧{{/contains}}
-              {{#contains name "Instalación"}}📱{{/contains}}
-              {{#contains name "Pago"}}💳{{/contains}}
-              {{#contains name "Cámara"}}📹{{/contains}}
-              {{#contains name "Soporte"}}📞{{/contains}}
-              {{#unless name}}📄{{/unless}}
-            </div>
-            <h4 class="font-semibold group-hover:text-blue-600 transition-colors">{{name}}</h4>
-          </div>
-          
+        {{#unless (compare id '==' ../section.id)}}
+        <a href="{{url}}" class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 group">
+          <h4 class="font-semibold group-hover:text-blue-600 transition-colors">{{name}}</h4>
           {{#if description}}
-          <p class="text-gray-600 text-sm mb-3">{{description}}</p>
+          <p class="text-gray-600 text-sm mt-2">{{description}}</p>
           {{/if}}
-          
-          <div class="text-xs text-gray-500">
-            {{article_count}} artículos
-          </div>
         </a>
         {{/unless}}
         {{/each}}
       </div>
     </section>
     {{/if}}
+    {{/if}}
 
-    <!-- Contact Support -->
-    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 mt-16 max-w-4xl mx-auto">
+    <!-- Contact Card -->
+    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 mt-12 max-w-4xl mx-auto">
       <div class="text-center mb-6">
-        <h3 class="text-xl font-bold mb-2">¿No encuentras lo que buscas?</h3>
-        <p class="text-gray-600">Nuestro equipo de soporte está listo para ayudarte</p>
+        <h3 class="text-xl font-bold mb-2">¿Necesitas más información?</h3>
+        <p class="text-gray-600">Nuestro equipo de atención al cliente está disponible para ayudarte</p>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -189,11 +97,9 @@
           </a>
         </div>
         <div class="text-center">
-          <div class="w-12 h-12 bg-purple-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">📝</div>
-          <h4 class="font-semibold">Crear Solicitud</h4>
-          <a href="{{help_center.url}}/requests/new" class="text-sm text-gray-600 hover:text-purple-600">
-            Nueva Solicitud
-          </a>
+          <div class="w-12 h-12 bg-purple-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2">✉️</div>
+          <h4 class="font-semibold">Email</h4>
+          <span class="text-sm text-gray-600">info@adtchile.cl</span>
         </div>
       </div>
     </div>
@@ -201,4 +107,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}

@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <!-- Hero Section -->
@@ -52,7 +52,7 @@
           </div>
           <p class="text-gray-600 mb-4">{{description}}</p>
           <div class="text-sm text-blue-600 font-medium">
-            {{articles_count}} artículos
+            Ver artículos
           </div>
         </a>
         {{/each}}
@@ -79,7 +79,7 @@
             <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
           </h3>
           
-          <p class="text-gray-600 text-sm">{{summary}}</p>
+          <p class="text-gray-600 text-sm">{{excerpt}}</p>
         </article>
         {{/each}}
       </div>
@@ -127,4 +127,4 @@
   </section>
 </main>
 
-{{> footer}}
+{{> _footer}}
