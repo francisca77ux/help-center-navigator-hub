@@ -1,20 +1,16 @@
+
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle, Settings, Key, AlertTriangle, BookOpen } from 'lucide-react';
+import { ArrowLeft, Shield, Power, Key, Settings, Users, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 
 const PanelAlarma = () => {
-  const breadcrumbItems = [
-    { label: 'Panel de Alarma' }
-  ];
-
   const sections = [
     {
       id: 1,
-      title: "Operación Básica",
-      icon: <Settings className="h-6 w-6 text-primary" />,
-      description: "Activación, desactivación y uso diario del panel",
+      title: "Activación y Desactivación",
+      icon: <Power className="h-6 w-6 text-primary" />,
+      description: "Aprende a controlar tu sistema de alarma",
       articles: [
         {
           title: "¿Cómo activar mi sistema de alarma?",
@@ -25,64 +21,36 @@ const PanelAlarma = () => {
           url: "/articulo/desactivar-sistema-alarma"
         },
         {
-          title: "Modos de armado parcial y total",
+          title: "Modos de armado disponibles",
           url: "/articulo/modos-armado"
         }
       ]
     },
     {
       id: 2,
-      title: "Configuración y Claves",
+      title: "Configuración de Códigos",
       icon: <Key className="h-6 w-6 text-primary" />,
-      description: "Gestión de claves y configuración de zonas",
+      description: "Gestiona los códigos de acceso de tu sistema",
       articles: [
         {
           title: "Cambio de clave maestra",
           url: "/articulo/cambio-clave-maestra"
         },
         {
-          title: "Configuración de zonas",
-          url: "/articulo/configuracion-zonas"
-        },
-        {
-          title: "Creación de códigos de usuario",
+          title: "Códigos de usuario",
           url: "/articulo/codigos-usuario"
         }
       ]
     },
     {
       id: 3,
-      title: "Solución de Problemas",
-      icon: <AlertTriangle className="h-6 w-6 text-primary" />,
-      description: "Diagnóstico y resolución de inconvenientes",
+      title: "Configuración Avanzada",
+      icon: <Settings className="h-6 w-6 text-primary" />,
+      description: "Personaliza tu sistema según tus necesidades",
       articles: [
         {
-          title: "Problemas con el panel",
-          url: "/articulo/problemas-panel"
-        },
-        {
-          title: "Luces indicadoras del panel",
-          url: "/articulo/luces-indicadoras-panel"
-        },
-        {
-          title: "Sonidos y alertas",
-          url: "/articulo/sonidos-alertas"
-        }
-      ]
-    },
-    {
-      id: 4,
-      title: "Documentación",
-      icon: <BookOpen className="h-6 w-6 text-primary" />,
-      description: "Manuales y guías detalladas",
-      articles: [
-        {
-          title: "Manual del usuario",
-          url: "/articulo/manual-usuario-panel"
-        },
-        {
-          title: "Guía de referencia rápida",
-          url: "/articulo/guia-referencia-rapida"
+          title: "Configuración de zonas",
+          url: "/articulo/configuracion-zonas"
         }
       ]
     }
@@ -90,19 +58,21 @@ const PanelAlarma = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-8">
-        <BreadcrumbNavigation items={breadcrumbItems} />
-        
-        <div className="mb-8">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="mb-8 text-center">
+          <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Volver al Centro de Ayuda
+          </Link>
           <h1 className="text-4xl font-bold mb-4">Panel de Alarma</h1>
-          <p className="text-muted-foreground text-lg">
-            Guías completas para el uso correcto de tu panel de alarma ADT
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Todo lo que necesitas saber sobre el uso y configuración de tu panel de alarma ADT
           </p>
         </div>
 
         <div className="space-y-12">
           {sections.map((section) => (
-            <section key={section.id} className="space-y-6">
+            <section key={section.id} className="space-y-8 mx-8">
               <div className="flex items-center gap-3 mb-6">
                 {section.icon}
                 <div>
@@ -111,7 +81,7 @@ const PanelAlarma = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
                 {section.articles.map((article, index) => (
                   <Link key={index} to={article.url}>
                     <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
@@ -131,21 +101,20 @@ const PanelAlarma = () => {
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <Phone className="h-6 w-6 text-primary" />
-              ¿Necesitas ayuda con tu panel?
+        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12 max-w-4xl mx-auto">
+          <CardHeader className="text-center">
+            <CardTitle className="flex items-center justify-center gap-3">
+              ¿Necesitas más información?
             </CardTitle>
             <CardDescription>
-              Contacta a nuestro soporte técnico especializado
+              Nuestro equipo de atención al cliente está disponible para ayudarte
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h4 className="font-semibold">Soporte 24/7</h4>
+                <h4 className="font-semibold">Teléfono</h4>
                 <p className="text-sm text-muted-foreground">600 123 4567</p>
               </div>
               <div className="text-center">
@@ -155,8 +124,8 @@ const PanelAlarma = () => {
               </div>
               <div className="text-center">
                 <Mail className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h4 className="font-semibold">Soporte Técnico</h4>
-                <p className="text-sm text-muted-foreground">soporte@adtchile.cl</p>
+                <h4 className="font-semibold">Email</h4>
+                <p className="text-sm text-muted-foreground">info@adtchile.cl</p>
               </div>
             </div>
           </CardContent>

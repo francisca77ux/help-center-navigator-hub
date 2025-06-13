@@ -1,140 +1,147 @@
 
 import React from 'react';
-import { Camera, ArrowRight, Video, Shield, Smartphone } from 'lucide-react';
+import { ArrowLeft, Camera, Monitor, Wifi, Settings, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 
 const CamarasIp = () => {
-  const breadcrumbItems = [
-    { label: 'Cámaras IP y Videovigilancia' }
-  ];
-
-  const articles = [
+  const sections = [
     {
       id: 1,
-      title: 'Configuración de cámaras IP ADT',
-      description: 'Guía paso a paso para configurar tus cámaras de videovigilancia',
-      url: '/articulo/configuracion-camaras-ip',
-      readTime: '10 min'
+      title: "Tipos de Cámaras",
+      icon: <Camera className="h-6 w-6 text-primary" />,
+      description: "Conoce los diferentes tipos de cámaras disponibles",
+      articles: [
+        {
+          title: "Cámaras interiores",
+          url: "/articulo/camaras-interiores"
+        },
+        {
+          title: "Cámaras exteriores",
+          url: "/articulo/camaras-exteriores"
+        },
+        {
+          title: "Cámaras con visión nocturna",
+          url: "/articulo/camaras-vision-nocturna"
+        }
+      ]
     },
     {
       id: 2,
-      title: 'Visualización remota desde móvil',
-      description: 'Cómo ver tus cámaras desde cualquier lugar con la app ADT',
-      url: '/articulo/visualizacion-remota-movil',
-      readTime: '6 min'
+      title: "Visualización",
+      icon: <Monitor className="h-6 w-6 text-primary" />,
+      description: "Cómo ver las imágenes de tus cámaras",
+      articles: [
+        {
+          title: "Visualización en tiempo real",
+          url: "/articulo/visualizacion-tiempo-real"
+        },
+        {
+          title: "Grabaciones almacenadas",
+          url: "/articulo/grabaciones-almacenadas"
+        },
+        {
+          title: "Acceso desde la app móvil",
+          url: "/articulo/acceso-app-movil"
+        }
+      ]
     },
     {
       id: 3,
-      title: 'Grabación y almacenamiento en la nube',
-      description: 'Configuración de grabación automática y acceso al historial',
-      url: '/articulo/grabacion-almacenamiento-nube',
-      readTime: '8 min'
-    },
-    {
-      id: 4,
-      title: 'Detección inteligente de movimiento',
-      description: 'Configurar alertas avanzadas y reducir falsas alarmas',
-      url: '/articulo/deteccion-inteligente-movimiento',
-      readTime: '7 min'
-    },
-    {
-      id: 5,
-      title: 'Calidad de video y resolución',
-      description: 'Optimizar la calidad de imagen según tu conexión',
-      url: '/articulo/calidad-video-resolucion',
-      readTime: '5 min'
+      title: "Configuración",
+      icon: <Settings className="h-6 w-6 text-primary" />,
+      description: "Configura tus cámaras según tus necesidades",
+      articles: [
+        {
+          title: "Configuración de alertas",
+          url: "/articulo/configuracion-alertas-camaras"
+        },
+        {
+          title: "Calidad de imagen",
+          url: "/articulo/calidad-imagen"
+        },
+        {
+          title: "Zonas de detección",
+          url: "/articulo/zonas-deteccion"
+        }
+      ]
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <BreadcrumbNavigation items={breadcrumbItems} />
-        
-        <div className="mb-8">
+        <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
-            <ArrowRight className="h-4 w-4 mr-2 rotate-180" />
+            <ArrowLeft className="h-4 w-4 mr-2" />
             Volver al Centro de Ayuda
           </Link>
-          
-          <div className="flex items-center gap-3 mb-4">
-            <Camera className="h-8 w-8 text-primary" />
-            <h1 className="text-4xl font-bold">Cámaras IP y Videovigilancia</h1>
-          </div>
-          <p className="text-lg text-muted-foreground">
-            Configuración y uso de tu sistema de videovigilancia ADT
+          <h1 className="text-4xl font-bold mb-4">Cámaras IP y Videovigilancia</h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Todo sobre las cámaras de seguridad, configuración y visualización de imágenes
           </p>
         </div>
 
-        {/* Features Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <Card className="text-center">
-            <CardHeader>
-              <Video className="h-12 w-12 text-primary mx-auto mb-2" />
-              <CardTitle className="text-lg">Video HD</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Grabación en alta definición 1080p
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center">
-            <CardHeader>
-              <Shield className="h-12 w-12 text-primary mx-auto mb-2" />
-              <CardTitle className="text-lg">Almacenamiento Seguro</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Grabaciones protegidas en la nube
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center">
-            <CardHeader>
-              <Smartphone className="h-12 w-12 text-primary mx-auto mb-2" />
-              <CardTitle className="text-lg">Acceso Móvil</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Visualización en tiempo real desde tu celular
-              </p>
-            </CardContent>
-          </Card>
+        <div className="space-y-12">
+          {sections.map((section) => (
+            <section key={section.id} className="space-y-8 mx-8">
+              <div className="flex items-center gap-3 mb-6">
+                {section.icon}
+                <div>
+                  <h2 className="text-2xl font-bold">{section.title}</h2>
+                  <p className="text-muted-foreground">{section.description}</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+                {section.articles.map((article, index) => (
+                  <Link key={index} to={article.url}>
+                    <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          Información detallada sobre {article.title.toLowerCase()}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
 
-        {/* Articles Section */}
-        <section>
-          <h2 className="text-3xl font-bold mb-6">Artículos de Ayuda</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {articles.map((article) => (
-              <Link key={article.id} to={article.url}>
-                <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 hover:border-primary/20 h-full">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                        {article.title}
-                      </CardTitle>
-                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
-                    </div>
-                    <CardDescription className="text-sm mt-2">
-                      {article.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <span className="text-xs text-muted-foreground">
-                      {article.readTime} de lectura
-                    </span>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12 max-w-4xl mx-auto">
+          <CardHeader className="text-center">
+            <CardTitle className="flex items-center justify-center gap-3">
+              ¿Necesitas más información?
+            </CardTitle>
+            <CardDescription>
+              Nuestro equipo de atención al cliente está disponible para ayudarte
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="text-center">
+                <Phone className="h-8 w-8 text-primary mx-auto mb-2" />
+                <h4 className="font-semibold">Teléfono</h4>
+                <p className="text-sm text-muted-foreground">600 123 4567</p>
+              </div>
+              <div className="text-center">
+                <MessageCircle className="h-8 w-8 text-primary mx-auto mb-2" />
+                <h4 className="font-semibold">WhatsApp</h4>
+                <p className="text-sm text-muted-foreground">+56 9 8765 4321</p>
+              </div>
+              <div className="text-center">
+                <Mail className="h-8 w-8 text-primary mx-auto mb-2" />
+                <h4 className="font-semibold">Email</h4>
+                <p className="text-sm text-muted-foreground">info@adtchile.cl</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

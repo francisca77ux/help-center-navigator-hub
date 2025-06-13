@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowLeft, Phone, Mail, MessageCircle, Download, Settings, Video, Bell } from 'lucide-react';
+import { ArrowLeft, Smartphone, Download, Settings, Bell, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -8,81 +8,61 @@ const AppAdt = () => {
   const sections = [
     {
       id: 1,
-      title: "Instalación y Configuración",
+      title: "Descarga e Instalación",
       icon: <Download className="h-6 w-6 text-primary" />,
-      description: "Descarga e instalación inicial de la app",
+      description: "Obtén la aplicación móvil ADT",
       articles: [
         {
-          title: "Descarga de la aplicación ADT Chile",
+          title: "Descarga de la App ADT",
           url: "/articulo/descarga-app-adt"
         },
         {
-          title: "Configuración inicial de la app",
-          url: "/articulo/configuracion-inicial-app"
+          title: "Instalación en Android",
+          url: "/articulo/instalacion-android"
         },
         {
-          title: "¿Cómo iniciar sesión?",
-          url: "/articulo/iniciar-sesion-app"
+          title: "Instalación en iOS",
+          url: "/articulo/instalacion-ios"
         }
       ]
     },
     {
       id: 2,
-      title: "Funciones Principales",
+      title: "Configuración",
       icon: <Settings className="h-6 w-6 text-primary" />,
-      description: "Control y gestión de tu sistema desde la app",
+      description: "Configura tu aplicación móvil",
       articles: [
         {
-          title: "Control del sistema desde la app",
-          url: "/articulo/control-sistema-app"
+          title: "Primer acceso a la app",
+          url: "/articulo/primer-acceso-app"
         },
         {
-          title: "Estados del sistema en tiempo real",
-          url: "/articulo/estados-tiempo-real"
+          title: "Configuración de notificaciones",
+          url: "/articulo/configuracion-notificaciones-app"
         },
         {
-          title: "Historial de eventos",
-          url: "/articulo/historial-eventos"
+          title: "Vinculación con tu sistema",
+          url: "/articulo/vinculacion-sistema"
         }
       ]
     },
     {
       id: 3,
-      title: "Videovigilancia",
-      icon: <Video className="h-6 w-6 text-primary" />,
-      description: "Visualización y control de cámaras",
+      title: "Funcionalidades",
+      icon: <Smartphone className="h-6 w-6 text-primary" />,
+      description: "Aprovecha todas las funciones de la app",
       articles: [
         {
-          title: "Visualización de cámaras",
-          url: "/articulo/visualizacion-camaras"
+          title: "Control remoto del sistema",
+          url: "/articulo/control-remoto-app"
         },
         {
-          title: "Grabación y reproducción",
-          url: "/articulo/grabacion-reproduccion"
+          title: "Visualización de eventos",
+          url: "/articulo/visualizacion-eventos"
         },
         {
-          title: "Configuración de cámaras",
-          url: "/articulo/configuracion-camaras-app"
-        }
-      ]
-    },
-    {
-      id: 4,
-      title: "Notificaciones y Soporte",
-      icon: <Bell className="h-6 w-6 text-primary" />,
-      description: "Alertas, actualizaciones y solución de problemas",
-      articles: [
-        {
-          title: "Notificaciones push",
-          url: "/articulo/notificaciones-push"
-        },
-        {
-          title: "Problemas de conexión",
-          url: "/articulo/problemas-conexion-app"
-        },
-        {
-          title: "Actualizaciones de la app",
-          url: "/articulo/actualizaciones-app"
+          title: "Gestión de usuarios",
+          url: "/articulo/gestion-usuarios-app"
         }
       ]
     }
@@ -90,21 +70,21 @@ const AppAdt = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Volver al Centro de Ayuda
           </Link>
-          <h1 className="text-4xl font-bold mb-4">Aplicación ADT Chile</h1>
-          <p className="text-muted-foreground text-lg">
-            Todo lo que necesitas saber sobre nuestra aplicación móvil
+          <h1 className="text-4xl font-bold mb-4">App ADT Chile</h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Guías completas para usar la aplicación móvil de ADT Chile
           </p>
         </div>
 
         <div className="space-y-12">
           {sections.map((section) => (
-            <section key={section.id} className="space-y-6">
+            <section key={section.id} className="space-y-8 mx-8">
               <div className="flex items-center gap-3 mb-6">
                 {section.icon}
                 <div>
@@ -113,7 +93,7 @@ const AppAdt = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
                 {section.articles.map((article, index) => (
                   <Link key={index} to={article.url}>
                     <Card className="hover:shadow-md transition-shadow cursor-pointer h-full group">
@@ -133,21 +113,20 @@ const AppAdt = () => {
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <Phone className="h-6 w-6 text-primary" />
-              ¿Problemas con la app?
+        <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20 mt-12 max-w-4xl mx-auto">
+          <CardHeader className="text-center">
+            <CardTitle className="flex items-center justify-center gap-3">
+              ¿Necesitas más información?
             </CardTitle>
             <CardDescription>
-              Nuestro equipo técnico te ayudará con cualquier inconveniente
+              Nuestro equipo de atención al cliente está disponible para ayudarte
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h4 className="font-semibold">Soporte App</h4>
+                <h4 className="font-semibold">Teléfono</h4>
                 <p className="text-sm text-muted-foreground">600 123 4567</p>
               </div>
               <div className="text-center">
@@ -158,7 +137,7 @@ const AppAdt = () => {
               <div className="text-center">
                 <Mail className="h-8 w-8 text-primary mx-auto mb-2" />
                 <h4 className="font-semibold">Email</h4>
-                <p className="text-sm text-muted-foreground">app@adtchile.cl</p>
+                <p className="text-sm text-muted-foreground">info@adtchile.cl</p>
               </div>
             </div>
           </CardContent>
