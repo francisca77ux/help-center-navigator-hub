@@ -5,57 +5,41 @@
   "version": "1.0.0",
   "api_version": 2,
   "default_locale": "es",
-  "settings": [
+  "parameters": [
     {
-      "label": "Clave del Widget de Zendesk",
-      "variables": [
-        {
-          "identifier": "zendesk_widget_key",
-          "type": "text",
-          "description": "Ingresa tu clave del widget de Zendesk para habilitar el chat",
-          "required": false
-        }
-      ]
+      "name": "zendesk_widget_key",
+      "type": "text",
+      "required": false
     },
     {
-      "label": "Color Principal",
-      "variables": [
-        {
-          "identifier": "primary_color",
-          "type": "color",
-          "default": "#1e40af",
-          "required": false
-        }
-      ]
+      "name": "primary_color",
+      "type": "text",
+      "default": "#1e40af",
+      "required": false
     },
     {
-      "label": "Configuración de Contacto",
-      "variables": [
-        {
-          "identifier": "show_contact_numbers",
-          "type": "checkbox",
-          "default": true,
-          "required": false
-        },
-        {
-          "identifier": "main_phone",
-          "type": "text",
-          "default": "600 123 4567",
-          "required": false
-        },
-        {
-          "identifier": "whatsapp_number",
-          "type": "text",
-          "default": "+56 9 8765 4321",
-          "required": false
-        },
-        {
-          "identifier": "contact_email",
-          "type": "text",
-          "default": "info@adtchile.cl",
-          "required": false
-        }
-      ]
+      "name": "show_contact_numbers",
+      "type": "checkbox",
+      "default": true,
+      "required": false
+    },
+    {
+      "name": "main_phone",
+      "type": "text",
+      "default": "600 123 4567",
+      "required": false
+    },
+    {
+      "name": "whatsapp_number",
+      "type": "text",
+      "default": "+56 9 8765 4321",
+      "required": false
+    },
+    {
+      "name": "contact_email",
+      "type": "text",
+      "default": "info@adtchile.cl",
+      "required": false
     }
   ]
 }
