@@ -1,44 +1,55 @@
 
 import React from 'react';
-import { TrendingUp } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
 
-interface RecentActivity {
+interface PopularTopic {
   id: number;
-  type: string;
+  category: string;
   title: string;
-  time: string;
+  searches: string;
+  url: string;
 }
 
 interface RecentActivitySectionProps {
-  recentActivity: RecentActivity[];
+  popularTopics: PopularTopic[];
 }
 
-const RecentActivitySection = ({ recentActivity }: RecentActivitySectionProps) => {
+const RecentActivitySection = ({ popularTopics }: RecentActivitySectionProps) => {
   return (
     <section className="mb-12">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
-            <TrendingUp className="h-6 w-6 text-primary" />
-            Actualizaciones Recientes
+            <Search className="h-6 w-6 text-primary" />
+            Temas Más Buscados
           </CardTitle>
           <CardDescription>
-            Las últimas actualizaciones en nuestro centro de ayuda
+            Los temas más consultados por nuestros usuarios esta semana
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {recentActivity.map((activity) => (
-            <div key={activity.id} className="flex items-start justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
+          {popularTopics.map((topic) => (
+            <Link 
+              key={topic.id} 
+              to={topic.url}
+              className="flex items-start justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer group block"
+            >
               <div className="flex-1">
-                <h4 className="font-medium text-sm mb-1">{activity.title}</h4>
-                <p className="text-xs text-muted-foreground">{activity.time}</p>
+                <h4 className="font-medium text-sm mb-1 group-hover:text-primary transition-colors">
+                  {topic.title}
+                </h4>
+                <p className="text-xs text-muted-foreground">{topic.searches} búsquedas</p>
               </div>
-              <Badge variant="outline" className="text-xs">
-                {activity.type}
-              </Badge>
-            </div>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="text-xs">
+                  {topic.category}
+                </Badge>
+                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+              </div>
+            </Link>
           ))}
         </CardContent>
       </Card>

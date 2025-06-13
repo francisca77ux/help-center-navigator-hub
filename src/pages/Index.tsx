@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import CategoriesSection from '@/components/CategoriesSection';
@@ -121,36 +120,41 @@ const Index = () => {
     }
   ];
 
-  const recentActivity = [
+  const popularTopics = [
     {
       id: 1,
-      type: 'actualización',
-      title: 'Actualizada: Guía de configuración App ADT Chile v4.2',
-      time: 'hace 1 día'
+      category: 'Panel',
+      title: '¿Cómo activar y desactivar mi sistema de alarma?',
+      searches: '2.4k',
+      url: '/article/activar-desactivar-sistema'
     },
     {
       id: 2,
-      type: 'nuevo',
-      title: 'Nuevo: Manual de instalación sensores inalámbricos',
-      time: 'hace 3 días'
+      category: 'App',
+      title: 'Problemas para descargar la aplicación ADT',
+      searches: '1.8k',
+      url: '/article/app-adt-configuracion'
     },
     {
       id: 3,
-      type: 'actualización',
-      title: 'Actualizada: Información sobre medios de pago',
-      time: 'hace 5 días'
+      category: 'Emergencia',
+      title: '¿Qué hacer cuando se activa mi alarma?',
+      searches: '1.5k',
+      url: '/article/alarma-activada'
     },
     {
       id: 4,
-      type: 'nuevo',
-      title: 'Nuevo: Protocolo de atención emergencias',
-      time: 'hace 1 semana'
+      category: 'Configuración',
+      title: 'Cambio de códigos de usuario en el panel',
+      searches: '1.2k',
+      url: '/article/cambio-clave-panel'
     },
     {
       id: 5,
-      type: 'actualización',
-      title: 'Actualizada: Configuración panel central híbrida',
-      time: 'hace 2 semanas'
+      category: 'Cámaras',
+      title: 'No puedo ver mis cámaras desde el celular',
+      searches: '980',
+      url: '/article/camaras-remotas'
     }
   ];
 
@@ -170,7 +174,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-12">
         <CategoriesSection categories={categories} />
         <PromotedArticlesSection promotedArticles={promotedArticles} />
-        <RecentActivitySection recentActivity={recentActivity} />
+        <RecentActivitySection popularTopics={popularTopics} />
         <HelpSection />
         <ContactChannelsSection />
       </div>
