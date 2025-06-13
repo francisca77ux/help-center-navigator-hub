@@ -9,26 +9,12 @@
     {
       "name": "zendesk_widget_key",
       "label": "Zendesk Widget Key",
-      "variables": [
-        {
-          "identifier": "zendesk_widget_key",
-          "name": "zendesk_widget_key",
-          "type": "text"
-        }
-      ],
       "type": "text",
       "required": false
     },
     {
       "name": "primary_color",
       "label": "Color Primario",
-      "variables": [
-        {
-          "identifier": "primary_color",
-          "name": "primary_color",
-          "type": "text"
-        }
-      ],
       "type": "text",
       "default": "#1e40af",
       "required": false
@@ -36,13 +22,6 @@
     {
       "name": "show_contact_numbers",
       "label": "Mostrar Números de Contacto",
-      "variables": [
-        {
-          "identifier": "show_contact_numbers",
-          "name": "show_contact_numbers",
-          "type": "checkbox"
-        }
-      ],
       "type": "checkbox",
       "default": true,
       "required": false
@@ -50,13 +29,6 @@
     {
       "name": "main_phone",
       "label": "Teléfono Principal",
-      "variables": [
-        {
-          "identifier": "main_phone",
-          "name": "main_phone",
-          "type": "text"
-        }
-      ],
       "type": "text",
       "default": "600 123 4567",
       "required": false
@@ -64,13 +36,6 @@
     {
       "name": "whatsapp_number",
       "label": "Número WhatsApp",
-      "variables": [
-        {
-          "identifier": "whatsapp_number",
-          "name": "whatsapp_number",
-          "type": "text"
-        }
-      ],
       "type": "text",
       "default": "+56 9 8765 4321",
       "required": false
@@ -78,13 +43,6 @@
     {
       "name": "contact_email",
       "label": "Email de Contacto",
-      "variables": [
-        {
-          "identifier": "contact_email",
-          "name": "contact_email",
-          "type": "text"
-        }
-      ],
       "type": "text",
       "default": "info@adtchile.cl",
       "required": false
