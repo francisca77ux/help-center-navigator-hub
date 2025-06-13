@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -30,7 +31,9 @@ const ContactChannelsSection = () => {
         <Card className="p-6">
           <h3 className="font-semibold mb-2">Teléfono</h3>
           <p className="text-muted-foreground text-sm mb-2">Para emergencias las 24 horas</p>
-          <p className="text-primary font-medium">600 123 4567</p>
+          <p className="text-primary font-medium">
+            <a href="tel:6001234567" className="hover:underline">600 123 4567</a>
+          </p>
         </Card>
         <Card className="p-6">
           <h3 className="font-semibold mb-2">WhatsApp</h3>
@@ -48,3 +51,4 @@ const ContactChannelsSection = () => {
 };
 
 export default ContactChannelsSection;
+
