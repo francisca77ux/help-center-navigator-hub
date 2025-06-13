@@ -1,10 +1,16 @@
 
 import React from 'react';
-import { MessageCircle, ArrowRight } from 'lucide-react';
+import { MessageCircle, ArrowRight, Phone } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const HelpSection = () => {
+  const handleZendeskChat = () => {
+    if (window.zE) {
+      window.zE('webWidget', 'open');
+    }
+  };
+
   return (
     <section className="mb-8 text-center">
       <div className="max-w-4xl mx-auto">
@@ -18,15 +24,28 @@ const HelpSection = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Si no encuentras la respuesta que buscas, nuestro equipo está disponible
               </p>
-              <div className="max-w-md mx-auto">
-                <Button size="sm" className="w-full group text-sm py-2 mb-2">
-                  Contactar Soporte
-                  <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <div className="max-w-md mx-auto flex gap-2">
+                <Button 
+                  size="sm" 
+                  className="flex-1 group text-sm py-2"
+                  onClick={handleZendeskChat}
+                >
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  Chat en Vivo
                 </Button>
-                <p className="text-sm text-muted-foreground">
-                  Lun-Vie: 8:00-20:00 | Sáb: 9:00-14:00
-                </p>
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  className="flex-1 group text-sm py-2"
+                  onClick={() => window.open('tel:6001234567')}
+                >
+                  <Phone className="h-4 w-4 mr-2" />
+                  Llamar
+                </Button>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Lun-Vie: 8:00-20:00 | Sáb: 9:00-14:00
+              </p>
             </Card>
           </div>
         </div>
