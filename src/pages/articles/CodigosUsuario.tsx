@@ -4,12 +4,15 @@ import { ArrowLeft, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const CodigosUsuario = () => {
   const breadcrumbItems = [
     { label: 'Panel de Alarma', href: '/panel-alarma' },
     { label: 'Creación de códigos de usuario' }
   ];
+
+  const tags = ['Panel de Alarma', 'Códigos', 'Usuarios', 'Configuración', 'Seguridad'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const CodigosUsuario = () => {
             <Users className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Creación de códigos de usuario</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

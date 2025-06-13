@@ -4,12 +4,15 @@ import { ArrowLeft, Smartphone } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const ControlRemotoApp = () => {
   const breadcrumbItems = [
     { label: 'App ADT', href: '/app-adt' },
     { label: 'Control remoto del sistema' }
   ];
+
+  const tags = ['App ADT', 'Control Remoto', 'Monitoreo', 'Armado', 'Desarmado'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const ControlRemotoApp = () => {
             <Smartphone className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Control remoto del sistema</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Tag, FileText } from 'lucide-react';
@@ -7,348 +6,152 @@ import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 
 const ArticlesByTag = () => {
   const { tag } = useParams<{ tag: string }>();
-  
-  // Mapeo de artículos por etiquetas
-  const articlesByTag: Record<string, Array<{title: string, href: string, description: string}>> = {
-    'Android': [
-      {
-        title: 'Instalación en Android',
-        href: '/articulo/instalacion-android',
-        description: 'Guía completa para instalar la app ADT en dispositivos Android'
-      }
-    ],
-    'Instalación': [
-      {
-        title: 'Instalación en Android',
-        href: '/articulo/instalacion-android',
-        description: 'Guía completa para instalar la app ADT en dispositivos Android'
-      },
-      {
-        title: 'Instalación en iOS',
-        href: '/articulo/instalacion-ios',
-        description: 'Guía completa para instalar la app ADT en dispositivos iOS'
-      },
-      {
-        title: 'Vinculación con tu sistema',
-        href: '/articulo/vinculacion-sistema',
-        description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT'
-      }
-    ],
-    'Monitoreo 24/7': [
-      {
-        title: 'Central de monitoreo ADT',
-        href: '/articulo/central-monitoreo',
-        description: 'Conoce nuestra central de monitoreo y sus características'
-      },
-      {
-        title: 'Monitoreo 24/7',
-        href: '/articulo/monitoreo-24-7',
-        description: 'Información sobre nuestro servicio de monitoreo continuo'
-      },
-      {
-        title: 'Tipos de monitoreo disponibles',
-        href: '/articulo/tipos-monitoreo',
-        description: 'Conoce los diferentes tipos de monitoreo que ofrecemos'
-      },
-      {
-        title: 'Protocolo de emergencias',
-        href: '/articulo/protocolo-emergencias',
-        description: 'Conoce nuestros protocolos de respuesta ante emergencias'
-      }
-    ],
-    'Pagos': [
-      {
-        title: 'Medios de pago disponibles',
-        href: '/articulo/medios-pago-disponibles',
-        description: 'Conoce todas las opciones de pago disponibles'
-      }
+  const decodedTag = decodeURIComponent(tag || '');
+
+  // Mapeo completo de artículos por etiqueta
+  const articlesByTag: Record<string, Array<{ title: string; href: string; description: string }>> = {
+    'Servicios ADT': [
+      { title: 'Servicios ADT disponibles', href: '/articulo/servicios-adt-disponibles', description: 'Conoce todos los servicios de seguridad que ofrece ADT Chile' },
+      { title: 'Servicios adicionales', href: '/articulo/servicios-adicionales', description: 'Servicios complementarios de videovigilancia y soporte técnico' },
+      { title: 'Tipos de monitoreo disponibles', href: '/articulo/tipos-monitoreo', description: 'Modalidades de monitoreo para diferentes necesidades' },
+      { title: '¿Qué es ADT Smart Security?', href: '/articulo/que-es-adt-smart-security', description: 'Plataforma inteligente de seguridad integral' },
     ],
     'Panel de Alarma': [
-      {
-        title: 'Modos de armado parcial y total',
-        href: '/articulo/modos-armado',
-        description: 'Aprende sobre los diferentes modos de armado'
-      },
-      {
-        title: 'Activar sistema de alarma',
-        href: '/articulo/activar-sistema-alarma',
-        description: 'Guía para activar tu sistema de alarma correctamente'
-      },
-      {
-        title: 'Desactivar sistema de alarma',
-        href: '/articulo/desactivar-sistema-alarma',
-        description: 'Guía para desactivar tu sistema de alarma'
-      },
-      {
-        title: 'Sensores con mal funcionamiento',
-        href: '/articulo/sensores-mal-funcionamiento',
-        description: 'Identifica y resuelve problemas comunes en sensores'
-      }
-    ],
-    'Configuración': [
-      {
-        title: 'Instalación en Android',
-        href: '/articulo/instalacion-android',
-        description: 'Guía completa para instalar la app ADT en dispositivos Android'
-      },
-      {
-        title: 'Modos de armado parcial y total',
-        href: '/articulo/modos-armado',
-        description: 'Aprende sobre los diferentes modos de armado'
-      },
-      {
-        title: 'Configuración de zonas',
-        href: '/articulo/configuracion-zonas',
-        description: 'Aprende a configurar las zonas de tu sistema'
-      },
-      {
-        title: 'Vinculación con tu sistema',
-        href: '/articulo/vinculacion-sistema',
-        description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT'
-      },
-      {
-        title: 'Problemas de conectividad',
-        href: '/articulo/problemas-conectividad',
-        description: 'Resuelve problemas de conectividad en tu sistema ADT'
-      }
-    ],
-    'Seguridad': [
-      {
-        title: 'Central de monitoreo ADT',
-        href: '/articulo/central-monitoreo',
-        description: 'Conoce nuestra central de monitoreo y sus características'
-      },
-      {
-        title: 'Protocolo de emergencias',
-        href: '/articulo/protocolo-emergencias',
-        description: 'Conoce nuestros protocolos de respuesta ante emergencias'
-      },
-      {
-        title: 'Tipos de monitoreo disponibles',
-        href: '/articulo/tipos-monitoreo',
-        description: 'Conoce los diferentes tipos de monitoreo que ofrecemos'
-      },
-      {
-        title: '¿Qué servicios ofrece ADT?',
-        href: '/articulo/servicios-adt-disponibles',
-        description: 'Conoce todos los servicios de seguridad que ADT ofrece'
-      }
-    ],
-    'Servicios ADT': [
-      {
-        title: '¿Qué servicios ofrece ADT?',
-        href: '/articulo/servicios-adt-disponibles',
-        description: 'Conoce todos los servicios de seguridad que ADT ofrece'
-      },
-      {
-        title: 'Servicios adicionales',
-        href: '/articulo/servicios-adicionales',
-        description: 'Descubre nuestros servicios complementarios de seguridad'
-      },
-      {
-        title: 'Tipos de monitoreo disponibles',
-        href: '/articulo/tipos-monitoreo',
-        description: 'Conoce los diferentes tipos de monitoreo que ofrecemos'
-      },
-      {
-        title: '¿Qué es ADT Smart Security?',
-        href: '/articulo/que-es-adt-smart-security',
-        description: 'Conoce nuestro sistema de seguridad más avanzado'
-      }
+      { title: '¿Cómo activar mi sistema de alarma?', href: '/articulo/activar-sistema-alarma', description: 'Pasos para activar correctamente tu sistema ADT' },
+      { title: '¿Cómo desactivar mi sistema de alarma?', href: '/articulo/desactivar-sistema-alarma', description: 'Procedimientos para desactivar tu alarma' },
+      { title: 'Cambio de clave maestra', href: '/articulo/cambio-clave-maestra', description: 'Cómo cambiar la clave principal de tu sistema' },
+      { title: 'Configuración de zonas', href: '/articulo/configuracion-zonas', description: 'Personaliza las zonas de tu sistema de alarma' },
+      { title: 'Creación de códigos de usuario', href: '/articulo/codigos-usuario', description: 'Gestiona códigos para diferentes usuarios' },
     ],
     'App ADT': [
-      {
-        title: 'Vinculación con tu sistema',
-        href: '/articulo/vinculacion-sistema',
-        description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT'
-      },
-      {
-        title: 'Visualización de eventos',
-        href: '/articulo/visualizacion-eventos',
-        description: 'Consulta el historial completo de eventos de tu sistema'
-      }
+      { title: 'Descarga de la aplicación ADT Chile', href: '/articulo/descarga-app-adt', description: 'Instala la app oficial en tu dispositivo' },
+      { title: 'Primer acceso a la app', href: '/articulo/primer-acceso-app', description: 'Configuración inicial de la aplicación' },
+      { title: 'Vinculación con tu sistema', href: '/articulo/vinculacion-sistema', description: 'Conecta tu app con el sistema de alarma' },
+      { title: 'Configuración de notificaciones', href: '/articulo/configuracion-notificaciones-app', description: 'Personaliza alertas y notificaciones' },
+      { title: 'Control remoto del sistema', href: '/articulo/control-remoto-app', description: 'Controla tu alarma desde cualquier lugar' },
+      { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial de eventos' },
+    ],
+    'Monitoreo 24/7': [
+      { title: 'Central de monitoreo ADT', href: '/articulo/central-monitoreo', description: 'Centro de operaciones que supervisa tu seguridad' },
+      { title: 'Monitoreo 24/7', href: '/articulo/monitoreo-24-7', description: 'Supervisión continua de tu sistema de seguridad' },
+      { title: 'Tipos de monitoreo disponibles', href: '/articulo/tipos-monitoreo', description: 'Modalidades de monitoreo para diferentes necesidades' },
+      { title: 'Protocolo de emergencias', href: '/articulo/protocolo-emergencias', description: 'Procedimientos de respuesta ante emergencias' },
     ],
     'Videovigilancia': [
-      {
-        title: 'Servicios adicionales',
-        href: '/articulo/servicios-adicionales',
-        description: 'Descubre nuestros servicios complementarios de seguridad'
-      },
-      {
-        title: 'Tipos de monitoreo disponibles',
-        href: '/articulo/tipos-monitoreo',
-        description: 'Conoce los diferentes tipos de monitoreo que ofrecemos'
-      },
-      {
-        title: '¿Qué servicios ofrece ADT?',
-        href: '/articulo/servicios-adt-disponibles',
-        description: 'Conoce todos los servicios de seguridad que ADT ofrece'
-      }
+      { title: 'Servicios adicionales', href: '/articulo/servicios-adicionales', description: 'Servicios complementarios de videovigilancia y soporte técnico' },
     ],
     'Soporte Técnico': [
-      {
-        title: 'Sensores con mal funcionamiento',
-        href: '/articulo/sensores-mal-funcionamiento',
-        description: 'Identifica y resuelve problemas comunes en sensores'
-      },
-      {
-        title: 'Problemas de conectividad',
-        href: '/articulo/problemas-conectividad',
-        description: 'Resuelve problemas de conectividad en tu sistema ADT'
-      },
-      {
-        title: 'Servicios adicionales',
-        href: '/articulo/servicios-adicionales',
-        description: 'Descubre nuestros servicios complementarios de seguridad'
-      }
+      { title: 'Mi alarma no se activa', href: '/articulo/alarma-no-activa', description: 'Soluciones para problemas de activación' },
+      { title: 'Problemas de conectividad', href: '/articulo/problemas-conectividad', description: 'Resuelve problemas de conexión del sistema' },
+      { title: 'Sensores con mal funcionamiento', href: '/articulo/sensores-mal-funcionamiento', description: 'Diagnóstico y solución de sensores' },
     ],
-    'Smart Security': [
-      {
-        title: '¿Qué es ADT Smart Security?',
-        href: '/articulo/que-es-adt-smart-security',
-        description: 'Conoce nuestro sistema de seguridad más avanzado'
-      },
-      {
-        title: '¿Qué servicios ofrece ADT?',
-        href: '/articulo/servicios-adt-disponibles',
-        description: 'Conoce todos los servicios de seguridad que ADT ofrece'
-      }
+    'Configuración': [
+      { title: 'Configuración de zonas', href: '/articulo/configuracion-zonas', description: 'Personaliza las zonas de tu sistema de alarma' },
+      { title: 'Configuración de notificaciones', href: '/articulo/configuracion-notificaciones-app', description: 'Personaliza alertas y notificaciones' },
+      { title: 'Primer acceso a la app', href: '/articulo/primer-acceso-app', description: 'Configuración inicial de la aplicación' },
+      { title: 'Vinculación con tu sistema', href: '/articulo/vinculacion-sistema', description: 'Conecta tu app con el sistema de alarma' },
     ],
-    'Emergencias': [
-      {
-        title: 'Protocolo de emergencias',
-        href: '/articulo/protocolo-emergencias',
-        description: 'Conoce nuestros protocolos de respuesta ante emergencias'
-      },
-      {
-        title: 'Tipos de monitoreo disponibles',
-        href: '/articulo/tipos-monitoreo',
-        description: 'Conoce los diferentes tipos de monitoreo que ofrecemos'
-      }
+    'Instalación': [
+      { title: 'Descarga de la aplicación ADT Chile', href: '/articulo/descarga-app-adt', description: 'Instala la app oficial en tu dispositivo' },
+      { title: 'Vinculación con tu sistema', href: '/articulo/vinculacion-sistema', description: 'Conecta tu app con el sistema de alarma' },
+      { title: 'Primer acceso a la app', href: '/articulo/primer-acceso-app', description: 'Configuración inicial de la aplicación' },
     ],
-    'Eventos': [
-      {
-        title: 'Visualización de eventos',
-        href: '/articulo/visualizacion-eventos',
-        description: 'Consulta el historial completo de eventos de tu sistema'
-      }
+    'Códigos': [
+      { title: '¿Cómo activar mi sistema de alarma?', href: '/articulo/activar-sistema-alarma', description: 'Pasos para activar correctamente tu sistema ADT' },
+      { title: '¿Cómo desactivar mi sistema de alarma?', href: '/articulo/desactivar-sistema-alarma', description: 'Procedimientos para desactivar tu alarma' },
+      { title: 'Cambio de clave maestra', href: '/articulo/cambio-clave-maestra', description: 'Cómo cambiar la clave principal de tu sistema' },
+      { title: 'Creación de códigos de usuario', href: '/articulo/codigos-usuario', description: 'Gestiona códigos para diferentes usuarios' },
     ],
-    'Historial': [
-      {
-        title: 'Visualización de eventos',
-        href: '/articulo/visualizacion-eventos',
-        description: 'Consulta el historial completo de eventos de tu sistema'
-      }
+    'Seguridad': [
+      { title: '¿Cómo activar mi sistema de alarma?', href: '/articulo/activar-sistema-alarma', description: 'Pasos para activar correctamente tu sistema ADT' },
+      { title: '¿Cómo desactivar mi sistema de alarma?', href: '/articulo/desactivar-sistema-alarma', description: 'Procedimientos para desactivar tu alarma' },
+      { title: 'Cambio de clave maestra', href: '/articulo/cambio-clave-maestra', description: 'Cómo cambiar la clave principal de tu sistema' },
+      { title: 'Creación de códigos de usuario', href: '/articulo/codigos-usuario', description: 'Gestiona códigos para diferentes usuarios' },
+      { title: 'Tipos de monitoreo disponibles', href: '/articulo/tipos-monitoreo', description: 'Modalidades de monitoreo para diferentes necesidades' },
+      { title: 'Protocolo de emergencias', href: '/articulo/protocolo-emergencias', description: 'Procedimientos de respuesta ante emergencias' },
+    ],
+    'Activación': [
+      { title: '¿Cómo activar mi sistema de alarma?', href: '/articulo/activar-sistema-alarma', description: 'Pasos para activar correctamente tu sistema ADT' },
+    ],
+    'Desactivación': [
+      { title: '¿Cómo desactivar mi sistema de alarma?', href: '/articulo/desactivar-sistema-alarma', description: 'Procedimientos para desactivar tu alarma' },
+    ],
+    'Registro': [
+      { title: 'Primer acceso a la app', href: '/articulo/primer-acceso-app', description: 'Configuración inicial de la aplicación' },
+    ],
+    'Android': [
+      { title: 'Descarga de la aplicación ADT Chile', href: '/articulo/descarga-app-adt', description: 'Instala la app oficial en tu dispositivo' },
+    ],
+    'iOS': [
+      { title: 'Descarga de la aplicación ADT Chile', href: '/articulo/descarga-app-adt', description: 'Instala la app oficial en tu dispositivo' },
+    ],
+    'Descarga': [
+      { title: 'Descarga de la aplicación ADT Chile', href: '/articulo/descarga-app-adt', description: 'Instala la app oficial en tu dispositivo' },
     ],
     'Notificaciones': [
-      {
-        title: 'Visualización de eventos',
-        href: '/articulo/visualizacion-eventos',
-        description: 'Consulta el historial completo de eventos de tu sistema'
-      }
+      { title: 'Configuración de notificaciones', href: '/articulo/configuracion-notificaciones-app', description: 'Personaliza alertas y notificaciones' },
+      { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial de eventos' },
+    ],
+    'Alertas': [
+      { title: 'Configuración de notificaciones', href: '/articulo/configuracion-notificaciones-app', description: 'Personaliza alertas y notificaciones' },
+    ],
+    'Push': [
+      { title: 'Configuración de notificaciones', href: '/articulo/configuracion-notificaciones-app', description: 'Personaliza alertas y notificaciones' },
+    ],
+    'Emergencias': [
+      { title: 'Protocolo de emergencias', href: '/articulo/protocolo-emergencias', description: 'Conoce nuestros protocolos de respuesta ante emergencias' },
+      { title: 'Tipos de monitoreo disponibles', href: '/articulo/tipos-monitoreo', description: 'Conoce los diferentes tipos de monitoreo que ofrecemos' }
+    ],
+    'Eventos': [
+      { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial completo de eventos de tu sistema' }
+    ],
+    'Historial': [
+      { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial completo de eventos de tu sistema' }
+    ],
+    'Notificaciones': [
+      { title: 'Visualización de eventos', href: '/articulo/visualizacion-eventos', description: 'Consulta el historial completo de eventos de tu sistema' }
     ],
     'Protocolo': [
-      {
-        title: 'Protocolo de emergencias',
-        href: '/articulo/protocolo-emergencias',
-        description: 'Conoce nuestros protocolos de respuesta ante emergencias'
-      }
+      { title: 'Protocolo de emergencias', href: '/articulo/protocolo-emergencias', description: 'Conoce nuestros protocolos de respuesta ante emergencias' }
     ],
     'Respuesta': [
-      {
-        title: 'Protocolo de emergencias',
-        href: '/articulo/protocolo-emergencias',
-        description: 'Conoce nuestros protocolos de respuesta ante emergencias'
-      }
+      { title: 'Protocolo de emergencias', href: '/articulo/protocolo-emergencias', description: 'Conoce nuestros protocolos de respuesta ante emergencias' }
     ],
     'Sensores': [
-      {
-        title: 'Sensores con mal funcionamiento',
-        href: '/articulo/sensores-mal-funcionamiento',
-        description: 'Identifica y resuelve problemas comunes en sensores'
-      }
+      { title: 'Sensores con mal funcionamiento', href: '/articulo/sensores-mal-funcionamiento', description: 'Identifica y resuelve problemas comunes en sensores' }
     ],
     'Diagnóstico': [
-      {
-        title: 'Sensores con mal funcionamiento',
-        href: '/articulo/sensores-mal-funcionamiento',
-        description: 'Identifica y resuelve problemas comunes en sensores'
-      },
-      {
-        title: 'Problemas de conectividad',
-        href: '/articulo/problemas-conectividad',
-        description: 'Resuelve problemas de conectividad en tu sistema ADT'
-      }
+      { title: 'Sensores con mal funcionamiento', href: '/articulo/sensores-mal-funcionamiento', description: 'Identifica y resuelve problemas comunes en sensores' },
+      { title: 'Problemas de conectividad', href: '/articulo/problemas-conectividad', description: 'Resuelve problemas de conectividad en tu sistema ADT' }
     ],
     'Mantenimiento': [
-      {
-        title: 'Sensores con mal funcionamiento',
-        href: '/articulo/sensores-mal-funcionamiento',
-        description: 'Identifica y resuelve problemas comunes en sensores'
-      },
-      {
-        title: 'Servicios adicionales',
-        href: '/articulo/servicios-adicionales',
-        description: 'Descubre nuestros servicios complementarios de seguridad'
-      }
+      { title: 'Sensores con mal funcionamiento', href: '/articulo/sensores-mal-funcionamiento', description: 'Identifica y resuelve problemas comunes en sensores' },
+      { title: 'Servicios adicionales', href: '/articulo/servicios-adicionales', description: 'Descubre nuestros servicios complementarios de seguridad' }
     ],
     'Conectividad': [
-      {
-        title: 'Problemas de conectividad',
-        href: '/articulo/problemas-conectividad',
-        description: 'Resuelve problemas de conectividad en tu sistema ADT'
-      },
-      {
-        title: 'Vinculación con tu sistema',
-        href: '/articulo/vinculacion-sistema',
-        description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT'
-      }
+      { title: 'Problemas de conectividad', href: '/articulo/problemas-conectividad', description: 'Resuelve problemas de conectividad en tu sistema ADT' },
+      { title: 'Vinculación con tu sistema', href: '/articulo/vinculacion-sistema', description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT' }
     ],
     'WiFi': [
-      {
-        title: 'Problemas de conectividad',
-        href: '/articulo/problemas-conectividad',
-        description: 'Resuelve problemas de conectividad en tu sistema ADT'
-      }
+      { title: 'Problemas de conectividad', href: '/articulo/problemas-conectividad', description: 'Resuelve problemas de conectividad en tu sistema ADT' }
     ],
     'IoT': [
-      {
-        title: '¿Qué es ADT Smart Security?',
-        href: '/articulo/que-es-adt-smart-security',
-        description: 'Conoce nuestro sistema de seguridad más avanzado'
-      }
+      { title: '¿Qué es ADT Smart Security?', href: '/articulo/que-es-adt-smart-security', description: 'Conoce nuestro sistema de seguridad más avanzado' }
     ],
     'Automatización': [
-      {
-        title: '¿Qué es ADT Smart Security?',
-        href: '/articulo/que-es-adt-smart-security',
-        description: 'Conoce nuestro sistema de seguridad más avanzado'
-      }
+      { title: '¿Qué es ADT Smart Security?', href: '/articulo/que-es-adt-smart-security', description: 'Conoce nuestro sistema de seguridad más avanzado' }
     ],
     'Tecnología': [
-      {
-        title: '¿Qué es ADT Smart Security?',
-        href: '/articulo/que-es-adt-smart-security',
-        description: 'Conoce nuestro sistema de seguridad más avanzado'
-      }
+      { title: '¿Qué es ADT Smart Security?', href: '/articulo/que-es-adt-smart-security', description: 'Conoce nuestro sistema de seguridad más avanzado' }
     ],
     'Cámaras IP': [
-      {
-        title: 'Servicios adicionales',
-        href: '/articulo/servicios-adicionales',
-        description: 'Descubre nuestros servicios complementarios de seguridad'
-      }
+      { title: 'Servicios adicionales', href: '/articulo/servicios-adicionales', description: 'Descubre nuestros servicios complementarios de seguridad' }
     ],
     'Código QR': [
-      {
-        title: 'Vinculación con tu sistema',
-        href: '/articulo/vinculacion-sistema',
-        description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT'
-      }
+      { title: 'Vinculación con tu sistema', href: '/articulo/vinculacion-sistema', description: 'Conecta tu aplicación móvil con tu sistema de alarma ADT' }
     ]
   };
 
-  const decodedTag = decodeURIComponent(tag || '');
   const articles = articlesByTag[decodedTag] || [];
 
   const breadcrumbItems = [
@@ -376,35 +179,30 @@ const ArticlesByTag = () => {
         {articles.length > 0 ? (
           <div className="grid gap-6">
             {articles.map((article, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <FileText className="h-5 w-5 text-primary" />
-                    <Link to={article.href} className="hover:text-primary transition-colors">
-                      {article.title}
-                    </Link>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{article.description}</p>
-                  <Link 
-                    to={article.href}
-                    className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium"
-                  >
-                    Leer artículo
-                    <ArrowLeft className="h-3 w-3 ml-1 rotate-180" />
-                  </Link>
+              <Card key={index} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <FileText className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                    <div className="flex-1">
+                      <Link to={article.href} className="block">
+                        <h3 className="text-xl font-semibold mb-2 text-primary hover:text-primary/80 transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-muted-foreground">{article.description}</p>
+                      </Link>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         ) : (
           <Card>
-            <CardContent className="text-center py-12">
+            <CardContent className="p-8 text-center">
               <Tag className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h2 className="text-xl font-semibold mb-2">No hay artículos con esta etiqueta</h2>
+              <h2 className="text-xl font-semibold mb-2">No se encontraron artículos</h2>
               <p className="text-muted-foreground">
-                No encontramos artículos que contengan la etiqueta "{decodedTag}".
+                No hay artículos disponibles para la etiqueta "{decodedTag}".
               </p>
             </CardContent>
           </Card>

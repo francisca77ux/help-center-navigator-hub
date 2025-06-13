@@ -4,12 +4,15 @@ import { ArrowLeft, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import ArticleTags from '@/components/ArticleTags';
 
 const ConfiguracionZonas = () => {
   const breadcrumbItems = [
     { label: 'Panel de Alarma', href: '/panel-alarma' },
     { label: 'Configuración de zonas' }
   ];
+
+  const tags = ['Panel de Alarma', 'Zonas', 'Configuración', 'Sensores', 'Programación'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -26,6 +29,8 @@ const ConfiguracionZonas = () => {
             <MapPin className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold">Configuración de zonas</h1>
           </div>
+          
+          <ArticleTags tags={tags} className="mb-6" />
         </div>
 
         <Card className="prose prose-lg max-w-none">
