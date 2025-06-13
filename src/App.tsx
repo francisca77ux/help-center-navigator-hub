@@ -10,6 +10,10 @@ import ServiciosAdt from "./pages/ServiciosAdt";
 import PanelAlarma from "./pages/PanelAlarma";
 import AppAdt from "./pages/AppAdt";
 import Facturacion from "./pages/Facturacion";
+import Instalacion from "./pages/Instalacion";
+import CamarasIp from "./pages/CamarasIp";
+import Monitoreo from "./pages/Monitoreo";
+import Soporte from "./pages/Soporte";
 
 // Article pages
 import ServiciosAdtDisponibles from "./pages/articles/ServiciosAdtDisponibles";
@@ -38,6 +42,10 @@ const App = () => (
           <Route path="/panel-alarma" element={<PanelAlarma />} />
           <Route path="/app-adt" element={<AppAdt />} />
           <Route path="/facturacion" element={<Facturacion />} />
+          <Route path="/instalacion" element={<Instalacion />} />
+          <Route path="/camaras-ip" element={<CamarasIp />} />
+          <Route path="/monitoreo" element={<Monitoreo />} />
+          <Route path="/soporte" element={<Soporte />} />
           
           {/* Article routes */}
           <Route path="/articulo/servicios-adt-disponibles" element={<ServiciosAdtDisponibles />} />
