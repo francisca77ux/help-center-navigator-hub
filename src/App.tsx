@@ -16,6 +16,9 @@ import ServiciosAdtDisponibles from "./pages/articles/ServiciosAdtDisponibles";
 import ActivarSistemaAlarma from "./pages/articles/ActivarSistemaAlarma";
 import DescargaAppAdt from "./pages/articles/DescargaAppAdt";
 import MediosPagoDisponibles from "./pages/articles/MediosPagoDisponibles";
+import TiposMonitoreo from "./pages/articles/TiposMonitoreo";
+import Monitoreo247 from "./pages/articles/Monitoreo247";
+import QueEsAdtSmartSecurity from "./pages/articles/QueEsAdtSmartSecurity";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +40,9 @@ const App = () => (
           <Route path="/articulo/activar-sistema-alarma" element={<ActivarSistemaAlarma />} />
           <Route path="/articulo/descarga-app-adt" element={<DescargaAppAdt />} />
           <Route path="/articulo/medios-pago-disponibles" element={<MediosPagoDisponibles />} />
+          <Route path="/articulo/tipos-monitoreo" element={<TiposMonitoreo />} />
+          <Route path="/articulo/monitoreo-24-7" element={<Monitoreo247 />} />
+          <Route path="/articulo/que-es-adt-smart-security" element={<QueEsAdtSmartSecurity />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
