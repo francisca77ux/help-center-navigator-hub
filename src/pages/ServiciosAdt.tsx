@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin, Smartphone, Wifi, Camera, Lock } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -181,6 +180,7 @@ const ServiciosAdt = () => {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
+                <Phone className="h-8 w-8 text-primary mx-auto mb-2" />
                 <h4 className="font-semibold">Teléfono</h4>
                 <p className="text-sm text-muted-foreground">600 123 4567</p>
               </div>
