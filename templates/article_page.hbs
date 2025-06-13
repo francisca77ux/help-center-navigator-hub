@@ -11,7 +11,7 @@
         <li>></li>
         {{#if section}}
         {{#if section.category}}
-        <li><a href="{{section.category.url}}" class="hover:text-blue-600">{{section.category.name}}</a></li>
+        <li><a href="#" class="hover:text-blue-600">Categoría</a></li>
         <li>></li>
         {{/if}}
         <li><a href="{{section.url}}" class="hover:text-blue-600">{{section.name}}</a></li>
@@ -58,15 +58,13 @@
             {{#if article.vote_sum}}
             <span>👍 {{article.vote_sum}}</span>
             {{/if}}
-            {{#if article.views}}
-            <span>👁️ {{article.views}}</span>
-            {{/if}}
+            <span>👁️ Vistas</span>
           </div>
         </div>
       </header>
       
       <div class="p-6 prose prose-lg max-w-none">
-        <div>{{article.body}}</div>
+        <div>{{{article.body}}}</div>
       </div>
     </article>
 

@@ -10,7 +10,7 @@
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
         {{#if section.category}}
-        <li><a href="{{section.category.url}}" class="hover:text-blue-600">{{section.category.name}}</a></li>
+        <li><a href="#" class="hover:text-blue-600">Categoría</a></li>
         <li>></li>
         {{/if}}
         <li class="text-gray-800 font-medium">{{section.name}}</li>
@@ -59,7 +59,7 @@
     {{#if section.category}}
     {{#if section.category.sections}}
     <section class="mt-12">
-      <h3 class="text-2xl font-bold mb-6">Otras secciones en {{section.category.name}}</h3>
+      <h3 class="text-2xl font-bold mb-6">Otras secciones</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {{#each section.category.sections}}
         {{#unless (compare id '==' ../section.id)}}
