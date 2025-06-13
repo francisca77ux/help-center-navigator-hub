@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowLeft, Phone, Mail, MessageCircle, Shield, Monitor, Wrench, MapPin, Smartphone, Wifi, Camera, Lock } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -140,9 +141,9 @@ const ServiciosAdt = () => {
         <div className="space-y-12">
           {sections.map((section) => (
             <section key={section.id} className="space-y-6">
-              <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-6">
                 {section.icon}
-                <div className="text-center">
+                <div>
                   <h2 className="text-2xl font-bold">{section.title}</h2>
                   <p className="text-muted-foreground">{section.description}</p>
                 </div>
