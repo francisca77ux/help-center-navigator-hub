@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -44,6 +43,7 @@ import ServiciosAdicionales from "./pages/articles/ServiciosAdicionales";
 import CentralMonitoreo from "./pages/articles/CentralMonitoreo";
 import ProtocoloEmergencias from "./pages/articles/ProtocoloEmergencias";
 import DispositivosInteligentesDisponibles from "./pages/articles/DispositivosInteligentesDisponibles";
+import DiagnosticoRemoto from "./pages/articles/DiagnosticoRemoto";
 
 const queryClient = new QueryClient();
 
@@ -94,6 +94,7 @@ const App = () => (
           <Route path="/articulo/central-monitoreo" element={<CentralMonitoreo />} />
           <Route path="/articulo/protocolo-emergencias" element={<ProtocoloEmergencias />} />
           <Route path="/articulo/dispositivos-inteligentes-disponibles" element={<DispositivosInteligentesDisponibles />} />
+          <Route path="/articulo/diagnostico-remoto" element={<DiagnosticoRemoto />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

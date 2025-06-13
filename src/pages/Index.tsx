@@ -245,25 +245,24 @@ const Index = () => {
 
         {/* Community and Activity Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Community Section */}
+          {/* Community Section - Más pequeño y movido arriba */}
           <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <MessageCircle className="h-6 w-6 text-primary" />
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <MessageCircle className="h-5 w-5 text-primary" />
                 ¿Necesitas más ayuda?
               </CardTitle>
-              <CardDescription className="text-base">
-                Si no encuentras la respuesta que buscas, nuestro equipo de atención al cliente está disponible para ayudarte
+              <CardDescription className="text-sm">
+                Si no encuentras la respuesta que buscas, nuestro equipo está disponible
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <Button className="w-full group mb-3">
+            <CardContent className="pt-0">
+              <Button className="w-full group text-sm py-2">
                 Contactar Soporte
-                <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-3 w-3 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <p className="text-sm text-muted-foreground text-center">
-                Lunes a Viernes: 8:00 - 20:00 hrs<br />
-                Sábados: 9:00 - 14:00 hrs
+              <p className="text-xs text-muted-foreground text-center mt-2">
+                Lun-Vie: 8:00-20:00 | Sáb: 9:00-14:00
               </p>
             </CardContent>
           </Card>
@@ -295,8 +294,8 @@ const Index = () => {
           </Card>
         </div>
 
-        {/* Additional Help Section */}
-        <section className="mt-16 text-center">
+        {/* Additional Help Section - Otros Canales de Atención */}
+        <section className="mt-12 text-center">
           <h2 className="text-2xl font-bold mb-4">Otros Canales de Atención</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <Card className="p-6">
