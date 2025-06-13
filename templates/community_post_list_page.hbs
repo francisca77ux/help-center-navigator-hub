@@ -11,7 +11,7 @@
         <li>></li>
         <li><a href="/community" class="hover:text-blue-600">Comunidad</a></li>
         <li>></li>
-        <li class="text-gray-800 font-medium">{{topic.name}}</li>
+        <li class="text-gray-800 font-medium">{{#if topic}}{{topic.name}}{{else}}Publicaciones{{/if}}</li>
       </ol>
     </nav>
 
@@ -21,7 +21,7 @@
         <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
           💬
         </div>
-        <h1 class="text-4xl font-bold">{{topic.name}}</h1>
+        <h1 class="text-4xl font-bold">{{#if topic}}{{topic.name}}{{else}}Publicaciones de la Comunidad{{/if}}</h1>
       </div>
       
       {{#if topic.description}}
@@ -33,11 +33,9 @@
           {{posts.length}} publicaciones
         </div>
         
-        {{#if current_user}}
-        <a href="{{topic.url}}/posts/new" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="/community/posts/new" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
           Nueva Publicación
         </a>
-        {{/if}}
       </div>
     </div>
 
@@ -52,7 +50,7 @@
             <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
             {{else}}
             <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span class="text-gray-600 font-semibold">{{substr author.name 0 1}}</span>
+              <span class="text-gray-600 font-semibold">{{substring author.name 0 1}}</span>
             </div>
             {{/if}}
             <div>
@@ -72,15 +70,15 @@
         
         {{#if details}}
         <div class="text-gray-600 mb-4 line-clamp-3">
-          {{details}}
+          {{truncate details 200}}
         </div>
         {{/if}}
         
         <div class="flex items-center justify-between text-sm text-gray-500">
           <div class="flex items-center gap-4">
-            <span>💬 {{comments_count}} respuestas</span>
+            <span>💬 {{#if comments_count}}{{comments_count}}{{else}}0{{/if}} respuestas</span>
             <span>👍 {{vote_sum}} votos</span>
-            <span>👁️ {{views}} vistas</span>
+            <span>👁️ {{#if views}}{{views}}{{else}}0{{/if}} vistas</span>
           </div>
           
           {{#if updated_at}}
@@ -99,13 +97,9 @@
         Sé el primero en iniciar una conversación en esta comunidad.
       </p>
       
-      {{#if current_user}}
-      <a href="{{topic.url}}/posts/new" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block">
+      <a href="/community/posts/new" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-block">
         Crear Primera Publicación
       </a>
-      {{else}}
-      <p class="text-gray-500">Inicia sesión para participar en la comunidad</p>
-      {{/if}}
     </div>
     {{/if}}
 

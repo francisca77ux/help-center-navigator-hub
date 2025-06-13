@@ -1,5 +1,5 @@
 
-{{> header}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -58,7 +58,9 @@
                 <a href="{{url}}">{{title}}</a>
               </h3>
             </div>
-            <p class="text-gray-600 text-sm">{{summary}}</p>
+            {{#if body}}
+            <p class="text-gray-600 text-sm">{{truncate body 100}}</p>
+            {{/if}}
           </article>
           {{/each}}
         </div>
@@ -97,4 +99,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}
