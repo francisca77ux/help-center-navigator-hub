@@ -1,13 +1,20 @@
-
 import React from 'react';
 import { ArrowLeft, CreditCard } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 
 const MediosPagoDisponibles = () => {
+  const breadcrumbItems = [
+    { label: 'Facturación y Pagos', href: '/facturacion' },
+    { label: 'Medios de pago disponibles' }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <BreadcrumbNavigation items={breadcrumbItems} />
+        
         <div className="mb-8">
           <Link to="/facturacion" className="inline-flex items-center text-primary hover:text-primary/80 mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
