@@ -1,0 +1,144 @@
+
+{{> header}}
+
+<main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
+  <div class="container mx-auto px-4 py-8 max-w-6xl">
+    
+    <!-- Breadcrumb -->
+    <nav class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
+        <li>></li>
+        <li><a href="{{community.url}}" class="hover:text-blue-600">Comunidad</a></li>
+        <li>></li>
+        <li class="text-gray-800 font-medium">Contribuciones</li>
+      </ol>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+          📝
+        </div>
+        <h1 class="text-4xl font-bold">Contribuciones de {{user.name}}</h1>
+      </div>
+      
+      <p class="text-lg text-gray-600">
+        Todas las publicaciones y respuestas realizadas por este usuario en la comunidad.
+      </p>
+    </div>
+
+    <!-- User Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-2xl font-bold text-blue-600 mb-2">{{user.posts_count}}</div>
+        <div class="text-gray-600">Publicaciones</div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-2xl font-bold text-green-600 mb-2">{{user.comments_count}}</div>
+        <div class="text-gray-600">Respuestas</div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-2xl font-bold text-purple-600 mb-2">{{user.votes_count}}</div>
+        <div class="text-gray-600">Votos Recibidos</div>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="border-b border-gray-200 mb-6">
+      <nav class="flex space-x-8">
+        <a href="?filter=posts" class="py-2 px-1 border-b-2 {{#is filter 'posts'}}border-blue-500 text-blue-600{{else}}border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300{{/is}} whitespace-nowrap">
+          Publicaciones
+        </a>
+        <a href="?filter=comments" class="py-2 px-1 border-b-2 {{#is filter 'comments'}}border-blue-500 text-blue-600{{else}}border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300{{/is}} whitespace-nowrap">
+          Respuestas
+        </a>
+        <a href="?filter=all" class="py-2 px-1 border-b-2 {{#unless filter}}border-blue-500 text-blue-600{{else}}border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300{{/unless}} whitespace-nowrap">
+          Todas
+        </a>
+      </nav>
+    </div>
+
+    <!-- Contributions List -->
+    {{#if contributions}}
+    <div class="space-y-6">
+      {{#each contributions}}
+      <article class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              {{#if this.is_post}}📄{{else}}💬{{/if}}
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">
+                {{#if this.is_post}}Publicación{{else}}Respuesta{{/if}} en
+              </span>
+              <a href="{{topic.url}}" class="text-blue-600 hover:text-blue-800 font-medium">{{topic.name}}</a>
+            </div>
+          </div>
+          
+          <span class="text-sm text-gray-500">{{created_at}}</span>
+        </div>
+        
+        <h3 class="text-xl font-semibold mb-3">
+          <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
+        </h3>
+        
+        {{#if details}}
+        <div class="text-gray-600 mb-4 line-clamp-3">
+          {{details}}
+        </div>
+        {{/if}}
+        
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <div class="flex items-center gap-4">
+            {{#unless this.is_post}}
+            <span>↳ Respuesta a: <a href="{{parent_post.url}}" class="text-blue-600 hover:text-blue-800">{{parent_post.title}}</a></span>
+            {{/unless}}
+          </div>
+          
+          <div class="flex items-center gap-4">
+            <span>👍 {{vote_sum}} votos</span>
+            {{#if comments_count}}
+            <span>💬 {{comments_count}} respuestas</span>
+            {{/if}}
+          </div>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+    
+    <!-- Pagination -->
+    {{#if has_more_pages}}
+    <div class="text-center mt-8">
+      <a href="{{next_page_url}}" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        Ver Más Contribuciones
+      </a>
+    </div>
+    {{/if}}
+    
+    {{else}}
+    <!-- Empty State -->
+    <div class="text-center py-12">
+      <div class="text-6xl mb-4">📝</div>
+      <h2 class="text-2xl font-bold mb-4">Sin contribuciones aún</h2>
+      <p class="text-gray-600">
+        Este usuario aún no ha realizado publicaciones o respuestas en la comunidad.
+      </p>
+    </div>
+    {{/if}}
+
+    <!-- Back to Community -->
+    <div class="text-center mt-8 pt-8 border-t border-gray-200">
+      <a href="{{community.url}}" class="text-blue-600 hover:text-blue-800 transition-colors">
+        ← Volver a la Comunidad
+      </a>
+    </div>
+
+  </div>
+</main>
+
+{{> footer}}
