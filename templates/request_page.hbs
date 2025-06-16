@@ -1,6 +1,6 @@
 
-{{> document_head}}
-{{> header}}
+{{> _document_head}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -34,54 +34,11 @@
       </div>
     </div>
 
-    <!-- Request Comments -->
-    <div class="space-y-6">
-      {{#if request.comments}}
-      {{#each request.comments}}
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <div class="flex items-start gap-4">
-          {{#if author.avatar_url}}
-          <img src="{{author.avatar_url}}" alt="{{author.name}}" class="w-10 h-10 rounded-full">
-          {{else}}
-          <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-            <span class="text-gray-600 font-semibold text-sm">AU</span>
-          </div>
-          {{/if}}
-          
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <h3 class="font-semibold">{{author.name}}</h3>
-              {{#if author.agent}}
-              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Agente</span>
-              {{/if}}
-              <span class="text-sm text-gray-500">{{created_at}}</span>
-            </div>
-            
-            <div class="prose max-w-none">
-              <div>{{body}}</div>
-            </div>
-            
-            {{#if attachments}}
-            <div class="mt-4">
-              <h4 class="font-medium mb-2">Archivos adjuntos:</h4>
-              <div class="space-y-2">
-                {{#each attachments}}
-                <a href="{{url}}" class="flex items-center gap-2 text-blue-600 hover:text-blue-800" download>
-                  📎 {{file_name}}
-                </a>
-                {{/each}}
-              </div>
-            </div>
-            {{/if}}
-          </div>
-        </div>
+    <!-- Request Description -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div class="prose max-w-none">
+        <div>{{request.description}}</div>
       </div>
-      {{/each}}
-      {{else}}
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <p class="text-gray-600">No hay comentarios disponibles para esta solicitud.</p>
-      </div>
-      {{/if}}
     </div>
 
     <!-- Add Comment Form -->
@@ -135,4 +92,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}
