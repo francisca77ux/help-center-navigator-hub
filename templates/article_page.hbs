@@ -1,4 +1,5 @@
 
+{{> document_head}}
 {{> header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
@@ -10,10 +11,6 @@
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
         {{#if section}}
-        {{#if section.category}}
-        <li><a href="#" class="hover:text-blue-600">Categoría</a></li>
-        <li>></li>
-        {{/if}}
         <li><a href="{{section.url}}" class="hover:text-blue-600">{{section.name}}</a></li>
         <li>></li>
         {{/if}}
@@ -35,15 +32,6 @@
         </div>
         <h1 class="text-4xl font-bold">{{article.title}}</h1>
       </div>
-      
-      <!-- Article Tags -->
-      {{#if article.label_names}}
-      <div class="flex flex-wrap gap-2 mb-6">
-        {{#each article.label_names}}
-        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">{{this}}</span>
-        {{/each}}
-      </div>
-      {{/if}}
     </div>
 
     <!-- Article Content -->

@@ -1,4 +1,5 @@
 
+{{> document_head}}
 {{> header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
@@ -35,8 +36,8 @@
 
     <!-- Request Comments -->
     <div class="space-y-6">
-      {{#if request.comments}}
-      {{#each request.comments}}
+      {{#if request.public_comments}}
+      {{#each request.public_comments}}
       <div class="bg-white rounded-lg shadow-md p-6">
         <div class="flex items-start gap-4">
           {{#if author.avatar_url}}
