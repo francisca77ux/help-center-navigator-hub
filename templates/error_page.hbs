@@ -1,5 +1,5 @@
 
-{{> _header}}
+{{> header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 text-center">
@@ -9,39 +9,12 @@
       <!-- Error Icon and Code -->
       <div class="mb-8">
         {{#if error.status_code}}
-        {{#compare error.status_code '==' 404}}
         <div class="text-8xl mb-6">🔍</div>
-        <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
-        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Página no encontrada</h2>
-        <p class="text-gray-500 mb-8">
-          Lo sentimos, la página que buscas no existe o ha sido movida.
-        </p>
-        {{else}}
-        {{#compare error.status_code '==' 403}}
-        <div class="text-8xl mb-6">🚫</div>
-        <h1 class="text-6xl font-bold text-gray-800 mb-4">403</h1>
-        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Acceso denegado</h2>
-        <p class="text-gray-500 mb-8">
-          No tienes permisos para acceder a esta página.
-        </p>
-        {{else}}
-        {{#compare error.status_code '==' 500}}
-        <div class="text-8xl mb-6">⚠️</div>
-        <h1 class="text-6xl font-bold text-gray-800 mb-4">500</h1>
-        <h2 class="text-2xl font-semibold text-gray-600 mb-4">Error del servidor</h2>
-        <p class="text-gray-500 mb-8">
-          Ha ocurrido un error interno. Por favor, inténtalo más tarde.
-        </p>
-        {{else}}
-        <div class="text-8xl mb-6">❌</div>
         <h1 class="text-6xl font-bold text-gray-800 mb-4">{{error.status_code}}</h1>
         <h2 class="text-2xl font-semibold text-gray-600 mb-4">Error</h2>
         <p class="text-gray-500 mb-8">
           {{#if error.message}}{{error.message}}{{else}}Ha ocurrido un error inesperado.{{/if}}
         </p>
-        {{/compare}}
-        {{/compare}}
-        {{/compare}}
         {{else}}
         <div class="text-8xl mb-6">❌</div>
         <h1 class="text-6xl font-bold text-gray-800 mb-4">Error</h1>
@@ -87,4 +60,4 @@
   </div>
 </main>
 
-{{> _footer}}
+{{> footer}}

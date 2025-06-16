@@ -1,5 +1,5 @@
 
-{{> _header}}
+{{> header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -9,34 +9,9 @@
       <h1 class="text-4xl font-bold mb-4">Resultados de búsqueda</h1>
       {{#if query}}
       <p class="text-lg text-gray-600">
-        Mostrando resultados para: <strong>"{{query}}"</strong>
+        Resultados para: <strong>"{{query}}"</strong>
       </p>
       {{/if}}
-      
-      {{#if results_count}}
-      <p class="text-sm text-gray-500 mt-2">
-        {{results_count}} resultados encontrados
-      </p>
-      {{/if}}
-    </div>
-
-    <!-- Search Form -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <form action="/hc/es/search" method="get" class="flex gap-4">
-        <input 
-          type="search" 
-          name="query" 
-          value="{{query}}" 
-          placeholder="Buscar artículos de ayuda..." 
-          class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        >
-        <button 
-          type="submit" 
-          class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          Buscar
-        </button>
-      </form>
     </div>
 
     <!-- Search Results -->
@@ -45,57 +20,31 @@
       {{#each results}}
       <article class="bg-white rounded-lg shadow-md p-6">
         <div class="flex items-start justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-              General
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+              Artículo
             </span>
-            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
-              Destacado
-            </span>
-          </div>
-          
-          {{#if vote_sum}}
-          <span class="text-sm text-gray-500">{{vote_sum}} 👍</span>
-          {{/if}}
-        </div>
-        
-        <h3 class="text-xl font-semibold mb-3">
-          <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
-        </h3>
-        
-        <div class="text-gray-600 mb-4">
-          <div>{{body}}</div>
-        </div>
-        
-        <div class="flex items-center justify-between text-sm text-gray-500">
-          <div class="flex items-center gap-4">
-            <span>Actualizado recientemente</span>
-            {{#if author}}
-            <span>Por {{author.name}}</span>
+            {{#if promoted}}
+            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Destacado</span>
             {{/if}}
           </div>
           
-          <a href="{{url}}" class="text-blue-600 hover:text-blue-800 font-medium">
-            Leer más →
-          </a>
+          <span class="text-sm text-gray-500">{{vote_sum}} 👍</span>
+        </div>
+        
+        <h2 class="text-xl font-semibold mb-3">
+          <a href="{{url}}" class="hover:text-blue-600 transition-colors">{{title}}</a>
+        </h2>
+        
+        <p class="text-gray-600 mb-4 line-clamp-3">{{excerpt}}</p>
+        
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <div class="flex items-center gap-4">
+            <span>Actualizado hace tiempo</span>
+          </div>
         </div>
       </article>
       {{/each}}
-    </div>
-
-    <!-- Pagination -->
-    <div class="flex justify-center mt-8">
-      <nav class="flex items-center gap-2">
-        <a href="?query={{query}}&page=1" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
-          ← Anterior
-        </a>
-        
-        <span class="px-3 py-2 bg-blue-600 text-white rounded-md">1</span>
-        
-        <a href="?query={{query}}&page=2" class="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
-          Siguiente →
-        </a>
-      </nav>
     </div>
     {{else}}
     <!-- No Results -->
@@ -104,20 +53,28 @@
       <h2 class="text-2xl font-bold mb-4">No se encontraron resultados</h2>
       <p class="text-gray-600 mb-8">
         {{#if query}}
-        No encontramos artículos que coincidan con "<strong>{{query}}</strong>".
+        No encontramos artículos que coincidan con "{{query}}".
         {{else}}
-        Ingresa un término de búsqueda para encontrar artículos de ayuda.
+        Introduce un término de búsqueda para encontrar artículos.
         {{/if}}
       </p>
       
       <div class="max-w-md mx-auto">
-        <h3 class="font-semibold mb-4">Sugerencias:</h3>
-        <ul class="text-left text-gray-600 space-y-2">
-          <li>• Intenta con palabras clave diferentes</li>
-          <li>• Usa términos más generales</li>
-          <li>• Revisa la ortografía</li>
-          <li>• Explora nuestras categorías</li>
-        </ul>
+        <form action="/hc/es/search" method="get" class="relative">
+          <input 
+            type="search" 
+            name="query" 
+            placeholder="Buscar artículos..." 
+            value="{{query}}"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+          <button 
+            type="submit" 
+            class="absolute right-1 top-1 bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            🔍
+          </button>
+        </form>
       </div>
     </div>
     {{/if}}
@@ -125,4 +82,4 @@
   </div>
 </main>
 
-{{> _footer}}
+{{> footer}}

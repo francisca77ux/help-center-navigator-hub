@@ -1,5 +1,5 @@
 
-{{> _header}}
+{{> header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -9,10 +9,6 @@
       <ol class="flex items-center space-x-2 text-sm text-gray-500">
         <li><a href="{{help_center.url}}" class="hover:text-blue-600">Inicio</a></li>
         <li>></li>
-        {{#if section.category}}
-        <li><a href="#" class="hover:text-blue-600">Categoría</a></li>
-        <li>></li>
-        {{/if}}
         <li class="text-gray-800 font-medium">{{section.name}}</li>
       </ol>
     </nav>
@@ -25,7 +21,6 @@
 
     <!-- Articles -->
     <div class="space-y-8">
-      {{#if articles}}
       <section class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {{#each articles}}
@@ -43,38 +38,7 @@
           {{/each}}
         </div>
       </section>
-      {{else}}
-      <!-- Empty State -->
-      <div class="text-center py-12">
-        <div class="text-6xl mb-4">📄</div>
-        <h2 class="text-2xl font-bold mb-4">No hay artículos disponibles</h2>
-        <p class="text-gray-600">
-          Los artículos aparecerán aquí una vez que se publiquen.
-        </p>
-      </div>
-      {{/if}}
     </div>
-
-    <!-- Related Sections -->
-    {{#if section.category}}
-    {{#if section.category.sections}}
-    <section class="mt-12">
-      <h3 class="text-2xl font-bold mb-6">Otras secciones</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {{#each section.category.sections}}
-        {{#unless (compare id '==' ../section.id)}}
-        <a href="{{url}}" class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 group">
-          <h4 class="font-semibold group-hover:text-blue-600 transition-colors">{{name}}</h4>
-          {{#if description}}
-          <p class="text-gray-600 text-sm mt-2">{{description}}</p>
-          {{/if}}
-        </a>
-        {{/unless}}
-        {{/each}}
-      </div>
-    </section>
-    {{/if}}
-    {{/if}}
 
     <!-- Contact Card -->
     <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 mt-12 max-w-4xl mx-auto">
@@ -107,4 +71,4 @@
   </div>
 </main>
 
-{{> _footer}}
+{{> footer}}
