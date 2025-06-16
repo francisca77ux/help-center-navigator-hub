@@ -1,6 +1,5 @@
-
-{{> document_head}}
-{{> header}}
+{{> _document_head}}
+{{> _header}}
 
 <main class="min-h-screen bg-gradient-to-br from-background via-background to-gray-50">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
@@ -45,7 +44,7 @@
           </div>
           
           <div class="flex flex-col items-end gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-medium {{#compare status '==' 'solved'}}bg-green-100 text-green-800{{else}}{{#compare status '==' 'pending'}}bg-yellow-100 text-yellow-800{{else}}{{#compare status '==' 'open'}}bg-blue-100 text-blue-800{{else}}bg-gray-100 text-gray-800{{/compare}}{{/compare}}{{/compare}}">
+            <span class="px-3 py-1 rounded-full text-xs font-medium {{#compare status '==' 'solved'}}bg-green-100 text-green-800{{else}}{{#compare status '==' 'pending'}}bg-yellow-100 text-yellow-800{{else}}{{#compare status '==' 'open'}}bg-blue-100 text-blue-800{{else}}bg-gray-100 text-gray-800{{/compare}}{{/compare}}{{/compare}}{{/compare}}">
               {{#compare status '==' 'solved'}}Resuelto{{else}}{{#compare status '==' 'pending'}}Pendiente{{else}}{{#compare status '==' 'open'}}Abierto{{else}}{{status}}{{/compare}}{{/compare}}{{/compare}}
             </span>
             
@@ -100,4 +99,4 @@
   </div>
 </main>
 
-{{> footer}}
+{{> _footer}}
