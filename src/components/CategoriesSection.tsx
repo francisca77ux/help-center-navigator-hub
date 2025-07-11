@@ -41,20 +41,20 @@ const CategoriesSection = ({ categories }: CategoriesSectionProps) => {
             <Link key={category.id} to={category.url}>
               <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 hover:border-primary/20 h-full">
                 <CardHeader className="pb-4">
-                  <div className="flex flex-col items-start gap-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <IconComponent className="h-6 w-6 text-primary" />
                     </div>
-                    <div className="flex items-start justify-between w-full">
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                    <div className="flex items-center justify-between w-full">
+                      <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors">
                         {category.name}
                       </CardTitle>
                       <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
                     </div>
-                    <CardDescription className="text-sm">
-                      {category.description}
-                    </CardDescription>
                   </div>
+                  <CardDescription className="text-sm mt-3">
+                    {category.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <Badge variant="secondary" className="text-xs">
