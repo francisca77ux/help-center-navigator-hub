@@ -30,11 +30,11 @@ const PopularTagsSection = () => {
         <h2 className="text-3xl font-bold text-center">Temas Más Buscados</h2>
       </div>
       <p className="text-muted-foreground text-center mb-8">Las categorías más consultadas por nuestros usuarios</p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
         {popularTags.map((tag) => (
           <Link key={tag.name} to={`/etiqueta/${encodeURIComponent(tag.name)}`}>
             <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer aspect-square">
-              <CardContent className="p-3 h-full flex flex-col justify-center items-center text-center">
+              <CardContent className="p-2 h-full flex flex-col justify-center items-center text-center">
                 <Tag className="h-6 w-6 text-primary mb-2" />
                 <h3 className="font-semibold text-sm group-hover:text-primary transition-colors mb-1">
                   {tag.name}
