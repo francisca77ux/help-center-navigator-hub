@@ -42,7 +42,7 @@ const PopularTagsSection = () => {
         <h2 className="text-3xl font-bold text-center">Temas Más Buscados</h2>
       </div>
       <p className="text-muted-foreground text-center mb-8">Las categorías más consultadas por nuestros usuarios</p>
-      <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1">
+      <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1 justify-items-center place-content-center mx-auto max-w-screen-xl">
         {popularTags.map((tag) => {
           const IconComponent = tagIcons[tag.name as keyof typeof tagIcons] || Tag;
           
