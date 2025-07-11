@@ -16,13 +16,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    /* ADT Chile primary colors - Official ADT Blue */
-    --primary: 217 100% 31%;
+    /* ADT Chile primary colors - Official ADT Blue #0033A0 */
+    --primary: 221 100% 31%;
     --primary-foreground: 0 0% 100%;
 
     /* ADT Chile secondary colors - Light blue/gray */
     --secondary: 210 40% 95%;
-    --secondary-foreground: 217 100% 31%;
+    --secondary-foreground: 221 100% 31%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
@@ -36,18 +36,18 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 217 100% 31%;
+    --ring: 221 100% 31%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 217 100% 31%;
+    --sidebar-primary: 221 100% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 217 100% 31%;
+    --sidebar-accent-foreground: 221 100% 31%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 100% 31%;
+    --sidebar-ring: 221 100% 31%;
   }
 
   .dark {
@@ -60,7 +60,7 @@
     --popover: 0 0% 4%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 217 100% 31%;
+    --primary: 221 100% 31%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 217 33% 18%;
@@ -77,16 +77,16 @@
 
     --border: 217 33% 18%;
     --input: 217 33% 18%;
-    --ring: 217 100% 31%;
+    --ring: 221 100% 31%;
 
     --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 217 100% 31%;
+    --sidebar-primary: 221 100% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 4% 16%;
     --sidebar-accent-foreground: 240 5% 96%;
     --sidebar-border: 240 4% 16%;
-    --sidebar-ring: 217 100% 31%;
+    --sidebar-ring: 221 100% 31%;
   }
 }
 
