@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Tag, Search } from 'lucide-react';
+import { Tag, Search, Settings, Smartphone, Shield, Key, Eye, Bell, HeadphonesIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +23,18 @@ const PopularTagsSection = () => {
     { name: 'Seguridad', count: 16, description: 'Funciones de seguridad avanzadas' }
   ];
 
+  const tagIcons = {
+    'Panel de Alarma': Settings,
+    'App ADT': Smartphone,
+    'Servicios ADT': Shield,
+    'Configuración': Settings,
+    'Códigos': Key,
+    'Monitoreo 24/7': Eye,
+    'Notificaciones': Bell,
+    'Soporte Técnico': HeadphonesIcon,
+    'Seguridad': Shield
+  };
+
   return (
     <section className="mb-16">
       <div className="flex items-center justify-center gap-3 mb-2">
@@ -31,21 +43,25 @@ const PopularTagsSection = () => {
       </div>
       <p className="text-muted-foreground text-center mb-8">Las categorías más consultadas por nuestros usuarios</p>
       <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1">
-        {popularTags.map((tag) => (
-          <Link key={tag.name} to={`/etiqueta/${encodeURIComponent(tag.name)}`}>
-            <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer aspect-square">
-              <CardContent className="p-0.5 h-full flex flex-col justify-center items-center text-center">
-                <Tag className="h-6 w-6 text-primary mb-2" />
-                <h3 className="font-semibold text-sm group-hover:text-primary transition-colors mb-1">
-                  {tag.name}
-                </h3>
-                <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
-                  {tag.count}
-                </span>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+        {popularTags.map((tag) => {
+          const IconComponent = tagIcons[tag.name as keyof typeof tagIcons] || Tag;
+          
+          return (
+            <Link key={tag.name} to={`/etiqueta/${encodeURIComponent(tag.name)}`}>
+              <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer aspect-square">
+                <CardContent className="p-0.5 h-full flex flex-col justify-center items-center text-center">
+                  <IconComponent className="h-4 w-4 text-primary mb-1" />
+                  <h3 className="font-semibold text-xs group-hover:text-primary transition-colors mb-1 leading-tight">
+                    {tag.name}
+                  </h3>
+                  <span className="text-xs text-muted-foreground bg-muted px-1 py-0.5 rounded-full">
+                    {tag.count}
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
