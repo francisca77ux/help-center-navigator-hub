@@ -48,8 +48,8 @@ const PopularTagsSection = () => {
           
           return (
             <Link key={tag.name} to={`/etiqueta/${encodeURIComponent(tag.name)}`}>
-              <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer aspect-square">
-                <CardContent className="p-0.5 h-full flex flex-col justify-center items-center text-center">
+              <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer w-20 h-20">
+                <CardContent className="p-0.5 w-full h-full flex flex-col justify-center items-center text-center">
                   <IconComponent className="h-4 w-4 text-primary mb-1" />
                   <h3 className="font-semibold text-xs group-hover:text-primary transition-colors mb-1 leading-tight">
                     {tag.name}
