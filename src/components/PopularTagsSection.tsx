@@ -30,27 +30,18 @@ const PopularTagsSection = () => {
         <h2 className="text-3xl font-bold text-center">Temas Más Buscados</h2>
       </div>
       <p className="text-muted-foreground text-center mb-8">Las categorías más consultadas por nuestros usuarios</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
         {popularTags.map((tag) => (
           <Link key={tag.name} to={`/etiqueta/${encodeURIComponent(tag.name)}`}>
-            <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer h-full">
-              <CardContent className="p-4">
-                <div className="flex items-start gap-3">
-                  <Tag className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold text-sm group-hover:text-primary transition-colors">
-                        {tag.name}
-                      </h3>
-                      <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
-                        {tag.count}
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {tag.description}
-                    </p>
-                  </div>
-                </div>
+            <Card className="group hover:shadow-md transition-all duration-200 cursor-pointer aspect-square">
+              <CardContent className="p-3 h-full flex flex-col justify-center items-center text-center">
+                <Tag className="h-6 w-6 text-primary mb-2" />
+                <h3 className="font-semibold text-sm group-hover:text-primary transition-colors mb-1">
+                  {tag.name}
+                </h3>
+                <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                  {tag.count}
+                </span>
               </CardContent>
             </Card>
           </Link>
