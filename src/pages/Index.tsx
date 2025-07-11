@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import CategoriesSection from '@/components/CategoriesSection';
 import PopularTagsSection from '@/components/PopularTagsSection';
-import HelpSection from '@/components/HelpSection';
+
 import ContactChannelsSection from '@/components/ContactChannelsSection';
 
 const Index = () => {
@@ -122,7 +122,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-12">
         <CategoriesSection categories={categories} />
         <PopularTagsSection />
-        <HelpSection />
+        
         <ContactChannelsSection />
       </div>
     </div>
